@@ -1,0 +1,5 @@
+        <svg width="500" height="800" id="scatter" >
+            <g id="xAxis" ></g>
+            <g id="yAxis" ></g>
+            <g id="points"></g>
+        </svg>

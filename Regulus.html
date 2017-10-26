@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Visualization - Homework 4</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="js/script.js" async></script>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <h1>Starting Code for RegulusHD</h1>
+        <div>Name: Di Wang</div>
+    </header>
+
+    <div id="loadData" class="view">
+        <h2 id="edition">Data</h2>
+        <h3>rawData</h3>
+        <span id="raw"></span>
+        <h3>Persistence</h3>
+        <span id="persistence"></span>
+        <h3>selectedMSC</h3>
+        <span id="selected"></span>
+        <h3>allMSC</h3>
+        <span id="allMSC"></span>
+    </div>
+
+    <div id="hdPlot" class="view">
+        <h2 class="">Plot</h2>
+        <div id="plot-selector">
+            <label>Plot:</label>
+            <select id="dataset" onchange="chooseData()">
+                <option selected value="Coordinate">Coordinate</option>
+                <option value="Pairwise">Pariwise</option>
+                <option value="HDView">3DView</option>
+                <option value="Stats">Statistics</option>
+            </select>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
