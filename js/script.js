@@ -3,9 +3,7 @@ var margin = {top: 20, right: 20, bottom: 60, left: 60},
     height = 400;
 
 var attr;
-var yValue = function(d,i) { console.log(d);
-                            console.log(i);
-                            console.log(d[i]);return d[i];}, // data -> value
+var yValue = function(d,i) {return d[i];}, // data -> value
     yScale = d3.scaleLinear().range([0,height-margin.top-margin.bottom]).nice(), // value -> display
     //yMap = function(d) { return yScale(yValue(d));}, // data -> display
     yAxis = d3.axisLeft(yScale);
@@ -26,51 +24,38 @@ readData('data/Pu_TOT.csv');
 
 //CB function to readdata & create plot
 function readData(data){
+
     //console.log(data);
     //var field1;
     //var field2;
-    console.log(d3.csvParse('data/Pu_TOT.csv'));
-    d3.csvParse(data, function (error, data) {
+    d3.csv(data, function (error, data) {
+        if (error) throw error;
         /*csv.map(function(d){
 
             field1.push(d.name);
             field2.push(+d.value);
         })
        */
-        //var datacol = data.columns.length;
-        //var datarow = data.length;
-        //console.log(datarow);
-        //console.log(datacol);
-        console.log(data);
-        /*
-          data.forEach(function (d) {
-              console.log(+d.value);
-            d = +d.value;
-        });
-        */
-          //console.log(data);
-        console.log(data);
-
-        var keys = Array.from( data.keys() );
-
-
-    //var aa = d3.csvParse(data);
-        //console.log(keys);
-
-        attr = data.columns.length-1;
-        // # of input attributes
-
-        var size = data.length;
-        //console.log(size);
+        var attr = data.columns;
+        var datacol = attr.length;
+        var datarow = data.length;
+        var obj={};
+        for(var j = 0;j<datacol;j++)
+            obj[attr[j]]=[];
+        for(var i = 0; i<datarow;i++)
+        {
+            for(j = 0;j<datacol;j++)
+            {
+                obj[attr[j]].push(parseFloat(data[i][attr[j]]));
+            }
+        }
 
         var curplot;
         for(var i = 0; i<attr;i++ ){
             // X, y domains
-            //console.log(d3.min([data,i], xValue));
-            //console.log(d3.max(xValue(data)));
+
             var col = data.columns;
-            //console.log(col[i]);
-            //console.log(d3.min([data,col[i]], xValue));
+
             yScale.domain([d3.min([data,col[i]], xValue), d3.max([data,col[i]], xValue)]);
             xScale.domain([d3.min([data,col[attr]], yValue), d3.max([data,col[attr]], yValue)]);
             newplot.append("svg").attr('id',"plot"+i);
