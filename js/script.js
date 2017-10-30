@@ -29,24 +29,33 @@ function readData(data){
     //console.log(data);
     //var field1;
     //var field2;
-    d3.csv(data, function (error, data) {
+    console.log(d3.csvParse('data/Pu_TOT.csv'));
+    d3.csvParse(data, function (error, data) {
         /*csv.map(function(d){
 
             field1.push(d.name);
             field2.push(+d.value);
         })
        */
-
+        //var datacol = data.columns.length;
+        //var datarow = data.length;
+        //console.log(datarow);
+        //console.log(datacol);
+        console.log(data);
+        /*
           data.forEach(function (d) {
+              console.log(+d.value);
             d = +d.value;
         });
-          console.log(data);
+        */
+          //console.log(data);
+        console.log(data);
 
         var keys = Array.from( data.keys() );
 
 
     //var aa = d3.csvParse(data);
-        console.log(keys);
+        //console.log(keys);
 
         attr = data.columns.length-1;
         // # of input attributes
@@ -61,7 +70,7 @@ function readData(data){
             //console.log(d3.max(xValue(data)));
             var col = data.columns;
             //console.log(col[i]);
-            console.log(d3.min([data,col[i]], xValue));
+            //console.log(d3.min([data,col[i]], xValue));
             yScale.domain([d3.min([data,col[i]], xValue), d3.max([data,col[i]], xValue)]);
             xScale.domain([d3.min([data,col[attr]], yValue), d3.max([data,col[attr]], yValue)]);
             newplot.append("svg").attr('id',"plot"+i);
@@ -87,7 +96,7 @@ function readData(data){
 
             d3.select("#xAxis").selectAll("text").attr("transform"," translate(-12,25) rotate(-90)");
         }
-        console.log(newplot);
+        //console.log(newplot);
         //Create a different group for each plot
 
 
