@@ -3,12 +3,12 @@ var margin = {top: 20, right: 20, bottom: 60, left: 60},
     height = 400;
 
 var attr;
-var yValue = function(d,i) {return d[i];}, // data -> value
+var yValue = function(d) {return d;}, // data -> value
     yScale = d3.scaleLinear().range([0,height-margin.top-margin.bottom]).nice(), // value -> display
     //yMap = function(d) { return yScale(yValue(d));}, // data -> display
     yAxis = d3.axisLeft(yScale);
 //var i;
-var xValue = function(d,i) { return d[i];}, // data -> value
+var xValue = function(d) { return d;}, // data -> value
     xScale = d3.scaleLinear().range([0, width-margin.left-margin.right]).nice(), // value -> display
     //xMap = function(d) { return xScale(xValue(d));}, // data -> display
     xAxis = d3.axisBottom(xScale);
@@ -49,15 +49,15 @@ function readData(data){
                 obj[attr[j]].push(parseFloat(data[i][attr[j]]));
             }
         }
-
         var curplot;
-        for(var i = 0; i<attr;i++ ){
+        xScale.domain([d3.min(obj[attr[datacol-1]], yValue), d3.max(obj[attr[datacol-1]], yValue)]);
+
+        for(i = 0; i<datacol-1;i++ ){
             // X, y domains
 
             var col = data.columns;
 
-            yScale.domain([d3.min([data,col[i]], xValue), d3.max([data,col[i]], xValue)]);
-            xScale.domain([d3.min([data,col[attr]], yValue), d3.max([data,col[attr]], yValue)]);
+            yScale.domain([d3.min(obj[attr[i]], xValue), d3.max(obj[attr[i]], xValue)]);
             newplot.append("svg").attr('id',"plot"+i);
             curplot = d3.select("#plot"+i);
             //newplot = newplot.merge(curplot);
