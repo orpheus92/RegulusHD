@@ -9,7 +9,8 @@ var yValue = function(d) {return d;}, // data -> value
 var xValue = function(d) { return d;}, // data -> value
     xScale = d3.scaleLinear().range([0, width-margin.left-margin.right]).nice(), // value -> display
     xAxis = d3.axisBottom(xScale);
-
+var colorScale = d3.scaleLinear()
+    .range(['blue', 'red']);
 var newplot = d3.select("#hdPlot");
 
 readData('data/Pu_TOT.csv');
@@ -36,7 +37,7 @@ function readData(data){
         }
         var curplot;
         xScale.domain([d3.min(obj[attr[datacol-1]], yValue), d3.max(obj[attr[datacol-1]], yValue)]);
-
+        colorScale.domain([d3.min(obj[attr[datacol-1]], yValue), d3.max(obj[attr[datacol-1]], yValue)]);
         for(i = 0; i<datacol-1;i++ ){
             // X, y domains
 
@@ -51,6 +52,17 @@ function readData(data){
                 //.attr()
             curplot.append('g').attr('id',"xAxis"+i);
             curplot.append('g').attr('id',"yAxis"+i);
+            curplot.append('g').attr('id', "scatter"+i);
+            curplot.selectAll("#scatter"+i).data(obj[attr[i]])
+                .enter().append("circle")
+                .attr("r", 1)
+                .attr("cx", function(d,i) { return xScale(obj[attr[datacol-1]][i]); })
+                .attr("transform","translate("+[margin.left,height-margin.bottom]+")")
+                .attr("cy", function(d) { return yScale(d); })
+                .attr("transform","translate("+[margin.left,margin.top]+")")
+                .attr('fill', function (d,i) {
+                    return colorScale(obj[attr[datacol-1]][i]);
+                });
 
             xAxis.scale(xScale);
             yAxis.scale(yScale);
