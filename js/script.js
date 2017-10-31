@@ -1,23 +1,23 @@
-var margin = {top: 20, right: 20, bottom: 60, left: 60},
-    width = 800,
-    height = 200;
 
-var attr;
-var yValue = function(d) {return d;}, // data -> value
-    yScale = d3.scaleLinear().range([height-margin.top-margin.bottom,0]).nice(), // value -> display
-    yAxis = d3.axisLeft(yScale);
-var xValue = function(d) { return d;}, // data -> value
-    xScale = d3.scaleLinear().range([0, width-margin.left-margin.right]).nice(), // value -> display
-    xAxis = d3.axisBottom(xScale);
-var colorScale = d3.scaleLinear()
-    .range(['blue', 'red']);
 var newplot = d3.select("#hdPlot");
 
-readData('data/Pu_TOT.csv');
+readData('data/Pu_TOT.csv', 600,120);
 
 //CB function to readdata & create plot
-function readData(data){
+function readData(data, wid,hei){
+    var margin = {top: 5, right: 5, bottom: 20, left: 30},
+        width = wid,
+        height = hei;
 
+    var attr;
+    var yValue = function(d) {return d;}, // data -> value
+        yScale = d3.scaleLinear().range([height-margin.top-margin.bottom,0]).nice(), // value -> display
+        yAxis = d3.axisLeft(yScale);
+    var xValue = function(d) { return d;}, // data -> value
+        xScale = d3.scaleLinear().range([0, width-margin.left-margin.right]).nice(), // value -> display
+        xAxis = d3.axisBottom(xScale);
+    var colorScale = d3.scaleLinear()
+        .range(['blue', 'red']);
 
     d3.csv(data, function (error, data) {
         if (error) throw error;
@@ -39,16 +39,14 @@ function readData(data){
         xScale.domain([d3.min(obj[attr[datacol-1]], yValue), d3.max(obj[attr[datacol-1]], yValue)]);
         colorScale.domain([d3.min(obj[attr[datacol-1]], yValue), d3.max(obj[attr[datacol-1]], yValue)]);
         for(i = 0; i<datacol-1;i++ ){
-            // X, y domains
-
             var col = data.columns;
 
             yScale.domain([d3.min(obj[attr[i]], xValue), d3.max(obj[attr[i]], xValue)]);
             newplot.append("svg").attr('id',"plot"+i);
             curplot = d3.select("#plot"+i);
 
-            curplot.attr("height",200)
-                .attr("width",800);
+            curplot.attr("height",height)
+                .attr("width",width);
                 //.attr()
             curplot.append('g').attr('id',"xAxis"+i);
             curplot.append('g').attr('id',"yAxis"+i);
