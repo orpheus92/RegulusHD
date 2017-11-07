@@ -305,8 +305,6 @@ class Plots {
                 .call(d3.axisLeft(y))
                     .attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");;
 
-
-
         }
     }
 }

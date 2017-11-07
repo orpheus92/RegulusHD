@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3416448-160f-4b05-b67e-1a66d41637b4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/Tree.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Regulus.html" afterPath="$PROJECT_DIR$/Regulus.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
@@ -17,16 +18,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49040768">
+    <splitter split-orientation="horizontal" split-proportion="0.5155875">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
           <file leaf-file-name="Regulus.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Regulus.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="930">
-                  <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
+                <state relative-caret-position="465">
+                  <caret line="43" column="14" lean-forward="false" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
                   <folding>
                     <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Tree.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/Tree.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+                  <folding>
+                    <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
+                    <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
+                    <element signature="e#1031#1205#0" expanded="false" />
+                    <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
+                    <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
+                    <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
+                    <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -35,20 +55,21 @@
           <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/styles.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2070">
+                <state relative-caret-position="30">
                   <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/script.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1320">
-                  <caret line="152" column="28" lean-forward="true" selection-start-line="152" selection-start-column="28" selection-end-line="152" selection-end-column="28" />
+                <state relative-caret-position="360">
+                  <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
                   <folding>
                     <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+                    <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
                     <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
                     <element signature="e#2596#4167#0" expanded="false" />
                     <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -66,13 +87,15 @@
           <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/script.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1731">
-                  <caret line="275" column="40" lean-forward="false" selection-start-line="275" selection-start-column="33" selection-end-line="275" selection-end-column="40" />
+                <state relative-caret-position="1380">
+                  <caret line="306" column="0" lean-forward="false" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+                    <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
                     <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
                     <element signature="e#2596#4167#0" expanded="false" />
                     <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
+                    <element signature="n#!!block;n#boxPlot#0;n#Plots#0" expanded="false" />
                     <element signature="e#5050#7029#0" expanded="false" />
                     <element signature="n#!!block;n#boxQuartiles#0;n#!!block;n#boxPlot#0;n#Plots#0" expanded="false" />
                   </folding>
@@ -83,6 +106,13 @@
         </leaf>
       </split-second>
     </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -101,6 +131,7 @@
       <list>
         <option value="$PROJECT_DIR$/styles.css" />
         <option value="d3js.org/d3.v4.js" />
+        <option value="$PROJECT_DIR$/js/Tree.js" />
         <option value="$PROJECT_DIR$/Regulus.html" />
         <option value="$PROJECT_DIR$/js/script.js" />
       </list>
@@ -203,12 +234,12 @@
       <workItem from="1509329738822" duration="18927000" />
       <workItem from="1509728843548" duration="1203000" />
       <workItem from="1509841841621" duration="25225000" />
-      <workItem from="1510076992031" duration="1214000" />
+      <workItem from="1510076992031" duration="1486000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71076000" />
+    <option name="totallyTimeSpent" value="71348000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -216,7 +247,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11792702" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39932126" sideWeight="0.50185084" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28280544" sideWeight="0.50185084" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -258,7 +289,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="37" />
+      <option name="time" value="39" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -269,6 +300,7 @@
           <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -287,6 +319,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -302,6 +335,7 @@
           <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -320,6 +354,7 @@
           <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -335,6 +370,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -345,6 +381,7 @@
           <caret line="1" column="34" lean-forward="false" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -360,6 +397,7 @@
           <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="19" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -370,6 +408,7 @@
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -385,6 +424,7 @@
           <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="19" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -395,6 +435,7 @@
           <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -410,6 +451,7 @@
           <caret line="17" column="4" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="17" selection-end-column="4" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -420,6 +462,7 @@
           <caret line="6" column="45" lean-forward="false" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -435,6 +478,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -445,6 +489,7 @@
           <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
@@ -461,40 +506,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Regulus.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="https://d3js.org/d3.v4.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Regulus.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="43" column="14" lean-forward="false" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1731">
-          <caret line="275" column="40" lean-forward="false" selection-start-line="275" selection-start-column="33" selection-end-line="275" selection-end-column="40" />
+        <state relative-caret-position="360">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Plots#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#rawDataPlot#0;n#Plots#0" expanded="false" />
             <element signature="e#2596#4167#0" expanded="false" />
             <element signature="n#!!block;n#clearPlots#0;n#Plots#0" expanded="false" />
             <element signature="e#5050#7029#0" expanded="false" />
             <element signature="n#!!block;n#boxQuartiles#0;n#!!block;n#boxPlot#0;n#Plots#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
+            <element signature="e#1031#1205#0" expanded="false" />
+            <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
           </folding>
         </state>
       </provider>
