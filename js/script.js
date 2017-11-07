@@ -3,7 +3,7 @@ d3.csv('data/Pu_TOT.csv', function (error, data) {
     if (error) throw error;
     let plots = new Plots(data, 600, 120);
     window.plots = plots;
-    window.plots.rawDataPlot();
+    window.plots.histogramPlot();
 });
 
 class Plots {
@@ -31,17 +31,21 @@ class Plots {
                 this.boxPlot();
                 break;
             }
+            case "Histogram":{
+                this.clearPlots();
+                this.histogramPlot();
                 break;
+            }
+
             case "HDView": {
-
-            }
                 break;
+            }
+
             case "Stats": {
-
-            }
                 break;
+            }
+
             default:
-                ;
         }
     }
 
@@ -161,7 +165,9 @@ class Plots {
 
         for (let i = 0; i < datacol - 1; i++) {
             let groupCount = obj[attr[i]];
-            groupCount.sort(function(a, b){return a - b});
+            groupCount.sort(function (a, b) {
+                return a - b
+            });
             let record = {};
             let localMin = d3.min(groupCount);
             let localMax = d3.max(groupCount);
@@ -195,18 +201,17 @@ class Plots {
                 .attr("height", barWidth)
                 .attr("width", xScale(record.quartile[2]) - xScale(record.quartile[0]))
                 .attr("x", xScale(record.quartile[0]))
-                .attr("y", height/2 - barWidth/2)
+                .attr("y", height / 2 - barWidth / 2)
                 .attr("fill", "green")
                 .attr("stroke", "#000")
                 .attr("stroke-width", 1);
 
 
-
             g.append("line")
                 .attr("x1", xScale(record.quartile[1]))
-                .attr("y1", height / 2 - barWidth /2)
+                .attr("y1", height / 2 - barWidth / 2)
                 .attr("x2", xScale(record.quartile[1]))
-                .attr("y2", height / 2 + barWidth /2)
+                .attr("y2", height / 2 + barWidth / 2)
                 .attr("stroke", "#000")
                 .attr("stroke-width", 1)
                 .attr("fill", "none");
@@ -220,6 +225,88 @@ class Plots {
                 d3.quantile(d, .5),
                 d3.quantile(d, .75)
             ];
+        }
+    }
+
+    histogramPlot() {
+        let data = this.data;
+        let margin = this.margin;
+        let height = this.height - margin.top - margin.bottom;
+        let width = this.width - margin.left - margin.right;
+        let newplot = this.plot;
+        let barWidth = 30;
+
+        //load data as array
+        let attr = data.columns;
+        let datacol = attr.length;
+        let datarow = data.length;
+
+
+
+
+        let numOfBins = 10;
+
+        for (let i = 0; i < datacol - 1; i++) {
+            let y_attr = attr[datacol - 1];
+            let curData = [];
+            for (let j = 0; j < datarow; j++) {
+                let dict = {};
+                dict[y_attr] = parseFloat(data[j][y_attr]);
+                dict[attr[i]] = parseFloat(data[j][attr[i]]);
+                curData.push(dict);
+            }
+            let value = function (d) {
+                return d[y_attr];
+            };
+
+            let minVal = d3.min(curData, value);
+            let maxVal = d3.max(curData, value);
+
+            let x = d3.scaleLinear()
+                .domain([minVal, maxVal])
+                .rangeRound([0, width]);
+            let y = d3.scaleLinear()
+                .range([height, 0]);
+
+            let histogram = d3.histogram()
+                .value(function(d) { return d[y_attr]; })
+                .domain(x.domain())
+                .thresholds(x.ticks(20));
+
+            let bins = histogram(curData);
+
+            y.domain([0, d3.max(bins, function(d) { return d.length; })]);
+
+            let svg = newplot.append("svg")
+                .attr("height", this.height)
+                .attr("width", this.width)
+                .append('g')
+                .attr('id', "boxPlot" + i)
+                .attr("transform", "translate(" + [margin.left, margin.top] + ")");
+
+            svg.selectAll("rect")
+                .data(bins)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", 1)
+                .attr("transform", function(d) {
+                    return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+                .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+                .attr("height", function(d) { return height - y(d.length); });
+
+            svg
+                .append('g')
+                .attr('id', "xAxis" + i)
+                .call(d3.axisBottom(x))
+                .attr("transform", "translate(" + [margin.left, height] + ")");//.attr("class","label");;
+            svg
+                .append('g')
+                .attr('id', "yAxis" + i)
+                .call(d3.axisLeft(y))
+                    .attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");;
+
+
+
         }
     }
 }
