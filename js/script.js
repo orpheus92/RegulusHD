@@ -1,7 +1,7 @@
 //read data;
 d3.csv('data/Pu_TOT.csv', function (error, data) {
     if (error) throw error;
-    let plots = new Plots(data, 600, 120);
+    let plots = new Plots(data, 600, 150);
     window.plots = plots;
     window.plots.histogramPlot();
 });
@@ -10,7 +10,7 @@ class Plots {
 
     constructor(data, widht, height) {
         this.data = data;
-        this.margin = {top: 5, right: 5, bottom: 20, left: 30};
+        this.margin = {top: 20, right: 30, bottom: 20, left: 40};
         this.width = widht;
         this.height = height;
 
@@ -181,8 +181,8 @@ class Plots {
                 .range([0, width]);
 
             newplot.append("svg")
-                .attr("height", height)
-                .attr("width", width)
+                .attr("height", this.height)
+                .attr("width", this.width)
                 .append('g')
                 .attr('id', "boxPlot" + i)
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")");
@@ -216,6 +216,32 @@ class Plots {
                 .attr("stroke-width", 1)
                 .attr("fill", "none");
 
+            g.append("text")
+                .attr("x", xScale(record.quartile[0]))
+                .attr("y", height / 2 + 15 + barWidth / 2)
+                .text(record.quartile[0].toFixed(2))
+                .attr("style", "text-anchor: middle;");
+            g.append("text")
+                .attr("x", xScale(record.quartile[1]))
+                .attr("y", height / 2 + 15 + barWidth / 2)
+                .text(record.quartile[1].toFixed(2))
+                .attr("style", "text-anchor: middle;");
+            g.append("text")
+                .attr("x", xScale(record.quartile[2]))
+                .attr("y", height / 2 + 15 + barWidth / 2)
+                .text(record.quartile[2].toFixed(2))
+                .attr("style", "text-anchor: middle;");
+            g.append("text")
+                .attr("x", xScale(record.whiskers[1]))
+                .attr("y", height / 2 + 15 )
+                .text(record.whiskers[1].toFixed(2))
+                .attr("style", "text-anchor: middle;");
+            g.append("text")
+                .attr("x", xScale(record.whiskers[0]))
+                .attr("y", height / 2 + 15 )
+                .text(record.whiskers[0].toFixed(2))
+                .attr("style", "text-anchor: middle;");
+
 
         }
 
@@ -247,16 +273,12 @@ class Plots {
         let numOfBins = 10;
 
         for (let i = 0; i < datacol - 1; i++) {
-            let y_attr = attr[datacol - 1];
             let curData = [];
             for (let j = 0; j < datarow; j++) {
-                let dict = {};
-                dict[y_attr] = parseFloat(data[j][y_attr]);
-                dict[attr[i]] = parseFloat(data[j][attr[i]]);
-                curData.push(dict);
+                curData.push(parseFloat(data[j][attr[i]]));
             }
             let value = function (d) {
-                return d[y_attr];
+                return d;
             };
 
             let minVal = d3.min(curData, value);
@@ -264,14 +286,16 @@ class Plots {
 
             let x = d3.scaleLinear()
                 .domain([minVal, maxVal])
-                .rangeRound([0, width]);
+                .rangeRound([0, width])
             let y = d3.scaleLinear()
                 .range([height, 0]);
 
+            let tickrange = d3.range(minVal, maxVal, (maxVal-minVal)/10);
+
             let histogram = d3.histogram()
-                .value(function(d) { return d[y_attr]; })
+                .value(function(d) { return d; })
                 .domain(x.domain())
-                .thresholds(x.ticks(20));
+                .thresholds(tickrange);
 
             let bins = histogram(curData);
 
@@ -286,24 +310,28 @@ class Plots {
 
             svg.selectAll("rect")
                 .data(bins)
-                .enter().append("rect")
+                .enter()
+                .append("rect")
                 .attr("class", "bar")
-                .attr("x", 1)
+                .attr("x", 0)
                 .attr("transform", function(d) {
                     return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-                .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
-                .attr("height", function(d) { return height - y(d.length); });
+                .attr("width", function(d) { return x(d.x1) - x(d.x0); })
+                .attr("height", function(d) { return height - y(d.length); })
+                .style("fill","blue")
+                .style("stroke", "white")
+                .style("stroke-width", 1);
 
             svg
                 .append('g')
                 .attr('id', "xAxis" + i)
-                .call(d3.axisBottom(x))
-                .attr("transform", "translate(" + [margin.left, height] + ")");//.attr("class","label");;
+                .call(d3.axisBottom(x).tickValues(tickrange))
+                .attr("transform", "translate(" + [0, height] + ")");//.attr("class","label");;
             svg
                 .append('g')
                 .attr('id', "yAxis" + i)
                 .call(d3.axisLeft(y))
-                    .attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");;
+                    //.attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");;
 
         }
     }
