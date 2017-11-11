@@ -6,6 +6,11 @@ d3.csv('data/Pu_TOT.csv', function (error, data) {
     window.plots.histogramPlot();
 });
 
+d3.json('data/partitions.json', function (error, data) {
+    //let tree = new Tree();
+    //tree.createTree(data);
+})
+
 class Plots {
 
     constructor(data, widht, height) {
@@ -31,21 +36,105 @@ class Plots {
                 this.boxPlot();
                 break;
             }
-            case "Histogram":{
+            case "Histogram": {
                 this.clearPlots();
                 this.histogramPlot();
                 break;
             }
-
-            case "HDView": {
+            case "Pairwise": {
+                this.clearPlots();
+                this.PairwisePlot();
                 break;
             }
-
             case "Stats": {
                 break;
             }
 
             default:
+        }
+    }
+
+    PairwisePlot() {
+        let data = this.data;
+        let margin = this.margin;
+        let height = this.height - margin.top - margin.bottom;
+        let width = this.width - margin.left - margin.right;
+        let newplot = this.plot;
+
+        //load data as array
+        let attr = data.columns;
+        let datacol = attr.length;
+        let datarow = data.length;
+
+        for (let i = 0; i < datacol - 1; i++) {
+            for (let i_2 = i + 1; i_2 < datacol - 1; i_2++) {
+                let curData = [];
+                for (let j = 0; j < datarow; j++) {
+                    let curPoint = {};
+                    curPoint.x = parseFloat(data[j][attr[i]]);
+                    curPoint.y = parseFloat(data[j][attr[i_2]]);
+                    curData.push(curPoint);
+                }
+
+                let x_minVal = d3.min(curData, function (d) {
+                    return d.x;
+                });
+                let x_maxVal = d3.max(curData, function (d) {
+                    return d.x;
+                });
+                let y_minVal = d3.min(curData, function (d) {
+                    return d.y;
+                });
+                let y_maxVal = d3.max(curData, function (d) {
+                    return d.y;
+                });
+
+                let x = d3.scaleLinear()
+                    .domain([x_minVal, x_maxVal])
+                    .range([0, width])
+                    .nice();
+                let y = d3.scaleLinear()
+                    .domain([y_minVal, y_maxVal])
+                    .range([0, height])
+                    .nice();
+
+                var colorScale = d3.scaleLinear()
+                    .range(['blue', 'red'])
+                    .domain([y_minVal, y_maxVal]);
+
+                let svg = newplot.append("svg")
+                    .attr("height", this.height)
+                    .attr("width", this.width)
+                    .append('g')
+                    .attr('id', "pairwisePlot" + i)
+                    .attr("transform", "translate(" + [margin.left, margin.top] + ")");
+
+                svg.selectAll("circle")
+                    .data(curData)
+                    .enter()
+                    .append("circle")
+                    .attr("r",1)
+                    .attr("cx", function (d) {
+                        return x(d.x);
+                    })
+                    .attr("cy", function (d) {
+                        return y(d.y);
+                    })
+                    .attr('fill', function (d) {
+                        return colorScale(d.y);
+                    });
+
+                svg
+                    .append('g')
+                    .attr('id', "xAxis" + i)
+                    .call( d3.axisBottom(x).scale(x))
+                    .attr("transform", "translate(" + [0, height] + ")");//.attr("class","label");;
+                svg
+                    .append('g')
+                    .attr('id', "yAxis" + i)
+                    .call(d3.axisLeft(y).scale(y));
+
+            }
         }
     }
 
@@ -233,12 +322,12 @@ class Plots {
                 .attr("style", "text-anchor: middle;");
             g.append("text")
                 .attr("x", xScale(record.whiskers[1]))
-                .attr("y", height / 2 + 15 )
+                .attr("y", height / 2 + 15)
                 .text(record.whiskers[1].toFixed(2))
                 .attr("style", "text-anchor: middle;");
             g.append("text")
                 .attr("x", xScale(record.whiskers[0]))
-                .attr("y", height / 2 + 15 )
+                .attr("y", height / 2 + 15)
                 .text(record.whiskers[0].toFixed(2))
                 .attr("style", "text-anchor: middle;");
 
@@ -267,9 +356,6 @@ class Plots {
         let datacol = attr.length;
         let datarow = data.length;
 
-
-
-
         let numOfBins = 10;
 
         for (let i = 0; i < datacol - 1; i++) {
@@ -290,16 +376,20 @@ class Plots {
             let y = d3.scaleLinear()
                 .range([height, 0]);
 
-            let tickrange = d3.range(minVal, maxVal, (maxVal-minVal)/10);
+            let tickrange = d3.range(minVal, maxVal, (maxVal - minVal) / 10);
 
             let histogram = d3.histogram()
-                .value(function(d) { return d; })
+                .value(function (d) {
+                    return d;
+                })
                 .domain(x.domain())
                 .thresholds(tickrange);
 
             let bins = histogram(curData);
 
-            y.domain([0, d3.max(bins, function(d) { return d.length; })]);
+            y.domain([0, d3.max(bins, function (d) {
+                return d.length;
+            })]);
 
             let svg = newplot.append("svg")
                 .attr("height", this.height)
@@ -314,11 +404,16 @@ class Plots {
                 .append("rect")
                 .attr("class", "bar")
                 .attr("x", 0)
-                .attr("transform", function(d) {
-                    return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-                .attr("width", function(d) { return x(d.x1) - x(d.x0); })
-                .attr("height", function(d) { return height - y(d.length); })
-                .style("fill","blue")
+                .attr("transform", function (d) {
+                    return "translate(" + x(d.x0) + "," + y(d.length) + ")";
+                })
+                .attr("width", function (d) {
+                    return x(d.x1) - x(d.x0);
+                })
+                .attr("height", function (d) {
+                    return height - y(d.length);
+                })
+                .style("fill", "blue")
                 .style("stroke", "white")
                 .style("stroke-width", 1);
 
@@ -331,7 +426,7 @@ class Plots {
                 .append('g')
                 .attr('id', "yAxis" + i)
                 .call(d3.axisLeft(y))
-                    //.attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");;
+            //.attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");;
 
         }
     }
