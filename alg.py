@@ -57,7 +57,7 @@ with open('persistence3.json') as data_file:
 #print("Persistence Levels = ")
 #print("[0,"+str(max(max(maxmerge[:,0]),max(minmerge[:,0])))+"]")
 #Pinter = float(input('Input Persistence of Interest: '))
-Pinter = 0.5
+Pinter = 2
 
 # minindex to from child to parent
 #minchild = minmerge2[minmerge2[:,0]<Pinter][:,2]

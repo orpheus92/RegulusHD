@@ -1,0 +1,15 @@
+node_modules
+lib
+dist
+.idea
+
+#logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+
+.DS_Store
