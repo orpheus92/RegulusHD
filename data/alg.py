@@ -50,6 +50,7 @@ totalmerge = np.concatenate((maxmerge, minmerge), axis=0)
 #minmerge2 = minmerge[np.argsort(minmerge[:, 0])]
 
 totalmerge2 = totalmerge[np.argsort(totalmerge[:, 0])]
+print(totalmerge2);
 # Json file that stores the initial partition
 # Keys specified as "minInd, maxInd",
 # Values store the points that belong to the partition
