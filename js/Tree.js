@@ -111,6 +111,9 @@ class Tree {
 
     };
 
+    makeTree(merge){
+
+    }
     /**
      * Updates the highlighting in the tree based on the selected team.
      * Highlights the appropriate team nodes and labels.

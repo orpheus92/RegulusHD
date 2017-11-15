@@ -77,8 +77,8 @@ with open('persistence3.json') as data_file:
 
 #print("Persistence Levels = ")
 #print("[0,"+str(max(max(maxmerge[:,0]),max(minmerge[:,0])))+"]")
-Pinter = float(input('Input Persistence of Interest: '))
-#Pinter = 8
+#Pinter = float(input('Input Persistence of Interest: '))
+Pinter = 8
 
 # minindex to from child to parent
 #minchild = minmerge2[minmerge2[:,0]<Pinter][:,2]
@@ -96,6 +96,7 @@ newdict = data.copy()
 #indpair2 = np.array([convertind(pair) for pair in indpair ])
 [r,c] = tomerge.shape
 perdict = {}
+totallist = [];
 for i in range(r):
     #print('cur Partitions = '+str(len(newdict)))
     #print('P value = '+ str(tomerge[i,0]))
@@ -113,21 +114,24 @@ pre = plist[-1]
 curlist = []
 treedata = {}
 treedata[-1]=[perdict[tomerge[-1,0]][0]]
-print(type(treedata))
-print(type(perdict))
+#print(type(treedata))
+#print(type(perdict))
 #print(perdict)
 for i in reversed(plist):
     curlist = set(perdict[i]+list(curlist))
-    print(curlist)
+    #print(curlist)
     treedata[i]=list(curlist)
     pre = i
+    totallist = totallist + perdict[i]
     #parent = perdict[i][0::2]
     #child = perdict[i][1::2]
     #print(parent)
     #print(child)
     #print('======================')
-with open('treedata.json', 'w') as fp:
-    json.dump(treedata, fp)
-
-with open('mergetree.json', 'w') as fp:
-    json.dump(perdict, fp)
+#with open('treedata.json', 'w') as fp:
+#json.dump(treedata, fp)
+mlist = np.array(totallist)
+print(mlist)
+print(mlist.reshape(int(len(mlist)/2),2))
+#with open('mergetree.json', 'w') as fp:
+#json.dump(perdict, fp)

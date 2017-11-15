@@ -12,16 +12,26 @@ d3.json('data/partitions3.json', function (error, data) {
 })
 */
 //Load data in JS
+let partition;
 let pers = 1;
 d3.json('data/treedata.json', function (error, data) {
     if (error) throw error;
-
-    let partition = new Partition();
+    partition = new Partition();
     window.partition = partition;
-    partition.initialPartition(data);
-    let pers = 4;
-    partition.update(pers);
-    console.log(partition.curPar);
+
+
+
+    d3.json('data/mergetree.json', function (error, data2) {
+        partition.initialPartition(data,data2);
+        let pers = 2;
+        partition.update(pers);
+        d3.csv('data/merge.csv', function (error, treedata){
+            partition.makeTree(treedata);
+        });
+        console.log(partition);
+    })
+
+    console.log(partition);
 
     /*
     d3.csv('data/total.csv', function (error, data) {
@@ -89,7 +99,6 @@ d3.json('data/treedata.json', function (error, data) {
    */
 
 })
-
 class Plots {
 
     constructor(data, widht, height) {
