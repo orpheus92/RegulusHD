@@ -13,19 +13,24 @@ d3.json('data/partitions3.json', function (error, data) {
 */
 //Load data in JS
 let pers = 1;
-d3.json('data/persistence3.json', function (error, data) {
+d3.json('data/treedata.json', function (error, data) {
     if (error) throw error;
 
     let partition = new Partition();
     window.partition = partition;
     partition.initialPartition(data);
+    let pers = 4;
+    partition.update(pers);
+    console.log(partition.curPar);
 
+    /*
     d3.csv('data/total.csv', function (error, data) {
         partition.initialmerge(data);
         //partition.update(pers);
         partition.update(pers);
 
     });
+    /*
     /*
     let p1 = new Promise(function(resolve, reject) {
         d3.csv('data/max_merge.csv', function (error, data) {

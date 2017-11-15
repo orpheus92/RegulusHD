@@ -5,6 +5,11 @@ class Partition{
     }
     initialPartition(Pdata){
         this.data = Pdata;
+        this.pers = Object.keys(Pdata).sort();
+        this.length = this.pers.length;
+        //let length = this.pers.length;
+        //console.log(this.pers[length-1]);
+        //console.log(console.log(this.pers));
 
     }
     /*
@@ -26,6 +31,7 @@ class Partition{
     */
     initialmerge(mdata){
         //this.totalmerge = mdata;
+
         this.attr = mdata.columns;
         this.row = mdata.length-1;
         this.col = mdata.columns.length;
@@ -43,6 +49,7 @@ class Partition{
     }
     update(persistence){
         //let totalarr = this.totalmerge;
+        /*
         let updated = this.data;
         let pers = this.totalmerge.pers;
         let child = this.totalmerge.merged;
@@ -59,6 +66,15 @@ class Partition{
                 break;
         }
         console.log(updated);
+        */
+        this.curPar = new Object();
+        this.curPar[this.pers[0]] = this.data[this.pers[0]]
+        for (let i = 1;i<this.length;i++){
+            if (parseFloat(this.pers[i])>persistence)
+                this.curPar[this.pers[i]] = this.data[this.pers[i]]
+        }
+        //et length = this.pers.length;
+        //for (let i =0)
     }
 
 
