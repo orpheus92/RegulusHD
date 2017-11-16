@@ -14,6 +14,7 @@ d3.json('data/partitions3.json', function (error, data) {
 //Load data in JS
 let partition;
 let pers = 1;
+let tree;
 d3.json('data/treedata.json', function (error, data) {
     if (error) throw error;
     partition = new Partition();

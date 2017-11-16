@@ -97,30 +97,43 @@ class Partition{
         */
         console.log(treeCSV);
         let tree = d3.tree()
-            .size([800, 300]);
+            .size([1500,1500]);
         let root = d3.stratify()
             .id(d => d.id)
             .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
             (treeCSV);
+        tree(root);
         console.log(root);
+        let g = d3.select("#tree").attr("transform", "translate(40,80)");
+
+        let link = g.selectAll(".link")
+            .data(root.descendants().slice(1))
+            .enter().append("path")
+            .attr("class", "link")
+            .attr("d", function (d) {
+                return "M" + d.y + "," + d.x
+                    + "C" + (d.parent.y + 10) + "," + d.x
+                    + " " + (d.parent.y + 10) + "," + d.parent.x
+                    + " " + d.parent.y + "," + d.parent.x;
+            });
+
+        let node = g.selectAll(".node")
+            .data(root.descendants())
+            .enter().append("g")
+            //.attr("class", function (d) {
+            //    return "node" + (d.data.Wins === "1" ? " winner" : " loser");
+            //})
+            .attr("transform", function (d) {
+                return "translate(" + d.y + "," + d.x + ")";
+            });
+
+        node.append("circle")
+            .attr("r", 3);
+
+        node.append("text")
+            .attr("dy", 5)
+            .attr("x", (d) => d.children ? -8 : 8)
+            .style("text-anchor", d => d.children ? "end" : "start")
+            .text((d) => d.data.Team);
     }
-}
-function mergemin(c,p,updated){
-    //let keys = Object.keys(updated);
-    let values = Object.values(updated);
-    let listmin = values[values]
-    console.log(values);
-}
-function mergemax(c,p,updated){
-
-
-
-}
-
-function convt(oldk){
-    let newk;
-    for (let i in oldk){
-        console.log(parseInt(i));
-    }
-
 }
