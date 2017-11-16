@@ -4,11 +4,7 @@
     <list default="true" id="9b93c5fe-fc66-4fd8-bc6f-d7b8be5fd55a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/.idea/workspace.xml" afterPath="$PROJECT_DIR$/data/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/alg.py" afterPath="$PROJECT_DIR$/data/alg.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mergetree.json" afterPath="$PROJECT_DIR$/data/mergetree.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/treedata.json" afterPath="$PROJECT_DIR$/data/treedata.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Partition.js" afterPath="$PROJECT_DIR$/js/Partition.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Tree.js" afterPath="$PROJECT_DIR$/js/Tree.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,22 +19,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Tree.js">
+      <file leaf-file-name="alg.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/alg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="113" column="19" lean-forward="false" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
-              <folding>
-                <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#makeTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="123" column="2" lean-forward="false" selection-start-line="123" selection-start-column="2" selection-end-line="123" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -46,8 +32,8 @@
       <file leaf-file-name="Regulus.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Regulus.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="-245">
+              <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -57,21 +43,34 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/Tree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="113" column="4" lean-forward="false" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
+              <folding>
+                <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
+                <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
+                <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
+                <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
+                <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
+                <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
+                <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Partition.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Partition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
+            <state relative-caret-position="448">
+              <caret line="90" column="38" lean-forward="true" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
               <folding>
-                <element signature="n#!!block;n#initialPartition#0;n#Partition#0" expanded="false" />
-                <element signature="e#407#783#0" expanded="false" />
                 <element signature="n#!!block;n#update#0;n#Partition#0" expanded="false" />
-                <element signature="e#860#1421#0" expanded="false" />
-                <element signature="e#2935#2983#0" expanded="false" />
-                <element signature="n#!!block;n#mergemin#0" expanded="false" />
                 <element signature="n#!!block;n#mergemax#0" expanded="false" />
                 <element signature="n#!!block;n#convt#0" expanded="false" />
-                <marker date="1510782413983" expanded="false" signature="615:776" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -80,24 +79,10 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+            <state relative-caret-position="344">
+              <caret line="28" column="6" lean-forward="false" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
               <folding>
-                <element signature="e#875#1338#0" expanded="false" />
-                <element signature="e#1343#2027#0" expanded="false" />
-                <element signature="e#2032#2215#0" expanded="false" />
-                <element signature="e#2220#2318#0" expanded="false" />
-                <element signature="e#2323#2416#0" expanded="false" />
-                <element signature="n#Plots#0" expanded="false" />
-                <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
-                <element signature="n#!!block;n#histogramPlot#0;n#Plots#0" expanded="false" />
                 <element signature="n#!!block;n#printPlots#0" expanded="false" />
-                <marker date="1510781551974" expanded="false" signature="1056:1338" ph="/*...*/" />
-                <marker date="1510781551974" expanded="false" signature="1110:1333" ph="{...}" />
-                <marker date="1510781551974" expanded="false" signature="1629:1861" ph="{...}" />
-                <marker date="1510781551974" expanded="false" signature="1888:2023" ph="{...}" />
-                <marker date="1510781551974" expanded="false" signature="2139:2196" ph="{...}" />
-                <marker date="1510781551974" expanded="false" signature="2380:2408" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -143,10 +128,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
-    <option name="y" value="-1" />
-    <option name="width" value="1922" />
-    <option name="height" value="1011" />
+    <option name="x" value="2233" />
+    <option name="y" value="138" />
+    <option name="width" value="960" />
+    <option name="height" value="930" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -207,7 +192,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,13 +203,18 @@
             <path>
               <item name="newRegulus" type="b2602c69:ProjectViewProjectNode" />
               <item name="newRegulus" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="newRegulus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newRegulus" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -254,9 +244,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="/usr/bin/python3.5" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="newRegulus" />
@@ -299,23 +289,26 @@
       <option name="presentableId" value="Default" />
       <updated>1510511199227</updated>
       <workItem from="1510627937492" duration="35325000" />
-      <workItem from="1510775326686" duration="7199000" />
+      <workItem from="1510775326686" duration="7852000" />
+      <workItem from="1510841158602" duration="1785000" />
+      <workItem from="1510818314306" duration="792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42524000" />
+    <option name="totallyTimeSpent" value="45754000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-1" width="1922" height="1011" extended-state="6" />
+    <frame x="1919" y="-4" width="1922" height="1085" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18297872" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1861702" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25404158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26639894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21924482" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23672055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -360,7 +353,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -369,93 +362,21 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/Partition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-          <folding>
-            <element signature="n#!!block;n#initialPartition#0;n#Partition#0" expanded="false" />
-            <element signature="e#407#783#0" expanded="false" />
-            <element signature="n#!!block;n#update#0;n#Partition#0" expanded="false" />
-            <element signature="e#860#1421#0" expanded="false" />
-            <element signature="e#2935#2983#0" expanded="false" />
-            <element signature="n#!!block;n#mergemin#0" expanded="false" />
-            <element signature="n#!!block;n#mergemax#0" expanded="false" />
-            <element signature="n#!!block;n#convt#0" expanded="false" />
-            <marker date="1510782413983" expanded="false" signature="615:776" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-          <folding>
-            <element signature="e#875#1338#0" expanded="false" />
-            <element signature="e#1343#2027#0" expanded="false" />
-            <element signature="e#2032#2215#0" expanded="false" />
-            <element signature="e#2220#2318#0" expanded="false" />
-            <element signature="e#2323#2416#0" expanded="false" />
-            <element signature="n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#histogramPlot#0;n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#printPlots#0" expanded="false" />
-            <marker date="1510781551974" expanded="false" signature="1056:1338" ph="/*...*/" />
-            <marker date="1510781551974" expanded="false" signature="1110:1333" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1629:1861" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1888:2023" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2139:2196" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2380:2408" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="217">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="224">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="217">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="64">
-          <caret line="2" column="64" lean-forward="true" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="32">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/min_merge.csv" />
     <entry file="file://$PROJECT_DIR$/max_merge.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
     <entry file="file://$PROJECT_DIR$/data/process.js" />
     <entry file="file://$PROJECT_DIR$/data/partition.js" />
-    <entry file="file://$PROJECT_DIR$/js/partition.js" />
+    <entry file="file://$PROJECT_DIR$/js/Partition.js" />
     <entry file="file://$PROJECT_DIR$/data/partitions.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -463,13 +384,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Anaconda/regulus-beta/packages/regulus/src/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Anaconda/regulus-beta/packages/regulus/src/index.ts" />
     <entry file="file://$PROJECT_DIR$/Regulus.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -487,21 +402,7 @@
         <state relative-caret-position="32">
           <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="6" />
           <folding>
-            <element signature="e#875#1338#0" expanded="false" />
-            <element signature="e#1343#2027#0" expanded="false" />
-            <element signature="e#2032#2215#0" expanded="false" />
-            <element signature="e#2220#2318#0" expanded="false" />
-            <element signature="e#2323#2416#0" expanded="false" />
-            <element signature="n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#histogramPlot#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#printPlots#0" expanded="false" />
-            <marker date="1510781551974" expanded="false" signature="1056:1338" ph="/*...*/" />
-            <marker date="1510781551974" expanded="false" signature="1110:1333" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1629:1861" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1888:2023" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2139:2196" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2380:2408" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -515,11 +416,10 @@
             <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
             <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#makeTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
+            <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
           </folding>
         </state>
       </provider>
@@ -529,15 +429,9 @@
         <state relative-caret-position="32">
           <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
           <folding>
-            <element signature="n#!!block;n#initialPartition#0;n#Partition#0" expanded="false" />
-            <element signature="e#407#783#0" expanded="false" />
             <element signature="n#!!block;n#update#0;n#Partition#0" expanded="false" />
-            <element signature="e#860#1421#0" expanded="false" />
-            <element signature="e#2935#2983#0" expanded="false" />
-            <element signature="n#!!block;n#mergemin#0" expanded="false" />
             <element signature="n#!!block;n#mergemax#0" expanded="false" />
             <element signature="n#!!block;n#convt#0" expanded="false" />
-            <marker date="1510782413983" expanded="false" signature="615:776" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -551,11 +445,10 @@
             <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
             <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#makeTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
+            <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
           </folding>
         </state>
       </provider>
@@ -577,70 +470,26 @@
         <state relative-caret-position="32">
           <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="6" />
           <folding>
-            <element signature="e#875#1338#0" expanded="false" />
-            <element signature="e#1343#2027#0" expanded="false" />
-            <element signature="e#2032#2215#0" expanded="false" />
-            <element signature="e#2220#2318#0" expanded="false" />
-            <element signature="e#2323#2416#0" expanded="false" />
-            <element signature="n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#histogramPlot#0;n#Plots#0" expanded="false" />
             <element signature="n#!!block;n#printPlots#0" expanded="false" />
-            <marker date="1510781551974" expanded="false" signature="1056:1338" ph="/*...*/" />
-            <marker date="1510781551974" expanded="false" signature="1110:1333" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1629:1861" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1888:2023" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2139:2196" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2380:2408" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="217">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="224">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="217">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="64">
-          <caret line="2" column="64" lean-forward="true" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../DataScience/movie/movies_metadata.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="32">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
+    <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/min_merge.csv" />
     <entry file="file://$PROJECT_DIR$/max_merge.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
     <entry file="file://$PROJECT_DIR$/data/process.js" />
     <entry file="file://$PROJECT_DIR$/data/partition.js" />
-    <entry file="file://$PROJECT_DIR$/js/partition.js" />
+    <entry file="file://$PROJECT_DIR$/js/Partition.js" />
     <entry file="file://$PROJECT_DIR$/data/partitions.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -648,29 +497,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Anaconda/regulus-beta/packages/regulus/src/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Linux Back/DataViz/DataViz/HW5/solutions/js/tree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2018">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/mergetree.json" />
+    <entry file="file://C:/Anaconda/regulus-beta/packages/regulus/src/index.ts" />
+    <entry file="file://C:/Linux Back/DataViz/DataViz/HW5/solutions/js/tree.js" />
+    <entry file="file://C:/Linux Back/DataViz/hw5/data/fifa-matches.json" />
     <entry file="file://$PROJECT_DIR$/data/alg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3877">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="123" column="2" lean-forward="false" selection-start-line="123" selection-start-column="2" selection-end-line="123" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Linux Back/DataViz/hw5/data/fifa-matches.json">
+    <entry file="file://$PROJECT_DIR$/data/modifiedmerge.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -678,10 +516,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/treedata.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mergetree.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="28" column="6" lean-forward="false" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!block;n#printPlots#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="113" column="4" lean-forward="false" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
+          <folding>
+            <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
+            <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Regulus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="-245">
+          <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -690,62 +571,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-          <folding>
-            <element signature="e#875#1338#0" expanded="false" />
-            <element signature="e#1343#2027#0" expanded="false" />
-            <element signature="e#2032#2215#0" expanded="false" />
-            <element signature="e#2220#2318#0" expanded="false" />
-            <element signature="e#2323#2416#0" expanded="false" />
-            <element signature="n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#printPlots#0;n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#histogramPlot#0;n#Plots#0" expanded="false" />
-            <element signature="n#!!block;n#printPlots#0" expanded="false" />
-            <marker date="1510781551974" expanded="false" signature="1056:1338" ph="/*...*/" />
-            <marker date="1510781551974" expanded="false" signature="1110:1333" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1629:1861" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="1888:2023" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2139:2196" ph="{...}" />
-            <marker date="1510781551974" expanded="false" signature="2380:2408" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Tree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="113" column="19" lean-forward="false" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#makeTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/Partition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
+        <state relative-caret-position="448">
+          <caret line="90" column="38" lean-forward="true" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
           <folding>
-            <element signature="n#!!block;n#initialPartition#0;n#Partition#0" expanded="false" />
-            <element signature="e#407#783#0" expanded="false" />
             <element signature="n#!!block;n#update#0;n#Partition#0" expanded="false" />
-            <element signature="e#860#1421#0" expanded="false" />
-            <element signature="e#2935#2983#0" expanded="false" />
-            <element signature="n#!!block;n#mergemin#0" expanded="false" />
             <element signature="n#!!block;n#mergemax#0" expanded="false" />
             <element signature="n#!!block;n#convt#0" expanded="false" />
-            <marker date="1510782413983" expanded="false" signature="615:776" ph="{...}" />
           </folding>
         </state>
       </provider>

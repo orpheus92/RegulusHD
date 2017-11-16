@@ -19,19 +19,15 @@ d3.json('data/treedata.json', function (error, data) {
     partition = new Partition();
     window.partition = partition;
 
+    partition.initialPartition(data);
 
-
-    d3.json('data/mergetree.json', function (error, data2) {
-        partition.initialPartition(data,data2);
-        let pers = 2;
-        partition.update(pers);
-        d3.csv('data/merge.csv', function (error, treedata){
-            partition.makeTree(treedata);
-        });
-        console.log(partition);
-    })
-
+    d3.csv('data/modifiedmerge.csv', function (error, treedata){
+        partition.makeTree(treedata,partition.pers);
+    });
     console.log(partition);
+    let pers = 2;
+    //partition.update(pers);
+
 
     /*
     d3.csv('data/total.csv', function (error, data) {

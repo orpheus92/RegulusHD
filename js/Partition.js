@@ -3,14 +3,13 @@ class Partition{
     constructor() {
 
     }
-    initialPartition(Pdata,Pdata2){
+    initialPartition(Pdata){
         this.data = Pdata;
-        this.merge = Pdata2;
-        this.pers = Object.keys(Pdata).sort();
+        //this.merge = Pdata2;
+        this.pers = Object.keys(Pdata).sort(function(a,b){return b-a});
+        this.pers.unshift(this.pers.pop());
         this.length = this.pers.length;
-        //let length = this.pers.length;
-        //console.log(this.pers[length-1]);
-        //console.log(console.log(this.pers));
+
 
     }
     /*
@@ -82,23 +81,26 @@ class Partition{
         //for (let i =0)
     }
 
-    makeTree(treeCSV){
+    makeTree(treeCSV,pers){
         //console.log(treeData);
         //console.log(treeCSV);
         treeCSV.forEach(function (d) {//console.log(d);
-            d.id = d.C1+ ", "+d.C2;
+            d.id = d.C1+ ", "+d.C2+", "+d.Ci;
+            d.index = d.C1+ ", "+d.C2;
+            d.par = d.P1+ ", "+d.P2+", "+d.Pi;
+            d.persistence = pers[d.Ci]
         });
-
+        /*
         treeCSV.forEach(function (d) {
-            d.par = d.P1+ ", "+d.P2;
+            d.par = d.P1+ ", "+d.P2+", "+d.Pi;
         });
-
+        */
         console.log(treeCSV);
         let tree = d3.tree()
             .size([800, 300]);
         let root = d3.stratify()
             .id(d => d.id)
-            .parentId(d => d.par === ", " ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
+            .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
             (treeCSV);
         console.log(root);
     }
