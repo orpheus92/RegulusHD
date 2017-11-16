@@ -5,28 +5,27 @@ d3.csv('data/Pu_TOT.csv', function (error, data) {
     window.plots = plots;
     window.plots.histogramPlot();
 });
-/*
-d3.json('data/partitions3.json', function (error, data) {
-    //let tree = new Tree();
-    //tree.createTree(data);
-})
-*/
+
 //Load data in JS
 let partition;
-let pers = 1;
+let pInter = 0.5;
 let tree;
+
 d3.json('data/treedata.json', function (error, data) {
     if (error) throw error;
+    tree = new Tree();
+
     partition = new Partition();
+
     window.partition = partition;
 
-    partition.initialPartition(data);
+        partition.initialPartition(data);
 
     d3.csv('data/modifiedmerge.csv', function (error, treedata){
-        partition.makeTree(treedata,partition.pers);
+        tree.createTree(treedata,partition.pers,pInter);
     });
     console.log(partition);
-    let pers = 2;
+    //let pers = 2;
     //partition.update(pers);
 
 

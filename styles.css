@@ -1,37 +1,97 @@
 
-.countries {
-    stroke: #f7f7f7;
-    fill: #d9d9d9;
+.d3-tip {
+    /*line-height: 5;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 400px;
+    border-style: groove;
+    /*padding: 12px;*/
+    background: #FFFFFF;
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    pointer-events: none;
 }
 
-.legend-element {
-    width: 15px;
-    height: 15px;
+.tooltip-title{
+    font-size:18px;
+    font-family: "Arial Black";
+
 }
 
-.team {
-    fill: #fee8c8;
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    /*box-sizing: border-box;*/
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    /*line-height: 1;*/
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    pointer-events: none;
 }
 
-.team-html {
-    background-color: #fee8c8;
+/* Northward tooltips */
+.d3-tip.n:after {
+    content: "\25BC";
+    /*margin: -1px 0 0 0;*/
+    top: 100%;
+    left: 0;
+    text-align: center;
 }
 
-.host {
-    fill: #2b8cbe;
+/* Eastward tooltips */
+.d3-tip.e:after {
+    content: "\26A0";
+    /*margin: -4px 0 0 0;*/
+    top: -800px;
+    left: -8px;
 }
 
-.gold {
-    fill: #FFD700;
-    opacity: .8;
-    stroke: #252525;
+/* Southward tooltips */
+.d3-tip.s:after {
+    content: "\25B2";
+    /*margin: 4px 0 1px 0;*/
+    top: -8px;
+    left: 1481px;
+    text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+    content: "\25B6";
+    /*margin: -4px 0 0 -1px;*/
+    top: 50%;
+    left: 100%;
+}
+
+.link {
+    fill: none;
+    stroke: #555;
+    stroke-opacity: 0.4;
     stroke-width: 2px;
 }
 
-.silver {
-    fill: #d9d9d9;
-    opacity: .8;
-    stroke: #252525;
+.partitiontip{
+    fill: #de2d26;
+    color: #de2d26;
+    text-anchor:end;
+}
+
+
+.node circle {
+    fill: #be2714;
+}
+
+.node text {
+    font: 14px sans-serif;
+}
+
+.winner circle {
+    fill: #364e74;
+}
+
+.loser text {
+    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 }
 
 .selected {

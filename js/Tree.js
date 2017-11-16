@@ -1,6 +1,6 @@
 /** Class implementing the tree view. */
 
-class Tree {
+class Tree{
     /**
      * Creates a Tree Object
      */
@@ -14,102 +14,111 @@ class Tree {
      * @param treeData an array of objects that contain parent/child information.
      */
 
-    createTree(treeData) {
-
-        // ******* TODO: PART VI *******
-
-        // Set the dimensions and margins of the diagram
-        let margin = {top: 20, right: 90, bottom: 30, left: 90},
-            width = 500 - margin.left - margin.right,
-            height = 900 - margin.top - margin.bottom;
-
-        let g = d3.select("#tree")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        //Create a tree and give it a size() of 800 by 300.
-        let treemap = d3.tree().size([height, width]);
-
-        //Create a root for the tree using d3.stratify();
-        let root = d3.stratify()
-            .id(function(d) { return d.id; })
-            .parentId(function(d) {
-                if(treeData[d.ParentGame] != null)
-                    return treeData[d.ParentGame].id;
-                else
-                    return null;
+    createTree(treeCSV,pers, curP) {
+        let tip = d3.tip().attr('class', 'd3-tip')
+            .direction('se')
+            .offset(function() {
+                return [0,0];
             })
-            (treeData);
+            .html((d)=>{console.log(d);
+                let tooltip_data = d.data;
 
-
-// Assigns parent, children, height, depth
-        // Assigns the x and y position for the nodes
-        let treeLayoutData = treemap(root);
-
-        // Compute the new tree layout.
-        let nodes = treeLayoutData.descendants(),
-            links = treeLayoutData.descendants().slice(1);
-
-        // Normalize for fixed-depth.
-        nodes.forEach(function(d){
-            let tmp = d.y;
-            d.y = d.x
-            d.x = tmp;
-        });
-
-
-        //Add nodes and links to the tree.
-
-
-
-        let node = g.selectAll(".node")
-            .data(nodes)
-            .enter().append("g")
-            .attr("class", function(d) {
-                if(d["data"].Wins == "1")
-                    return "node winner";
-                else
-                    return "node";
-            })
-            .attr("transform", function(d) {
-                return "translate(" + d.x + "," + d.y + ")"; });
-
-        node.append("circle")
-            .attr("r", 10);
-
-        let link = g.selectAll(".link")
-            .data(links)
-            .enter().append("path")
-            .attr("class", "link")
-            .attr("id", function(d){
-                return d["data"].Team;
-            })
-            .attr("d", function(d) {
-                return "M" + d.x + "," + d.y
-                    + "C" + d.x + "," + (d.y + d.parent.y) / 2
-                    + " " + d.parent.x + "," +  (d.y + d.parent.y) / 2
-                    + " " + d.parent.x + "," + d.parent.y;
+                return this.tooltip_render(tooltip_data);
+                /* populate data in the following format
+                 * tooltip_data = {
+                 * "state": State,
+                 * "winner":d.State_Winner
+                 * "electoralVotes" : Total_EV
+                 * "result":[
+                 * {"nominee": D_Nominee_prop,"votecount": D_Votes,"percentage": D_Percentage,"party":"D"} ,
+                 * {"nominee": R_Nominee_prop,"votecount": R_Votes,"percentage": R_Percentage,"party":"R"} ,
+                 * {"nominee": I_Nominee_prop,"votecount": I_Votes,"percentage": I_Percentage,"party":"I"}
+                 * ]
+                 * }
+                 * pass this as an argument to the tooltip_render function then,
+                 * return the HTML content returned from that method.
+                 * */
+                return ;
             });
 
-        node.append("text")
-            .attr("dy", ".35em")
-            .attr("x", function(d) {
-                if(d.height == 0)
-                    return 10;
-                else
-                    return -10;
-            })
-            .attr("id", function(d){
-                return d["data"].Team;
-            })
-            .style("text-anchor", function(d) {
-                if(d.height == 0)
-                    return "start";
-                else
-                    return "end";
-            })
-            .text(function(d) { return d.data["Team"]; });
+        let newtree = [];
+
+        treeCSV.forEach(function (d) {
+
+                d.id = d.C1+ ", "+d.C2+", "+d.Ci;
+                d.index = d.C1+ ", "+d.C2;
+                d.par = d.P1+ ", "+d.P2+", "+d.Pi;
+                d.persistence = pers[d.Ci]
+                if (d.persistence > curP)
+                    newtree.push(d);
+            });
+        newtree.push(treeCSV[0]);
+
+        console.log(newtree);
+
+
+            let totalsize = treeCSV.length;
+
+            let currentsize = newtree.length;
+            console.log(totalsize);
+            let tree = d3.tree()
+                .size([10*currentsize,10*currentsize]);
+            let root = d3.stratify()
+                .id(d => d.id)
+                .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
+                (newtree);
+            tree(root);
+            console.log(root);
+            let g = d3.select("#tree").attr("transform", "translate(40,80)");
+
+            let link = g.selectAll(".link")
+                .data(root.descendants().slice(1))
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", function (d) {
+                    return "M" + d.x + "," + d.y
+                        //+ "C" + d.x  + "," + d.y+10
+                        //+ " " + d.parent.x  + "," + d.parent.y+10
+                        +" " + d.parent.x + "," + d.parent.y;
+                });
+
+            let node = g.selectAll(".node")
+                .data(root.descendants())
+                .enter().append("g")
+                //.attr("class", function (d) {
+                //    return "node" + (d.data.Wins === "1" ? " winner" : " loser");
+                //})
+                .attr("class", "node winner")
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+            node.append("circle")
+                .attr("r", Math.sqrt(totalsize/currentsize/2));
+
+            node.append("text")
+                .attr("dy", 5)
+                .attr("x", (d) => d.children ? -8 : 8)
+                .style("text-anchor", d => d.children ? "end" : "start")
+                .text((d) => d.data.Team);
+
+        node.call(tip);
+        node.on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
 
     };
+
+    tooltip_render(tooltip_data) {
+        console.log(tooltip_data);
+        //let text = "";
+
+        let text =  "Partition Extrema: " + tooltip_data.index;
+        text += "<ul>"
+        text +=  "Partition Persistence: " + tooltip_data.persistence;
+        text += "</ul>";
+
+        return text;
+    }
 
     makeTree(merge){
 
@@ -121,51 +130,33 @@ class Tree {
      * @param row a string specifying which team was selected in the table.
      */
     updateTree(row) {
-        // ******* TODO: PART VII *******
-        if(row["value"].type == "aggregate")
-        {
-            d3.selectAll("path#"+row.key)
-                .attr("class",function(d) {
-                    if(d["data"].Wins == 1)
-                        return "link selected";
-                    else
-                        return "link";
 
-                });
-            d3.selectAll(".node").selectAll("#"+row.key)
-                .attr("class",function(d) {
-                    return "selectedLabel";
-                });
-        }
-        else{
-            d3.selectAll("path#"+row.key)
-                .attr("class",function(d) {
-                    if(d["data"].Opponent == row["value"].Opponent)
-                        return "link selected";
-                    else
-                        return "link";
-                });
-            d3.selectAll("path#"+row["value"].Opponent)
-                .attr("class",function(d) {
-                    if(d["data"].Opponent == row.key)
-                        return "link selected";
-                    else
-                        return "link";
-                });
-            d3.selectAll(".node").selectAll("#"+row.key)
-                .attr("class",function(d) {
-                    if(d["data"].Opponent == row["value"].Opponent)
-                        return "selectedLabel";
-                });
-            d3.selectAll(".node").selectAll("#"+row["value"].Opponent)
-                .attr("class",function(d) {
-                    if(d["data"].Opponent == row.key)
-                        return "selectedLabel";
-                });
+        let tip = d3.tip().attr('class', 'd3-tip')
+            .direction('se')
+            .offset(function() {
+                return [0,0];
+            })
+            .html((d)=>{
+                let tooltip_data = {
+                    "Current Partition": d};
 
-        }
-
-
+                return this.tooltip_render(tooltip_data);
+                /* populate data in the following format
+                 * tooltip_data = {
+                 * "state": State,
+                 * "winner":d.State_Winner
+                 * "electoralVotes" : Total_EV
+                 * "result":[
+                 * {"nominee": D_Nominee_prop,"votecount": D_Votes,"percentage": D_Percentage,"party":"D"} ,
+                 * {"nominee": R_Nominee_prop,"votecount": R_Votes,"percentage": R_Percentage,"party":"R"} ,
+                 * {"nominee": I_Nominee_prop,"votecount": I_Votes,"percentage": I_Percentage,"party":"I"}
+                 * ]
+                 * }
+                 * pass this as an argument to the tooltip_render function then,
+                 * return the HTML content returned from that method.
+                 * */
+                return ;
+            });
     }
 
     /**

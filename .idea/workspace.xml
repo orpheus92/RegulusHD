@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/js/Partition.js" line="66" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9b93c5fe-fc66-4fd8-bc6f-d7b8be5fd55a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Regulus.html" afterPath="$PROJECT_DIR$/Regulus.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Partition.js" afterPath="$PROJECT_DIR$/js/Partition.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Tree.js" afterPath="$PROJECT_DIR$/js/Tree.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,7 +26,7 @@
       <file leaf-file-name="alg.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/alg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="864">
               <caret line="123" column="2" lean-forward="false" selection-start-line="123" selection-start-column="2" selection-end-line="123" selection-end-column="2" />
               <folding />
             </state>
@@ -32,8 +36,8 @@
       <file leaf-file-name="Regulus.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Regulus.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="608">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -42,31 +46,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Tree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="113" column="4" lean-forward="false" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
+            <state relative-caret-position="344">
+              <caret line="119" column="20" lean-forward="true" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
               <folding>
                 <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
                 <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
+                <element signature="e#468#513#0" expanded="false" />
+                <element signature="e#1551#1833#0" expanded="false" />
+                <element signature="e#4530#4575#0" expanded="false" />
+                <element signature="e#4600#5569#0" expanded="false" />
                 <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
                 <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-                <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
+                <marker date="1510857952268" expanded="true" signature="4144:4395" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Partition.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Partition.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Partition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="115" column="43" lean-forward="false" selection-start-line="115" selection-start-column="43" selection-end-line="115" selection-end-column="43" />
+            <state relative-caret-position="0">
+              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="5" />
               <folding>
+                <element signature="n#!!block;n#initialPartition#0;n#Partition#0" expanded="false" />
                 <element signature="n#!!block;n#update#0;n#Partition#0" expanded="false" />
               </folding>
             </state>
@@ -76,9 +92,10 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+            <state relative-caret-position="-1024">
+              <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding>
+                <element signature="e#62#196#0" expanded="false" />
                 <element signature="n#!!block;n#printPlots#0" expanded="false" />
               </folding>
             </state>
@@ -99,6 +116,8 @@
       <find>.csv</find>
       <find>function</find>
       <find>d3.csv</find>
+      <find>partition</find>
+      <find>class</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,10 +130,11 @@
         <option value="$PROJECT_DIR$/data/process.js" />
         <option value="$PROJECT_DIR$/data/partition.js" />
         <option value="$PROJECT_DIR$/js/partition.js" />
-        <option value="$PROJECT_DIR$/js/Tree.js" />
+        <option value="$PROJECT_DIR$/js/Partition.js" />
         <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/Regulus.html" />
-        <option value="$PROJECT_DIR$/js/Partition.js" />
+        <option value="$PROJECT_DIR$/styles.css" />
+        <option value="$PROJECT_DIR$/js/Tree.js" />
       </list>
     </option>
   </component>
@@ -288,12 +308,12 @@
       <workItem from="1510627937492" duration="35325000" />
       <workItem from="1510775326686" duration="7852000" />
       <workItem from="1510841158602" duration="1785000" />
-      <workItem from="1510818314306" duration="2236000" />
+      <workItem from="1510818314306" duration="12209000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47198000" />
+    <option name="totallyTimeSpent" value="57171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="-4" width="1922" height="1085" extended-state="6" />
@@ -305,7 +325,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25404158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21924482" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.035322778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23672055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -350,7 +370,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -359,7 +379,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/alg.py" />
     <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
     <entry file="file://$PROJECT_DIR$/alg.py" />
     <entry file="file://C:/DataScience/movie/movies_metadata.csv" />
@@ -398,6 +417,7 @@
         <state relative-caret-position="32">
           <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="6" />
           <folding>
+            <element signature="e#62#196#0" expanded="false" />
             <element signature="n#!!block;n#printPlots#0" expanded="false" />
           </folding>
         </state>
@@ -409,13 +429,14 @@
           <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
           <folding>
             <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
             <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
+            <element signature="e#468#513#0" expanded="false" />
+            <element signature="e#1551#1833#0" expanded="false" />
+            <element signature="e#4530#4575#0" expanded="false" />
+            <element signature="e#4600#5569#0" expanded="false" />
             <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-            <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
+            <marker date="1510857952268" expanded="true" signature="4144:4395" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
           </folding>
         </state>
       </provider>
@@ -425,6 +446,7 @@
         <state relative-caret-position="32">
           <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
           <folding>
+            <element signature="n#!!block;n#initialPartition#0;n#Partition#0" expanded="false" />
             <element signature="n#!!block;n#update#0;n#Partition#0" expanded="false" />
           </folding>
         </state>
@@ -436,13 +458,14 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
             <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
+            <element signature="e#468#513#0" expanded="false" />
+            <element signature="e#1551#1833#0" expanded="false" />
+            <element signature="e#4530#4575#0" expanded="false" />
+            <element signature="e#4600#5569#0" expanded="false" />
             <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-            <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
+            <marker date="1510857952268" expanded="true" signature="4144:4395" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
           </folding>
         </state>
       </provider>
@@ -463,6 +486,7 @@
         <state relative-caret-position="32">
           <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="6" />
           <folding>
+            <element signature="e#62#196#0" expanded="false" />
             <element signature="n#!!block;n#printPlots#0" expanded="false" />
           </folding>
         </state>
@@ -493,14 +517,6 @@
     <entry file="file://C:/Anaconda/regulus-beta/packages/regulus/src/index.ts" />
     <entry file="file://C:/Linux Back/DataViz/DataViz/HW5/solutions/js/tree.js" />
     <entry file="file://C:/Linux Back/DataViz/hw5/data/fifa-matches.json" />
-    <entry file="file://$PROJECT_DIR$/data/alg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="123" column="2" lean-forward="false" selection-start-line="123" selection-start-column="2" selection-end-line="123" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/modifiedmerge.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -525,20 +541,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
+    <entry file="file://$PROJECT_DIR$/data/alg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!block;n#printPlots#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="864">
+          <caret line="123" column="2" lean-forward="false" selection-start-line="123" selection-start-column="2" selection-end-line="123" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Regulus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="608">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -546,29 +560,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Tree.js">
+    <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="113" column="4" lean-forward="false" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
+        <state relative-caret-position="-1024">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
-            <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#createTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#updateTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
-            <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-            <marker date="1510774230945" expanded="false" signature="3295:3546" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
+            <element signature="e#62#196#0" expanded="false" />
+            <element signature="n#!!block;n#printPlots#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Partition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="115" column="43" lean-forward="false" selection-start-line="115" selection-start-column="43" selection-end-line="115" selection-end-column="43" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="5" />
           <folding>
+            <element signature="n#!!block;n#initialPartition#0;n#Partition#0" expanded="false" />
             <element signature="n#!!block;n#update#0;n#Partition#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="119" column="20" lean-forward="true" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!doc;n#createTree#0;n#Tree#0" expanded="false" />
+            <element signature="e#468#513#0" expanded="false" />
+            <element signature="e#1551#1833#0" expanded="false" />
+            <element signature="e#4530#4575#0" expanded="false" />
+            <element signature="e#4600#5569#0" expanded="false" />
+            <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
+            <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
+            <marker date="1510857952268" expanded="true" signature="4144:4395" ph="/** Updates the highlighting in the tree based on the selected team. ...*/" />
           </folding>
         </state>
       </provider>
