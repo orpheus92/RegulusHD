@@ -8,8 +8,9 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
     <script src="js/script.js" async></script>
-    <script src="js/Partition.js" async></script>
+    <script src="js/Plot.js" async></script>
     <script src="js/Tree.js" async></script>
+    <script src="js/Partition.js" async></script>
     <script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.9.0/d3-legend.js"></script>
 
@@ -36,7 +37,12 @@
         <h3>allMSC</h3>
         <span id="allMSC"></span>
     </div>
-
+    <div id="treePlot" class="view">
+        <h2>Tree Plot</h2>
+        <svg id = "treesvg" width="500" height="200">
+            <g id="tree"></g>
+        </svg>
+    </div>
     <div id="hdPlot" class="view">
         <h2 class="">Plot</h2>
         <div id="plot-selector">
@@ -52,12 +58,7 @@
         </div>
     </div>
 
-    <div class="view">
-        <h2>Tree Plot</h2>
-        <svg width="1000" height="1200">
-            <g id="tree"></g>
-        </svg>
-    </div>
+
 
 
 </div>

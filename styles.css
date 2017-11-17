@@ -1,4 +1,31 @@
 
+
+#loadData {
+    float: left;
+    text-align: left;
+    margin: 2px 10px;
+    display: inline-block;
+    width:400px;
+    height: 200px;
+
+}
+
+#treePlot {
+    text-align: left;
+    margin: 2px 10px;
+    display: inline-block;
+    left: 20px;
+    width:400px;
+    height: 200px;
+
+
+}
+
+#container
+{
+    text-align:center;
+}
+
 .d3-tip {
     /*line-height: 5;*/
     padding-left: 10px;
