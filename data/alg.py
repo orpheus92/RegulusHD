@@ -126,7 +126,9 @@ pre = plist[-1]
 curlist = []
 treedata = {}
 treedata[0]=convert([perdict[tomerge[-1,0]][0]])
+plist = plist[1:]
 total = len(plist)
+#print(plist)
 for ind,i in reversed(list(enumerate(plist))):
     curlist = set(convert(perdict[i])+list(curlist))
     #print(curlist)
@@ -139,6 +141,7 @@ for ind,i in reversed(list(enumerate(plist))):
 #with open('totaltree.json', 'w') as fp:
 #    json.dump(treedata, fp)
 num = len(treedata)
+##print(totallist)
 for i in range(num):
     clist = treedata[i]
     for j in clist:
@@ -147,7 +150,7 @@ for i in range(num):
 mlist = np.array(totallist)
 ##print(mlist)
 pclist = mlist.reshape(int(len(mlist)/2),2)
-print(pclist)
+#print(pclist)
 
 df = pd.DataFrame(pclist)
 df.to_csv("Allmerge.csv",header=None,index=False)
