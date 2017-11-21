@@ -4,8 +4,8 @@ class Tree{
     /**
      * Creates a Tree Object
      */
-    constructor() {
 
+    constructor() {
     }
 
     /**
@@ -14,26 +14,20 @@ class Tree{
      * @param treeData an array of objects that contain parent/child information.
      */
 
-    create(treeCSV,pers/*, curP*/) {
-        //console.log(pers);
-        //console.log(treeCSV);
-        //let newtree = [];
-        //console.log(treeCSV);
-        treeCSV.forEach(function (d) {//console.log(d.Ci);
+    create(treeCSV,pers,basedata) {
+        console.log(basedata);
+        treeCSV.forEach(function (d) {//console.log(d);
 
                 d.id = d.C1+ ", "+d.C2+", "+d.Ci;
                 d.index = d.C1+ ", "+d.C2;
                 d.par = d.P1+ ", "+d.P2+", "+d.Pi;
                 d.persistence = pers[d.Ci];
-                //if (d.persistence > curP)
-                    //newtree.push(d);
-            });
-        //newtree.push(treeCSV[0]);
 
-            //let currentsize = newtree.length;
-            // console.log(totalsize);
+            });
+
+        //Construct the tree
         let tree = d3.tree()
-            .size([500,160]);
+            .size([470,160]);
             /*
             let baseroot = d3.stratify()
                 .id(d => d.id)
@@ -47,13 +41,40 @@ class Tree{
         tree(root);
         this._root = root;
 
+        let accum;
+
+        root.descendants().forEach(d=>{//console.log(d);
+            accum = [];
+            accum = getbaselevelInd(d, accum);
+            d.data._baselevel = new Set(accum);
+            d.data._total = new Set();
+            d.data._baselevel.forEach(dd=> {
+                //console.log(dd);
+                if (basedata[dd] != null) {
+                    //console.log(basedata[dd]);
+                    basedata[dd].forEach(ddd=>{
+                        //console.log(basedata[dd]);
+                        //console.log(ind);
+                        if (!d.data._total.has(ddd))
+                            d.data._total.add(ddd);
+                    })
+                    //console.log(d.data._total);
+                    //d.data._total = d.data._totalnumber + basedata[dd].length;
+                }
+                    });
+            //d.data._baselevel
+        });
+        console.log(root);
+        //getbaselevelInd(root, accum);
+        //console.log(accum);
+
         this.plot = d3.select("#hdPlot");
 
-        let g = d3.select("#tree").attr("transform", "translate(20,20)");
-        let link = g.selectAll(".link")
+        let g = d3.select("#tree").attr("transform", "translate(15,15)");
+
+        this._link = g.selectAll(".link")
             .data(root.descendants().slice(1))
             .enter().append("path")
-            //.attr("id", "#linkid")
             .attr("class", "link")
             .attr("d", function (d) {
                 return "M" + d.x + "," + d.y
@@ -61,22 +82,17 @@ class Tree{
                     //+ " " + d.parent.x  + "," + d.parent.y+10
                     +"L" + d.parent.x + "," + d.parent.y;
                 });
-        console.log(link);
-        let node = g.selectAll(".node")
+        this._node = g.selectAll(".node")
             .data(root.descendants())
             .enter().append("g")
-                //.attr("class", function (d) {
-                //    return "node" + (d.data.Wins === "1" ? " winner" : " loser");
-                //})
             .attr("class", "node")
             .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
 
-                   //Math.sqrt(totalsize/currentsize/10)
-        console.log(node);
-        node.append("circle")
-            .attr("r", 1);
+        //console.log(node);
+        //this._node.append("circle")
+        //    .attr("r", 1);
         /*
         node.append("text")
             .attr("dy", 5)
@@ -96,8 +112,8 @@ class Tree{
 
                 return ;
             });
-        node.call(tip);
-        node.on('mouseover', tip.show)
+        this._node.call(tip);
+        this._node.on('mouseover', tip.show)
             .on('mouseout', tip.hide);
 
 
@@ -111,6 +127,7 @@ class Tree{
         text += "<ul>"
         text +=  "Partition Persistence: " + tooltip_data.persistence;
         text += "</ul>";
+        text +=  "Number of Points: " + tooltip_data._total.size;
 
         return text;
     }
@@ -142,45 +159,41 @@ class Tree{
                 return d.data.persistence<pInter && d.data.persistence != -1;
             });
         linkSelection.classed("link", false);
-        nodeSelection.classed("node", false).remove("circle");
-        let g = d3.select("#tree").attr("transform", "scale(4,8),translate(10,10)");
+        nodeSelection.classed("node", false);
+
+
 
         //Now only the selected nodes/links are classed
         //Need to place them in right position
 
+        let scaleX = (x=>{
+            let x2 = d3.max(d3.selectAll(".node").data(), d => d.x);
+            let x1 = d3.max(this._node.data(), d => d.x);
+            return x*x1/x2;
+        });
 
-        //let g = d3.select("#tree").attr("transform", "translate(20,20)");
+        let scaleY = (y=>{
+            let y2 = d3.max(d3.selectAll(".node").data(), d => d.y);
+            let y1 = d3.max(this._node.data(), d => d.y);
+            return y*y1/y2;
+        });
+
+        //reposition/scale current tree
+
+        d3.selectAll(".node").attr("transform", function (d) { //console.log(d);
+            return "translate(" + scaleX(d.x) + "," + scaleY(d.y) + ")";
+        }).append("circle").attr("r", Math.sqrt(scaleY(1)));
+
+            //.attr("r", Math.sqrt(scaleY(1)));
+        d3.selectAll(".link").attr("d", function (d) {
+            return "M" + scaleX(d.x) + "," + scaleY(d.y)
+                //+ "C" + d.x  + "," + d.y+10
+                //+ " " + d.parent.x  + "," + d.parent.y+10
+                +"L" + scaleX(d.parent.x) + "," + scaleY(d.parent.y);
+        });
+
+
         /*
-        let link = g.selectAll(".link")
-            .data(this._root.descendants().slice(1))
-            .enter().append("path")
-            .attr("class", "link")
-            .attr("d", function (d) {
-                return "M" + d.x + "," + d.y
-                    //+ "C" + d.x  + "," + d.y+10
-                    //+ " " + d.parent.x  + "," + d.parent.y+10
-                    +"L" + d.parent.x + "," + d.parent.y;
-            });
-        */
-        /*
-        nodeSelection.attr("class", "node")
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            });
-        */
-        //console.log(node);
-        //Math.sqrt(totalsize/currentsize/10)
-        /*
-        nodeSelection.append("circle")
-            .attr("r", 1);
-        */
-        /*
-        nodeSelection.append("text")
-            .attr("dy", 5)
-            .attr("x", (d) => d.children ? -8 : 8)
-            .style("text-anchor", d => d.children ? "end" : "start")
-            .text((d) => d.data.Team);
-        */
         let tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
             .offset(function() {
@@ -191,12 +204,11 @@ class Tree{
                 return this.tooltip_render(tooltip_data);
                 return ;
             });
+        */
         //console.log(node);
         //node.call(tip);
         //node.on('mouseover', tip.show)
         //    .on('mouseout', tip.hide);
-
-        console.log(this._root);
         /*
         let tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
