@@ -11,7 +11,7 @@ d3.csv('data/Pu_TOT.csv', function (error, data) {
 
 //Load data in JS
 let partition;
-let pInter = 3;
+let pInter = 2;
 let tree;
 //console.log("sdasda");
 d3.json('data/treedata.json', function (error, data) {

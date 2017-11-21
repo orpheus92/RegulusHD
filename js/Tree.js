@@ -33,7 +33,7 @@ class Tree{
             //let currentsize = newtree.length;
             // console.log(totalsize);
         let tree = d3.tree()
-            .size([400,160]);
+            .size([500,160]);
             /*
             let baseroot = d3.stratify()
                 .id(d => d.id)
@@ -143,7 +143,8 @@ class Tree{
             });
         linkSelection.classed("link", false);
         nodeSelection.classed("node", false).remove("circle");
-        d3.selectAll(".link").scale
+        let g = d3.select("#tree").attr("transform", "scale(4,8),translate(10,10)");
+
         //Now only the selected nodes/links are classed
         //Need to place them in right position
 
