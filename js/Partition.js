@@ -9,7 +9,7 @@ class Partition{
         this.pers = Object.keys(Pdata).sort(function(a,b){return b-a});
         this.pers.unshift(this.pers.pop());
         this.length = this.pers.length;
-        console.log(Pdata);
+        //console.log(Pdata);
 
     }
 

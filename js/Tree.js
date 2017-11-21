@@ -5,7 +5,9 @@ class Tree{
      * Creates a Tree Object
      */
 
-    constructor() {
+    constructor(plot,rawdata) {
+        this._plot = plot;
+        this._rawdata = rawdata;
     }
 
     /**
@@ -15,7 +17,7 @@ class Tree{
      */
 
     create(treeCSV,pers,basedata) {
-        console.log(basedata);
+        //console.log(basedata);
         treeCSV.forEach(function (d) {//console.log(d);
 
                 d.id = d.C1+ ", "+d.C2+", "+d.Ci;
@@ -115,6 +117,8 @@ class Tree{
         this._node.call(tip);
         this._node.on('mouseover', tip.show)
             .on('mouseout', tip.hide);
+        this._node.on('click', (nodeinfo)=>this._plot.update(nodeinfo));
+
 
 
     };

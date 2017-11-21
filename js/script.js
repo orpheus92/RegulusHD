@@ -2,21 +2,20 @@
 //import {Plots} from './Plot';
 
 //read data;
-d3.csv('data/Pu_TOT.csv', function (error, data) {
+d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
     if (error) throw error;
-    let plots = new Plots(data, 600, 150);
+    let plots = new Plots(rawdata, 600, 150);
     window.plots = plots;
     window.plots.histogramPlot();
-});
-
 //Load data in JS
 let partition;
-let pInter = 3;
+let pInter = 0.5;
 let tree;
 //console.log("sdasda");
 d3.json('data/treedata.json', function (error, data) {
     if (error) throw error;
-    tree = new Tree();
+    //will be updated later
+    tree = new Tree(plots,rawdata);
 
     partition = new Partition();
 
@@ -29,10 +28,17 @@ d3.json('data/treedata.json', function (error, data) {
 
             tree.create(treedata, partition.pers, basedata);
             tree.updateTree(pInter);
+            //console.log(rawdata[0]);
         });
     });
     //console.log(partition);
 
 
 })
+});
+
+
+
+
+
 

@@ -2,12 +2,13 @@
 class Plots {
 
     constructor(data, widht, height) {
-        this.data = data;
-        this.margin = {top: 20, right: 30, bottom: 20, left: 40};
-        this.width = widht;
-        this.height = height;
+        this._rawdata = data;
+        this._data = data;
+        this._margin = {top: 20, right: 30, bottom: 20, left: 40};
+        this._width = widht;
+        this._height = height;
 
-        this.plot = d3.select("#hdPlot");
+        this._plot = d3.select("#hdPlot");
     }
 
     //printPlots
@@ -43,11 +44,11 @@ class Plots {
     }
 
     PairwisePlot() {
-        let data = this.data;
-        let margin = this.margin;
-        let height = this.height - margin.top - margin.bottom;
-        let width = this.width - margin.left - margin.right;
-        let newplot = this.plot;
+        let data = this._data;
+        let margin = this._margin;
+        let height = this._height - margin.top - margin.bottom;
+        let width = this._width - margin.left - margin.right;
+        let newplot = this._plot;
 
         //load data as array
         let attr = data.columns;
@@ -91,8 +92,8 @@ class Plots {
                     .domain([y_minVal, y_maxVal]);
 
                 let svg = newplot.append("svg")
-                    .attr("height", this.height)
-                    .attr("width", this.width)
+                    .attr("height", this._height)
+                    .attr("width", this._width)
                     .append('g')
                     .attr('id', "pairwisePlot" + i)
                     .attr("transform", "translate(" + [margin.left, margin.top] + ")");
@@ -129,11 +130,11 @@ class Plots {
     //rawDataPlot
     rawDataPlot() {
 
-        let data = this.data;
-        let margin = this.margin;
-        let height = this.height;
-        let width = this.width;
-        let newplot = this.plot;
+        let data = this._data;
+        let margin = this._margin;
+        let height = this._height;
+        let width = this._width;
+        let newplot = this._plot;
 
         //load data as array
         var attr = data.columns;
@@ -220,11 +221,11 @@ class Plots {
 
     //BoxPlot
     boxPlot() {
-        let data = this.data;
-        let margin = this.margin;
-        let height = this.height - margin.top - margin.bottom;
-        let width = this.width - margin.left - margin.right;
-        let newplot = this.plot;
+        let data = this._data;
+        let margin = this._margin;
+        let height = this._height - margin.top - margin.bottom;
+        let width = this._width - margin.left - margin.right;
+        let newplot = this._plot;
         let barWidth = 30;
 
         //load data as array
@@ -258,8 +259,8 @@ class Plots {
                 .range([0, width]);
 
             newplot.append("svg")
-                .attr("height", this.height)
-                .attr("width", this.width)
+                .attr("height", this._height)
+                .attr("width", this._width)
                 .append('g')
                 .attr('id', "boxPlot" + i)
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")");
@@ -332,11 +333,11 @@ class Plots {
     }
 
     histogramPlot() {
-        let data = this.data;
-        let margin = this.margin;
-        let height = this.height - margin.top - margin.bottom;
-        let width = this.width - margin.left - margin.right;
-        let newplot = this.plot;
+        let data = this._data;
+        let margin = this._margin;
+        let height = this._height - margin.top - margin.bottom;
+        let width = this._width - margin.left - margin.right;
+        let newplot = this._plot;
         let barWidth = 30;
 
         //load data as array
@@ -380,8 +381,8 @@ class Plots {
             })]);
 
             let svg = newplot.append("svg")
-                .attr("height", this.height)
-                .attr("width", this.width)
+                .attr("height", this._height)
+                .attr("width", this._width)
                 .append('g')
                 .attr('id', "boxPlot" + i)
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")");
@@ -418,6 +419,27 @@ class Plots {
 
         }
     }
+
+    update(nodeinfo){
+        let selectdata = [];
+        console.log(typeof(this._rawdata));
+        nodeinfo.data._total.forEach(d=>{
+            //console.log(this._rawdata[d]);
+            selectdata.push(this._rawdata[d]);
+
+        });
+        //console.log(this._rawdata);
+        this._data = selectdata;
+        this._data.columns = this._rawdata.columns;
+        //console.log(this._data);
+        this.printPlots();
+        //console.log(this._rawdata);
+        //console.log(selectdata);
+        //this._rawdata
+        //console.log(nodeinfo);
+        //console.log("Update");
+    }
+
 }
 
 function printPlots() {
