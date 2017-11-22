@@ -432,7 +432,9 @@ class Plots {
         this._data = selectdata;
         this._data.columns = this._rawdata.columns;
         //console.log(this._data);
+        console.log("Update Plot");
         this.printPlots();
+        //window.plots.printPlots();
         //console.log(this._rawdata);
         //console.log(selectdata);
         //this._rawdata

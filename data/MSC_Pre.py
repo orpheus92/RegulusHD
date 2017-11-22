@@ -77,8 +77,8 @@ def mergemax(c,p,d,per):
             #outlist.append(convertkey3(minin, int(p), per))
             #print('Parent:'+convertkey(minin, int(p))+' Child:'+convertkey(minin,int(c)))
     return outlist
-maxmerge = np.genfromtxt('max_merge.csv', delimiter=",")
-minmerge = np.genfromtxt('min_merge.csv', delimiter=",")
+maxmerge = np.genfromtxt('Max_Merge.csv', delimiter=",")
+minmerge = np.genfromtxt('Min_Merge.csv', delimiter=",")
 # Explain how the partitions merge
 # Persistence, saddleIdx, mergedInd, parentInd
 maxmerge = np.delete(maxmerge,0,0)
@@ -94,7 +94,7 @@ totalmerge2 = totalmerge[np.argsort(totalmerge[:, 0])]
 # Json file that stores the initial partition
 # Keys specified as "minInd, maxInd",
 # Values store the points that belong to the partition
-with open('persistence3.json') as data_file:
+with open('Base_Partition.json') as data_file:
     data = json.load(data_file)
 
 Pinter = 8

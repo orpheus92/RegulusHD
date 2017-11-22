@@ -183,7 +183,15 @@ header {
     margin-bottom: 5px;
 
 }
+#increase {
+    float: right;
+    margin-bottom: 5px;
+}
 
+#decrease {
+    float: right;
+    margin-bottom: 5px;
+}
 .view {
     padding: 0.5em;
 
