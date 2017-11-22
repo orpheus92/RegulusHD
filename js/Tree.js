@@ -143,8 +143,11 @@ class Tree{
      * @param row a string specifying which team was selected in the table.
      */
     updateTree(pInter) {
-        //console.log(pInter);
-
+        // return tree back to original
+        d3.selectAll("circle").remove();
+        this._node.classed("node", true);
+        this._link.classed("link", true);
+        //console.log(d3.selectAll("circle"));
         let linkSelection, nodeSelection;
         /*
         this._root.descendants().forEach(function(d){
@@ -238,9 +241,9 @@ class Tree{
         // ******* TODO: PART VII *******
 
         // You only need two lines of code for this! No loops!
-        d3.selectAll("path").attr("class","link");
-        d3.selectAll(".node").selectAll("text")
-            .classed("selectedLabel",false);
+        this._node.classed(".node", true);
+        this._link.classed(".link", true);
+        //d3.selectAll(".node").selectAll("text").classed("selectedLabel",false);
     }
 }
 function getbaselevelInd(node, accum) {

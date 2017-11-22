@@ -70,6 +70,7 @@ function decreasePersistence(){
         }
     }
     console.log(pInter);
+    //tree.clearTree();
     tree.updateTree(pInter);
 
 }
