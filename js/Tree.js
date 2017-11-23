@@ -8,6 +8,7 @@ class Tree{
     constructor(plot,rawdata) {
         this._plot = plot;
         this._rawdata = rawdata;
+
     }
 
     /**
@@ -17,7 +18,9 @@ class Tree{
      */
 
     create(treeCSV,pers,basedata) {
-        //console.log(basedata);
+        //console.log(pInter);
+        //console.log(partition);
+
         treeCSV.forEach(function (d) {//console.log(d);
 
                 d.id = d.C1+ ", "+d.C2+", "+d.Ci;
@@ -117,9 +120,13 @@ class Tree{
         this._node.call(tip);
         this._node.on('mouseover', tip.show)
             .on('mouseout', tip.hide);
+        //Need some change later to fix this design
         this._node.on('click', (nodeinfo)=>this._plot.update(nodeinfo));
 
-
+        d3.select('#increase')
+            .on('click', () =>  this.increasePersistence());
+        d3.select('#decrease')
+            .on('click', () =>  this.decreasePersistence());
 
     };
 
@@ -198,41 +205,7 @@ class Tree{
                 //+ " " + d.parent.x  + "," + d.parent.y+10
                 +"L" + scaleX(d.parent.x) + "," + scaleY(d.parent.y);
         });
-
-
-        /*
-        let tip = d3.tip().attr('class', 'd3-tip')
-            .direction('se')
-            .offset(function() {
-                return [0,0];
-            })
-            .html((d)=>{//console.log(d);
-                let tooltip_data = d.data;
-                return this.tooltip_render(tooltip_data);
-                return ;
-            });
-        */
-        //console.log(node);
-        //node.call(tip);
-        //node.on('mouseover', tip.show)
-        //    .on('mouseout', tip.hide);
-        /*
-        let tip = d3.tip().attr('class', 'd3-tip')
-            .direction('se')
-            .offset(function() {
-                return [0,0];
-            })
-            .html((d)=>{
-                let tooltip_data = {
-                    "Current Partition": d};
-
-                return this.tooltip_render(tooltip_data);
-
-                return ;
-            });
-        */
-
-        }
+    }
 
     /**
      * Removes all highlighting from the tree.
@@ -244,7 +217,42 @@ class Tree{
         this._node.classed(".node", true);
         this._link.classed(".link", true);
         //d3.selectAll(".node").selectAll("text").classed("selectedLabel",false);
+
     }
+    increasePersistence(){
+        let pers =[];
+        partition.pers.map(function(item) {
+            pers.push(parseFloat(item));
+        });
+        for (let i=pers.length-1; i>=0; i--) {
+            if(pers[i]>pInter){
+                pInter = pers[i];
+                break;
+            }
+        }
+        console.log(pInter);
+
+        this.updateTree(pInter);
+
+    }
+    decreasePersistence(){
+        let pers =[];
+        partition.pers.map(function(item) {
+            pers.push(parseFloat(item));
+        });
+        for (let i=1; i<pers.length; i++) {
+            //console.log(i);
+            if(pers[i]<pInter){
+                pInter = pers[i];
+                break;
+            }
+        }
+        console.log(pInter);
+        //tree.clearTree();
+        this.updateTree(pInter);
+
+    }
+
 }
 function getbaselevelInd(node, accum) {
     let i;
@@ -261,9 +269,7 @@ function getbaselevelInd(node, accum) {
 
     return accum;
 }
-
-
-
+/*
 function collapse(d) {
     if(d.children) {
         d._children = d.children
@@ -412,3 +418,4 @@ function update(source) {
         update(d);
     }
 }
+*/

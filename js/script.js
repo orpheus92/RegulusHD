@@ -5,13 +5,12 @@
 let pInter;
 let tree;
 let partition;
+let loaddata;
 
+let dispatch = d3.dispatch("click");
 d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
-    d3.select('#increase')
-        .on('click', () =>  increasePersistence());
-    d3.select('#decrease')
-        .on('click', () =>  decreasePersistence());
 
+    console.log(dispatch);
     if (error) throw error;
     let plots = new Plots(rawdata, 600, 150);
     window.plots = plots;
@@ -23,7 +22,8 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
         if (error) throw error;
         //will be updated later
         tree = new Tree(plots,rawdata);
-
+        loaddata = new Load();
+        loaddata.create(data,pInter);
         partition = new Partition();
 
         window.partition = partition;
@@ -35,45 +35,15 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
                 tree.create(treedata, partition.pers, basedata);
                 tree.updateTree(pInter);
+
             });
         });
 
     })
 });
-function increasePersistence(){
-    let pers =[];
-    partition.pers.map(function(item) {
-        pers.push(parseFloat(item));
-    });
-    for (let i=pers.length-1; i>=0; i--) {
-        if(pers[i]>pInter){
-            pInter = pers[i];
-            break;
-        }
-    }
-    console.log(pInter);
 
-    tree.updateTree(pInter);
 
-}
-
-function decreasePersistence(){
-    let pers =[];
-    partition.pers.map(function(item) {
-        pers.push(parseFloat(item));
-    });
-    for (let i=1; i<pers.length; i++) {
-        //console.log(i);
-        if(pers[i]<pInter){
-            pInter = pers[i];
-            break;
-        }
-    }
-    console.log(pInter);
-    //tree.clearTree();
-    tree.updateTree(pInter);
-
-}
+function updateDataInfo(){}
 
 
 
