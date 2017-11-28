@@ -31,20 +31,24 @@ class Tree{
 
         //Construct the tree
         let tree = d3.tree()
-            .size([470,160]);
+            .size([670,330]);
             /*
             let baseroot = d3.stratify()
                 .id(d => d.id)
                 .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
                 (treeCSV);
             */
+
+        console.time('create1');
         let root = d3.stratify()
             .id(d => d.id)
             .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
             (treeCSV);
         tree(root);
         this._root = root;
+        console.timeEnd('create1');
 
+        console.time('create2');
         let accum;
 
         root.descendants().forEach(d=>{//console.log(d);
@@ -68,14 +72,16 @@ class Tree{
                     });
             //d.data._baselevel
         });
+        console.timeEnd('create2');
+
         console.log(root);
         //getbaselevelInd(root, accum);
         //console.log(accum);
 
-        this.plot = d3.select("#hdPlot");
+        //this.plot = d3.select("#hdPlot");
 
         let g = d3.select("#tree").attr("transform", "translate(15,15)");
-
+        console.time('create3');
         this._link = g.selectAll(".link")
             .data(root.descendants().slice(1))
             .enter().append("path")
@@ -86,13 +92,19 @@ class Tree{
                     //+ " " + d.parent.x  + "," + d.parent.y+10
                     +"L" + d.parent.x + "," + d.parent.y;
                 });
+        console.timeEnd('create3');
+
+        console.time('create4');
         this._node = g.selectAll(".node")
             .data(root.descendants())
             .enter().append("g")
             .attr("class", "node")
             .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
-                });
+                });//.append("circle").attr("r", Math.sqrt(2));
+        console.timeEnd('create4');
+        this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
+        this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
 
         //console.log(node);
         //this._node.append("circle")
@@ -104,6 +116,7 @@ class Tree{
             .style("text-anchor", d => d.children ? "end" : "start")
             .text((d) => d.data.Team);
         */
+        console.time('create5');
         let tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
             .offset(function() {
@@ -126,6 +139,7 @@ class Tree{
             .on('click', () =>  this.increasePersistence());
         d3.select('#decrease')
             .on('click', () =>  this.decreasePersistence());
+        console.timeEnd('create5');
 
     };
 
@@ -164,27 +178,39 @@ class Tree{
         });
         */
         console.time('someFunction');
-        linkSelection = d3.selectAll(".link")
-            .filter(function (d) {//console.log(d);
-                return d.data.persistence<pInter && d.data.persistence != -1;
-            });
+        //let ymin = 0;
+        let ymax = 0;
+        //let xmin = 0;
+        let xmax = 0;
+        d3.selectAll(".link")
+            .classed("link",d=>{
+                return pfilter(d,pInter)&&sizefilter(d,20);});
+            //.filter(function (d) {//console.log(d);
+            //    return d.data.persistence<pInter && d.data.persistence != -1;
+            //});
+        d3.selectAll(".node")
+            .classed("node",d=>{
+                //console.log(d);
+                //console.log(sizefilter(d,20));
+                return pfilter(d,pInter)&&sizefilter(d,20);});
+        d3.selectAll(".node").each(d=>{
+            ymax = (ymax>d.y)? ymax : d.y;
+            xmax = (xmax>d.x)? xmax : d.x;
+        })
+
+
+        //console.log(d3.selectAll(".link"));
+        //console.log(ymin,ymax,xmin,xmax);
+        let xscale = this.xmax/xmax;
+        let yscale = this.ymax/ymax;
+
         console.timeEnd('someFunction');
-
-        console.time('someFunction1');
-        nodeSelection = d3.selectAll(".node")
-            .filter(function (d) {//console.log(d);
-                return d.data.persistence<pInter && d.data.persistence != -1;
-            });
-        console.timeEnd('someFunction1');
-
-        linkSelection.classed("link", false);
-        nodeSelection.classed("node", false);
 
 
 
         //Now only the selected nodes/links are classed
         //Need to place them in right position
-
+        /*
         let scaleX = (x=>{
             let x2 = d3.max(d3.selectAll(".node").data(), d => d.x);
             let x1 = d3.max(this._node.data(), d => d.x);
@@ -196,25 +222,29 @@ class Tree{
             let y1 = d3.max(this._node.data(), d => d.y);
             return y*y1/y2;
         });
-
+        */
         //reposition/scale current tree
         console.time('someFunction2');
 
-        d3.selectAll(".node").attr("transform", function (d) { //console.log(d);
-            //return "translate(" + scaleX(d.x) + "," + scaleY(d.y) + ")";
-            return "translate(" + d.x + "," + d.y + ")";
-        }).append("circle").attr("r", Math.sqrt(scaleY(1)));
+        d3.selectAll(".node").attr("transform", d=> { //console.log(d.x);
+            return "translate(" + xscale*(d.x) + "," + yscale*(d.y) + ")";
+            //return "translate(" + d.x + "," + d.y + ")";
+        }).append("circle").attr("r", Math.sqrt(yscale*(1)));//.enter().merge();
         console.timeEnd('someFunction2');
 
             //.attr("r", Math.sqrt(scaleY(1)));
         console.time('someFunction3');
-        d3.selectAll(".link").attr("d", function (d) {
-            return "M" + d.x + "," + d.y
-            //return "M" + scaleX(d.x) + "," + scaleY(d.y)
+        //console.log(d3.selectAll(".link"));
+        d3.selectAll(".link")
+            .transition()
+            .duration(750)
+            .attr("d", d=> {
+            //return "M" + d.x + "," + d.y
+            return "M" + xscale*(d.x) + "," + yscale*(d.y)
                 //+ "C" + d.x  + "," + d.y+10
                 //+ " " + d.parent.x  + "," + d.parent.y+10
-                //+"L" + scaleX(d.parent.x) + "," + scaleY(d.parent.y);
-            +"L" + d.parent.x + "," + d.parent.y;
+                +"L" + xscale*(d.parent.x) + "," + yscale*(d.parent.y);
+            //+"L" + d.parent.x + "," + d.parent.y;
 
         });
         console.timeEnd('someFunction3');
@@ -433,3 +463,11 @@ function update(source) {
     }
 }
 */
+
+function pfilter(mydata,pInter){
+    return (mydata.data.persistence<=pInter && mydata.data.persistence != -1)? false : true;
+}
+function sizefilter(mydata,sizeInter){
+    return (mydata.data._total.size<sizeInter)? false : true;
+
+}
