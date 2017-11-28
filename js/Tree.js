@@ -8,7 +8,7 @@ class Tree{
     constructor(plot,rawdata) {
         this._plot = plot;
         this._rawdata = rawdata;
-
+        this.dispatch = d3.dispatch(["selectNode","updateP"]);
     }
 
     /**
@@ -18,8 +18,7 @@ class Tree{
      */
 
     create(treeCSV,pers,basedata) {
-        //console.log(pInter);
-        //console.log(partition);
+
 
         treeCSV.forEach(function (d) {//console.log(d);
 
@@ -164,14 +163,20 @@ class Tree{
             }
         });
         */
+        console.time('someFunction');
         linkSelection = d3.selectAll(".link")
             .filter(function (d) {//console.log(d);
                 return d.data.persistence<pInter && d.data.persistence != -1;
             });
+        console.timeEnd('someFunction');
+
+        console.time('someFunction1');
         nodeSelection = d3.selectAll(".node")
             .filter(function (d) {//console.log(d);
                 return d.data.persistence<pInter && d.data.persistence != -1;
             });
+        console.timeEnd('someFunction1');
+
         linkSelection.classed("link", false);
         nodeSelection.classed("node", false);
 
@@ -193,18 +198,27 @@ class Tree{
         });
 
         //reposition/scale current tree
+        console.time('someFunction2');
 
         d3.selectAll(".node").attr("transform", function (d) { //console.log(d);
-            return "translate(" + scaleX(d.x) + "," + scaleY(d.y) + ")";
+            //return "translate(" + scaleX(d.x) + "," + scaleY(d.y) + ")";
+            return "translate(" + d.x + "," + d.y + ")";
         }).append("circle").attr("r", Math.sqrt(scaleY(1)));
+        console.timeEnd('someFunction2');
 
             //.attr("r", Math.sqrt(scaleY(1)));
+        console.time('someFunction3');
         d3.selectAll(".link").attr("d", function (d) {
-            return "M" + scaleX(d.x) + "," + scaleY(d.y)
+            return "M" + d.x + "," + d.y
+            //return "M" + scaleX(d.x) + "," + scaleY(d.y)
                 //+ "C" + d.x  + "," + d.y+10
                 //+ " " + d.parent.x  + "," + d.parent.y+10
-                +"L" + scaleX(d.parent.x) + "," + scaleY(d.parent.y);
+                //+"L" + scaleX(d.parent.x) + "," + scaleY(d.parent.y);
+            +"L" + d.parent.x + "," + d.parent.y;
+
         });
+        console.timeEnd('someFunction3');
+
     }
 
     /**
@@ -231,8 +245,8 @@ class Tree{
             }
         }
         console.log(pInter);
-
         this.updateTree(pInter);
+
 
     }
     decreasePersistence(){
@@ -248,8 +262,8 @@ class Tree{
             }
         }
         console.log(pInter);
-        //tree.clearTree();
         this.updateTree(pInter);
+
 
     }
 
