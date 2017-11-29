@@ -87,7 +87,7 @@ class Plots {
                     .range([0, height])
                     .nice();
 
-                var colorScale = d3.scaleLinear()
+                let colorScale = d3.scaleLinear()
                     .range(['blue', 'red'])
                     .domain([y_minVal, y_maxVal]);
 
@@ -137,10 +137,10 @@ class Plots {
         let newplot = this._plot;
 
         //load data as array
-        var attr = data.columns;
-        var datacol = attr.length;
-        var datarow = data.length;
-        var obj = {};
+        let attr = data.columns;
+        let datacol = attr.length;
+        let datarow = data.length;
+        let obj = {};
         for (let j = 0; j < datacol; j++)
             obj[attr[j]] = [];
         for (let i = 0; i < datarow; i++) {
@@ -149,7 +149,7 @@ class Plots {
             }
         }
 
-        var value = function (d) {
+        let value = function (d) {
             return d;
         }; // data -> value
 
@@ -166,18 +166,25 @@ class Plots {
                 .domain([minVal, maxVal])
                 .nice(), // value -> display
             xAxis = d3.axisBottom(xScale);
-        var colorScale = d3.scaleLinear()
+        let colorScale = d3.scaleLinear()
             .range(['blue', 'red'])
             .domain([minVal, maxVal]);
 
 
-        var curplot;
+        let curplot;
         for (let i = 0; i < datacol - 1; i++) {
 
             yScale.domain([d3.min(obj[attr[i]], value), d3.max(obj[attr[i]], value)]);
             newplot.append("svg")
                 .attr('id', "plot" + i);
-            curplot = d3.select("#plot" + i);
+            //console.log(obj[attr[datacol - 1]]);
+            //console.log(obj[attr[i]]);
+            curplot = d3.select("#plot" + i).data([{
+                x: obj[attr[datacol - 1]],//d3.range(n).map(function(i) { return i / n; }),
+                y: obj[attr[i]]//d3.range(n).map(function(i) { return Math.sin(4 * i * Math.PI / n) + (Math.random() - .5) / 5; })
+            }]);
+
+            //console.log(curplot);
 
             curplot.attr("height", height)
                 .attr("width", width);
@@ -185,22 +192,65 @@ class Plots {
             curplot.append('g').attr('id', "xAxis" + i);
             curplot.append('g').attr('id', "yAxis" + i);
 
+            //let loess = science.stats.loess().bandwidth(.2),
+            //    line = d3.line()
+            //        .x(function(d) { return xScale(d[0]); })
+            //        .y(function(d,ind) { return yScale(obj[attr[i]][ind]); });
+
             curplot.selectAll("circle")
-                .data(obj[attr[i]])
+                //.data(obj[attr[i]])
+                .data(function(d) {
+                    //console.log(d.x);
+                    //console.log(d.y);
+                    return d3.zip(d.x, d.y); })
                 .enter()
                 .append("circle")
                 .attr("r", 1)
-                .attr("cx", function (d, i) {
-                    return xScale(obj[attr[datacol - 1]][i]);
-                })
+                .attr("cx", function(d) { return xScale(d[0]); })
+                .attr("cy", function(d) { return yScale(d[1]); })
+                //.attr("cx", function (d, i) {
+                //    return xScale(obj[attr[datacol - 1]][i]);
+                //})
                 .attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")")
-                .attr("cy", function (d) {
-                    return yScale(d);
-                })
+                //.attr("cy", function (d) {
+                //    return yScale(d);
+                //})
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")")
-                .attr('fill', function (d, i) {
-                    return colorScale(obj[attr[datacol - 1]][i]);
+                .attr('fill', function (d) {
+                    return colorScale(d[0]);
                 });
+                /*
+                let faithful = obj[attr[datacol - 1]];
+                console.log(faithful);
+                let density = kernelDensityEstimator(kernelEpanechnikov(7), xScale.ticks(40))(faithful);
+            //console.log(loess(1,2));
+                console.log(density);
+                curplot.selectAll("path")
+                //.data(function(d) {
+                //    return d3.zip(d.x, d.y); })
+                    .datum(density)
+                    .enter()
+                    .append("path")
+                    .attr("fill", "none")
+                    .attr("stroke", "#000")
+                    .attr("stroke-width", 1.5)
+                    .attr("stroke-linejoin", "round")
+                    .attr("d",  d3.line()
+                        .curve(d3.curveBasis)
+                        .x(function(d) { return x(d[0]); })
+                        .y(function(d) { return y(d[1]); }));
+                        */
+            /*
+            curplot.selectAll("path")
+                .data(function(d) {
+                console.log(d.x);
+                console.log(d.y);
+                console.log(loess(d.x, d.y));
+                    return [d3.zip(d.x, loess(d.x, d.y))];//[d3.zip(obj[attr[datacol - 1]][i], loess(obj[attr[datacol - 1]][i], d))];
+                })
+                .enter().append("path")
+                .attr("d", line);
+            */
 
             xAxis.scale(xScale);
             yAxis.scale(yScale);
@@ -422,7 +472,7 @@ class Plots {
 
     update(nodeinfo){
         let selectdata = [];
-        console.log(typeof(this._rawdata));
+        //console.log(typeof(this._rawdata));
         nodeinfo.data._total.forEach(d=>{
             //console.log(this._rawdata[d]);
             selectdata.push(this._rawdata[d]);
@@ -446,4 +496,18 @@ class Plots {
 
 function printPlots() {
     window.plots.printPlots()
+}
+
+function kernelDensityEstimator(kernel, X) {
+    return function(V) {
+        return X.map(function(x) {
+            return [x, d3.mean(V, function(v) { return kernel(x - v); })];
+        });
+    };
+}
+
+function kernelEpanechnikov(k) {
+    return function(v) {
+        return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
+    };
 }

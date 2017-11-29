@@ -144,10 +144,10 @@ class Tree{
         //console.log(tooltip_data);
         //let text = "";
 
-        let text =  "Partition Extrema: " + tooltip_data.index;
-        text += "<ul>"
+        let text =  "<li>"+"Partition Extrema: " + tooltip_data.index;
+        text += "<li>";
         text +=  "Partition Persistence: " + tooltip_data.persistence;
-        text += "</ul>";
+        text += "<li>";
         text +=  "Number of Points: " + tooltip_data._total.size;
 
         return text;
@@ -161,7 +161,7 @@ class Tree{
      */
     updateTree(pInter,sizeInter) {
         // return tree back to original
-        d3.selectAll("circle").remove();
+        //d3.selectAll("circle").remove();
         this.pInter = pInter;
         this.sizeInter = sizeInter;
         this._node.classed("node", true);
@@ -176,7 +176,7 @@ class Tree{
             }
         });
         */
-        console.time('someFunction');
+      //  console.time('someFunction');
         //let ymin = 0;
         let ymax = 0;
         //let xmin = 0;
@@ -200,10 +200,10 @@ class Tree{
 
         //console.log(d3.selectAll(".link"));
         //console.log(ymin,ymax,xmin,xmax);
-        let xscale = this.xmax/xmax;
-        let yscale = this.ymax/ymax;
+        let xscale = (xmax!=0)?this.xmax/xmax:100;
+        let yscale = (ymax!=0)?this.ymax/ymax:100;
 
-        console.timeEnd('someFunction');
+      //  console.timeEnd('someFunction');
 
 
 
@@ -223,20 +223,28 @@ class Tree{
         });
         */
         //reposition/scale current tree
-        console.time('someFunction2');
+       // console.time('someFunction2');
+
+        d3.selectAll("circle")
+            //.transition()
+            //.duration(500)
+            .remove();
 
         d3.selectAll(".node").attr("transform", d=> { //console.log(d.x);
             return "translate(" + xscale*(d.x) + "," + yscale*(d.y) + ")";
             //return "translate(" + d.x + "," + d.y + ")";
         }).append("circle").attr("r", Math.sqrt(yscale*(1)));//.enter().merge();
-        console.timeEnd('someFunction2');
+      //  console.timeEnd('someFunction2');
 
             //.attr("r", Math.sqrt(scaleY(1)));
-        console.time('someFunction3');
+      //  console.time('someFunction3');
         //console.log(d3.selectAll(".link"));
+        //d3.selectAll(".link")
+        console.time("treeupdate");
+            //this._link
         d3.selectAll(".link")
             .transition()
-            .duration(750)
+            .duration(500)
             .attr("d", d=> {
             //return "M" + d.x + "," + d.y
             return "M" + xscale*(d.x) + "," + yscale*(d.y)
@@ -246,7 +254,9 @@ class Tree{
             //+"L" + d.parent.x + "," + d.parent.y;
 
         });
-        console.timeEnd('someFunction3');
+        console.timeEnd("treeupdate");
+
+        //  console.timeEnd('someFunction3');
 
     }
 

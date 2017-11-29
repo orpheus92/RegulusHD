@@ -29,8 +29,8 @@
 .d3-tip {
     /*line-height: 5;*/
     padding-left: 10px;
-    padding-right: 10px;
-    min-width: 400px;
+    padding-right: 5px;
+    min-width: 250px;
     border-style: groove;
     /*padding: 12px;*/
     background: #FFFFFF;

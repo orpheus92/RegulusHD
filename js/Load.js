@@ -10,7 +10,7 @@ class Load {
     }
     create(data,rawdata,cpInter,csInter){
         this.rawdata = rawdata;
-        console.log(data);
+        //console.log(data);
         this.raw.append("li").text("Total Number of Points: "+ rawdata.length);//.classed("cplabel", true);
         this.raw.append("li").text("All Attributes: "+ rawdata.columns);
         let totalper = Object.keys(data).sort(function(b,a){return b-a});
@@ -53,7 +53,7 @@ class Load {
     select(snode){
         //console.log("Update P");
         //this.cper.text("Current Persistence: "+ pInter).remove();
-        console.log(snode);
+        //console.log(snode);
         this.sMSC.selectAll(".sMSC").remove();
         //this.csize.selectAll(".cslabel").remove();
 
