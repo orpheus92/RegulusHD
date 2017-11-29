@@ -5,10 +5,10 @@ class Tree{
      * Creates a Tree Object
      */
 
-    constructor(plot,rawdata) {
-        this._plot = plot;
-        this._rawdata = rawdata;
-        this.dispatch = d3.dispatch(["selectNode","updateP"]);
+    constructor() {
+        //this._plot = plot;
+        //this._rawdata = rawdata;
+        //this.dispatch = d3.dispatch(["selectNode","updateP"]);
     }
 
     /**
@@ -39,16 +39,16 @@ class Tree{
                 (treeCSV);
             */
 
-        console.time('create1');
+        //console.time('create1');
         let root = d3.stratify()
             .id(d => d.id)
             .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
             (treeCSV);
         tree(root);
         this._root = root;
-        console.timeEnd('create1');
+        //console.timeEnd('create1');
 
-        console.time('create2');
+        //console.time('create2');
         let accum;
 
         root.descendants().forEach(d=>{//console.log(d);
@@ -72,16 +72,16 @@ class Tree{
                     });
             //d.data._baselevel
         });
-        console.timeEnd('create2');
+        //console.timeEnd('create2');
 
-        console.log(root);
+       // console.log(root);
         //getbaselevelInd(root, accum);
         //console.log(accum);
 
         //this.plot = d3.select("#hdPlot");
 
         let g = d3.select("#tree").attr("transform", "translate(15,15)");
-        console.time('create3');
+        //console.time('create3');
         this._link = g.selectAll(".link")
             .data(root.descendants().slice(1))
             .enter().append("path")
@@ -92,9 +92,9 @@ class Tree{
                     //+ " " + d.parent.x  + "," + d.parent.y+10
                     +"L" + d.parent.x + "," + d.parent.y;
                 });
-        console.timeEnd('create3');
+        //console.timeEnd('create3');
 
-        console.time('create4');
+        //console.time('create4');
         this._node = g.selectAll(".node")
             .data(root.descendants())
             .enter().append("g")
@@ -102,7 +102,7 @@ class Tree{
             .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });//.append("circle").attr("r", Math.sqrt(2));
-        console.timeEnd('create4');
+        //console.timeEnd('create4');
         this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
         this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
 
@@ -116,7 +116,7 @@ class Tree{
             .style("text-anchor", d => d.children ? "end" : "start")
             .text((d) => d.data.Team);
         */
-        console.time('create5');
+        //console.time('create5');
         let tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
             .offset(function() {
@@ -133,14 +133,11 @@ class Tree{
         this._node.on('mouseover', tip.show)
             .on('mouseout', tip.hide);
         //Need some change later to fix this design
-        this._node.on('click', (nodeinfo)=>this._plot.update(nodeinfo));
+        return(this._node);
+        //this._node.on('click', (nodeinfo)=>this._plot.update(nodeinfo));
 
-        d3.select('#increase')
-            .on('click', () =>  this.increasePersistence());
-        d3.select('#decrease')
-            .on('click', () =>  this.decreasePersistence());
-        console.timeEnd('create5');
 
+       // console.timeEnd('create5');
     };
 
     tooltip_render(tooltip_data) {
@@ -162,9 +159,11 @@ class Tree{
      *
      * @param row a string specifying which team was selected in the table.
      */
-    updateTree(pInter) {
+    updateTree(pInter,sizeInter) {
         // return tree back to original
         d3.selectAll("circle").remove();
+        this.pInter = pInter;
+        this.sizeInter = sizeInter;
         this._node.classed("node", true);
         this._link.classed("link", true);
         //console.log(d3.selectAll("circle"));
@@ -184,7 +183,7 @@ class Tree{
         let xmax = 0;
         d3.selectAll(".link")
             .classed("link",d=>{
-                return pfilter(d,pInter)&&sizefilter(d,20);});
+                return pfilter(d,pInter)&&sizefilter(d,sizeInter);});
             //.filter(function (d) {//console.log(d);
             //    return d.data.persistence<pInter && d.data.persistence != -1;
             //});
@@ -192,7 +191,7 @@ class Tree{
             .classed("node",d=>{
                 //console.log(d);
                 //console.log(sizefilter(d,20));
-                return pfilter(d,pInter)&&sizefilter(d,20);});
+                return pfilter(d,pInter)&&sizefilter(d,sizeInter);});
         d3.selectAll(".node").each(d=>{
             ymax = (ymax>d.y)? ymax : d.y;
             xmax = (xmax>d.x)? xmax : d.x;
@@ -269,14 +268,14 @@ class Tree{
             pers.push(parseFloat(item));
         });
         for (let i=pers.length-1; i>=0; i--) {
-            if(pers[i]>pInter){
-                pInter = pers[i];
+            if(pers[i]>this.pInter){
+                this.pInter = pers[i];
                 break;
             }
         }
-        console.log(pInter);
-        this.updateTree(pInter);
-
+        //console.log(this.pInter);
+        this.updateTree(this.pInter,this.sizeInter);
+        return this.pInter;
 
     }
     decreasePersistence(){
@@ -286,17 +285,29 @@ class Tree{
         });
         for (let i=1; i<pers.length; i++) {
             //console.log(i);
-            if(pers[i]<pInter){
-                pInter = pers[i];
+            if(pers[i]<this.pInter){
+                this.pInter = pers[i];
                 break;
             }
         }
-        console.log(pInter);
-        this.updateTree(pInter);
-
+        //console.log(this.pInter);
+        this.updateTree(this.pInter,this.sizeInter);
+        return this.pInter;
 
     }
 
+    increaseSize(){
+        this.sizeInter = this.sizeInter + 1;
+        this.updateTree(this.pInter,this.sizeInter);
+        return this.sizeInter;
+
+    }
+    decreaseSize(){
+        this.sizeInter = this.sizeInter - 1;
+        this.updateTree(this.pInter,this.sizeInter);
+        return this.sizeInter;
+
+    }
 }
 function getbaselevelInd(node, accum) {
     let i;
