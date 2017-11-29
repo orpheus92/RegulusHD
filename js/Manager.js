@@ -15,7 +15,7 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
     if (error) throw error;
     let plots = new Plots(rawdata, 600, 150);
     window.plots = plots;
-    window.plots.rawDataPlot();
+    //window.plots.rawDataPlot();
     //Load data in JS
     pInter = 0.5;
     sizeInter = 20;
