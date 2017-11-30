@@ -17,7 +17,7 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
     window.plots = plots;
     //window.plots.rawDataPlot();
     //Load data in JS
-    pInter = 0.5;
+    pInter = 2;
     sizeInter = 20;
     d3.json('data/Tree_Data.json', function (error, data) {
         if (error) throw error;
@@ -32,9 +32,9 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
         d3.csv('data/Tree_Merge.csv', function (error, treedata){
             d3.json('data/Base_Partition.json', function (error, basedata) {
                 //console.log(rawdata);
-                treenode = tree.create(treedata, partition.pers, basedata);
+                tree.create(treedata, partition.pers, basedata);
                 tree.updateTree(pInter,sizeInter);
-
+                //console.log(treenode);
                 //console.log(d3.select("#Maxp"));
                 //Slider Event
                 let x = d3.scaleLinear()
@@ -73,13 +73,15 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
                 d3.select('#increase')
                     .on('click', () => {
-                        pInter = tree.increasePersistence();
+                        pInter= tree.increasePersistence();
                         slider.handle.attr("cx", x(pInter));
                         loaddata.update(pInter,sizeInter);
                     });
                 d3.select('#decrease')
                     .on('click', () =>  {
                         pInter = tree.decreasePersistence();
+                        console.log(pInter);
+                        console.log(treenode);
                         slider.handle.attr("cx", x( pInter));
                         loaddata.update(pInter,sizeInter);
                     });
@@ -90,23 +92,24 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                     });
                 d3.select('#decreaseS')
                     .on('click', () =>  {
-
                         sizeInter = tree.decreaseSize();
                         loaddata.update(pInter,sizeInter);
                     });
                 //console.log(d3.select('#tree'));
 
-                treenode.on('click', (nodeinfo)=>{
+                console.log(d3.selectAll(".node"));
+                d3.selectAll(".node").on('click', (nodeinfo)=>{
 
                     window.plots.update(nodeinfo);
                     loaddata.select(nodeinfo);
                 });
 
+                /*
                 treenode.on('dblclick', (nodeinfo)=> {
                    //d3.select('#map').text(d3.select('#map').text() + 'dblclick, ');
                     tree.reshape(nodeinfo);
                 });
-
+                */
 
 
                 //this._node.on('click', (nodeinfo)=>plots.update(nodeinfo));

@@ -74,7 +74,8 @@ class Tree{
             //d.data._baselevel
         });
         //console.timeEnd('create2');
-
+        this._initsize = this._root.descendants().length;
+        //console.log(this._root.descendants());
        // console.log(root);
         //getbaselevelInd(root, accum);
         //console.log(accum);
@@ -83,6 +84,8 @@ class Tree{
 
         let g = d3.select("#tree").attr("transform", "translate(15,40)");
         //console.time('create3');
+
+        /*
         this._link = g.selectAll(".link")
             .data(this._root.descendants().slice(1))
             .enter().append("path")
@@ -102,22 +105,10 @@ class Tree{
             .attr("class", "node")
             .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
-                });//.append("circle").attr("r", Math.sqrt(2));
-        //console.timeEnd('create4');
-        this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
-        this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
+                }).append("circle").attr("r", Math.sqrt(1));
 
-        //console.log(node);
-        //this._node.append("circle")
-        //    .attr("r", 1);
+                */
         /*
-        node.append("text")
-            .attr("dy", 5)
-            .attr("x", (d) => d.children ? -8 : 8)
-            .style("text-anchor", d => d.children ? "end" : "start")
-            .text((d) => d.data.Team);
-        */
-        //console.time('create5');
         let tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
             .offset(function() {
@@ -134,6 +125,41 @@ class Tree{
         //console.log(this._node);
         this._node.on('mouseover', tip.show)
             .on('mouseout', tip.hide);
+
+        */
+        //console.timeEnd('create4');
+        //this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
+        //this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
+
+        //console.log(node);
+        //this._node.append("circle")
+        //    .attr("r", 1);
+        /*
+        node.append("text")
+            .attr("dy", 5)
+            .attr("x", (d) => d.children ? -8 : 8)
+            .style("text-anchor", d => d.children ? "end" : "start")
+            .text((d) => d.data.Team);
+        */
+        //console.time('create5');
+        /*
+        let tip = d3.tip().attr('class', 'd3-tip')
+            .direction('se')
+            .offset(function() {
+                return [0,0];
+            })
+            .html((d)=>{//console.log(d);
+                let tooltip_data = d.data;
+
+                return this.tooltip_render(tooltip_data);
+
+                return ;
+            });
+        this._node.call(tip);
+        //console.log(this._node);
+        this._node.on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
+        */
         //Need some change later to fix this design
         this._alldata = treeCSV;
         return(this._node);
@@ -164,15 +190,114 @@ class Tree{
      * @param row a string specifying which team was selected in the table.
      */
     updateTree(pInter,sizeInter) {
+
         // return tree back to original
-        //d3.selectAll("circle").remove();
-        console.log(this._alldata);
+        d3.select("#tree").selectAll("circle").remove();
+        //console.log(this._alldata);
+        //console.log(this._root);
+        //Filter on the tree to change children
+        this._root.descendants().forEach(d=>{//console.log(typeof(d));
+            if(pfilter(d,pInter)||sizefilter(d,sizeInter))
+            {
+                if(d["children"]!=undefined){
+                    //console.log(d);
+                    d._children = d.children;
+                    delete d.children;
+                    //d.removeAttribute("children");
+                }
+            }
+            else{
+                if(d["_children"]!=undefined){
+                    //console.log(d);
+                d.children = d._children;
+                delete d._children;
+                //d.removeAttribute("_children");
+                }
+            }
+
+        });
+
+        this._treefunc(this._root);
+
+        let cursize = this._root.descendants().length;
+        //console.log(this._root.descendants());
         this.pInter = pInter;
         this.sizeInter = sizeInter;
-        this._node.classed("node", true);
-        this._link.classed("link", true);
+        d3.select('#treetip').remove();
+        d3.select("#tree").selectAll(".link").remove();
+        d3.select("#tree").selectAll(".node").remove();
+        //d3.select("#tree").selectAll(".nodecircle").classed("nodecircle".false);//.remove();
+
+        let g = d3.select("#tree").attr("transform", "translate(15,40)");
+        //console.log(this._root.descendants());
+        //console.log(g);
+        //console.time('create3');
+        this._link = g.selectAll(".link")
+            .data(this._root.descendants().slice(1))
+            .enter().append("path")
+            .attr("class", "link")
+            .attr("d", function (d) {
+                return "M" + d.x + "," + d.y
+                    //+ "C" + d.x  + "," + d.y+10
+                    //+ " " + d.parent.x  + "," + d.parent.y+10
+                    +"L" + d.parent.x + "," + d.parent.y;
+            });
+        //console.timeEnd('create3');
+
+        //console.time('create4');
+        this._node = g.selectAll(".node")
+            .data(this._root.descendants())
+            .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            }).append("circle").attr("r", Math.log(this._initsize/cursize)).attr("class","nodecircle");
+
+        let tip = d3.tip().attr('class', 'd3-tip').attr('id','treetip')
+            .direction('se')
+            .offset(function() {
+                return [0,0];
+            })
+            .html((d)=>{//console.log(d);
+                let tooltip_data = d.data;
+
+                return this.tooltip_render(tooltip_data);
+
+                return ;
+            });
+        this._node.call(tip);
+        //console.log(this._node);
+        this._node.on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
+
+        //console.log(this._node);
+        //.append("circle").attr("r", Math.sqrt(2));
+        //console.timeEnd('create4');
+        //this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
+        //this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
+
+        //console.log(node);
+        //this._node.append("circle")
+        //    .attr("r", 1);
+        /*
+        node.append("text")
+            .attr("dy", 5)
+            .attr("x", (d) => d.children ? -8 : 8)
+            .style("text-anchor", d => d.children ? "end" : "start")
+            .text((d) => d.data.Team);
+        */
+        //console.time('create5');
+
+        //Need some change later to fix this design
+        //this._alldata = treeCSV;
+        //return(this._node);
+
+
+
+        //this._node.classed("node", true);
+        //this._link.classed("link", true);
         //console.log(d3.selectAll("circle"));
-        let linkSelection, nodeSelection;
+        //let linkSelection, nodeSelection;
         /*
         this._root.descendants().forEach(function(d){
             if(d.data.persistence<pInter && d.data.persistence != -1)
@@ -183,9 +308,10 @@ class Tree{
         */
       //  console.time('someFunction');
         //let ymin = 0;
-        let ymax = 0;
+        //let ymax = 0;
         //let xmin = 0;
-        let xmax = 0;
+        //let xmax = 0;
+        /*
         d3.selectAll(".link")
             .classed("link",d=>{
                 return pfilter(d,pInter)&&sizefilter(d,sizeInter);});
@@ -206,7 +332,7 @@ class Tree{
         //console.log(ymin,ymax,xmin,xmax);
         let xscale = (xmax!=0)?this.xmax/xmax:100;
         let yscale = (ymax!=0)?this.ymax/ymax:100;
-
+        */
         //console.timeEnd('someFunction');
 
 
@@ -228,24 +354,27 @@ class Tree{
         */
         //reposition/scale current tree
        // console.time('someFunction2');
-
+        /*
         d3.selectAll(".nodecircle")
             //.transition()
             //.duration(500)
             .remove();
-
+        */
+        /*
         d3.selectAll(".node").attr("transform", d=> { //console.log(d.x);
             return "translate(" + xscale*(d.x) + "," + yscale*(d.y) + ")";
             //return "translate(" + d.x + "," + d.y + ")";
         }).append("circle").attr("r", Math.sqrt(yscale*(1))).attr("class","nodecircle");//.enter().merge();
+        */
       //  console.timeEnd('someFunction2');
 
             //.attr("r", Math.sqrt(scaleY(1)));
       //  console.time('someFunction3');
         //console.log(d3.selectAll(".link"));
         //d3.selectAll(".link")
-        console.time("treeupdate");
+        //console.time("treeupdate");
             //this._link
+        /*
         d3.selectAll(".link")
             .transition()
             .duration(500)
@@ -258,7 +387,8 @@ class Tree{
             //+"L" + d.parent.x + "," + d.parent.y;
 
         });
-        console.timeEnd("treeupdate");
+        */
+        //console.timeEnd("treeupdate");
 
         //  console.timeEnd('someFunction3');
 
@@ -289,6 +419,7 @@ class Tree{
         }
         //console.log(this.pInter);
         this.updateTree(this.pInter,this.sizeInter);
+        //return [this.pInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.pInter;
 
     }
@@ -306,6 +437,7 @@ class Tree{
         }
         //console.log(this.pInter);
         this.updateTree(this.pInter,this.sizeInter);
+        //return [this.pInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.pInter;
 
     }
@@ -313,15 +445,22 @@ class Tree{
     increaseSize(){
         this.sizeInter = this.sizeInter + 1;
         this.updateTree(this.pInter,this.sizeInter);
+        //return [this.sizeInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.sizeInter;
 
     }
     decreaseSize(){
         this.sizeInter = this.sizeInter - 1;
         this.updateTree(this.pInter,this.sizeInter);
+        //return [this.sizeInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.sizeInter;
+    }
+    reshape(curnode){
+        console.log("reshape");
 
     }
+
+
 /*
     reshape(nodeclick){
         let ymax = 0;
@@ -514,9 +653,9 @@ function update(source) {
 */
 
 function pfilter(mydata,pInter){
-    return (mydata.data.persistence<=pInter && mydata.data.persistence != -1)? false : true;
+    return (mydata.data.persistence<=pInter && mydata.data.persistence != -1)? true : false;
 }
 function sizefilter(mydata,sizeInter){
-    return (mydata.data._total.size<sizeInter)? false : true;
+    return (mydata.data._total.size<sizeInter)? true : false;
 
 }
