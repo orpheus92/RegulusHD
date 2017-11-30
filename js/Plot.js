@@ -218,8 +218,11 @@ class Plots {
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")")
                 .attr('fill', function (d) {
                     return colorScale(d[0]);
-                });
-                /*
+                });//.call()
+            //console.log(curplot.selectAll("circle"));
+            //curplot.selectAll("circle").on('mouseover', console.log("mouseover"))
+            //    .on('mouseout', console.log("mouseout"));
+            /*
                 let faithful = obj[attr[datacol - 1]];
                 console.log(faithful);
                 let density = kernelDensityEstimator(kernelEpanechnikov(7), xScale.ticks(40))(faithful);

@@ -18,7 +18,8 @@ class Tree{
      */
 
     create(treeCSV,pers,basedata) {
-
+        this.pInter = pInter;
+        this.sizeInter = sizeInter;
 
         treeCSV.forEach(function (d) {//console.log(d);
 
@@ -130,6 +131,7 @@ class Tree{
                 return ;
             });
         this._node.call(tip);
+        //console.log(this._node);
         this._node.on('mouseover', tip.show)
             .on('mouseout', tip.hide);
         //Need some change later to fix this design
@@ -197,13 +199,12 @@ class Tree{
             xmax = (xmax>d.x)? xmax : d.x;
         })
 
-
         //console.log(d3.selectAll(".link"));
         //console.log(ymin,ymax,xmin,xmax);
         let xscale = (xmax!=0)?this.xmax/xmax:100;
         let yscale = (ymax!=0)?this.ymax/ymax:100;
 
-      //  console.timeEnd('someFunction');
+        //console.timeEnd('someFunction');
 
 
 
@@ -248,9 +249,9 @@ class Tree{
             .attr("d", d=> {
             //return "M" + d.x + "," + d.y
             return "M" + xscale*(d.x) + "," + yscale*(d.y)
-                //+ "C" + d.x  + "," + d.y+10
-                //+ " " + d.parent.x  + "," + d.parent.y+10
-                +"L" + xscale*(d.parent.x) + "," + yscale*(d.parent.y);
+            //    + "C" +  xscale*(d.x)  + "," + yscale*((d.y+d.parent.y))/2
+            //    + "" + xscale*(d.parent.x)  + "," + yscale*((d.y+d.parent.y))/2
+                + "L" + xscale*(d.parent.x) + "," + yscale*(d.parent.y);
             //+"L" + d.parent.x + "," + d.parent.y;
 
         });
@@ -318,6 +319,30 @@ class Tree{
         return this.sizeInter;
 
     }
+/*
+    reshape(nodeclick){
+        let ymax = 0;
+        let xmax = 0;
+
+        d3.selectAll(".node").each(d=>{
+            xmax = (xmax>d.x)? xmax : d.x;
+            ymax = (ymax>d.y)? ymax : d.y;
+        });
+
+        let xscale = (xmax!=0)?this.xmax/xmax:100;
+        let yscale = (ymax!=0)?this.ymax/ymax:100;
+
+        //console.log("double click");
+        //console.log(nodeclick);
+        //nodeclick.classed(".node",true);
+
+        d3.selectAll(".node").each(d=>{
+            ymax = (ymax>d.y)? ymax : d.y;
+            xmax = (xmax>d.x)? xmax : d.x;
+        })
+
+    }
+*/
 }
 function getbaselevelInd(node, accum) {
     let i;
