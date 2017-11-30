@@ -9,11 +9,14 @@ class Load {
 
     }
     create(data,rawdata,cpInter,csInter){
+
         this.rawdata = rawdata;
         //console.log(data);
         this.raw.append("li").text("Total Number of Points: "+ rawdata.length);//.classed("cplabel", true);
         this.raw.append("li").text("All Attributes: "+ rawdata.columns);
         let totalper = Object.keys(data).sort(function(b,a){return b-a});
+        this.maxP = totalper.slice(-1)[0];
+        this.minP = totalper[1];
         //console.log(totalper);
         this.persistence.append("li")
             .attr("dy", 0)
@@ -26,7 +29,7 @@ class Load {
         this.cper.append("li").text("Current Persistence: "+ cpInter).classed("cplabel", true);
         this.csize.append("li").text("Partition Size: "+ csInter).classed("cslabel", true);
         this.sMSC.append("li").text("No Partition Selected").classed("sMSC", true);
-
+        return([this.maxP, this.minP]);
     }
 
     update(cpInter,csInter){

@@ -80,7 +80,7 @@ class Tree{
 
         //this.plot = d3.select("#hdPlot");
 
-        let g = d3.select("#tree").attr("transform", "translate(15,15)");
+        let g = d3.select("#tree").attr("transform", "translate(15,40)");
         //console.time('create3');
         this._link = g.selectAll(".link")
             .data(root.descendants().slice(1))
@@ -225,7 +225,7 @@ class Tree{
         //reposition/scale current tree
        // console.time('someFunction2');
 
-        d3.selectAll("circle")
+        d3.selectAll(".nodecircle")
             //.transition()
             //.duration(500)
             .remove();
@@ -233,7 +233,7 @@ class Tree{
         d3.selectAll(".node").attr("transform", d=> { //console.log(d.x);
             return "translate(" + xscale*(d.x) + "," + yscale*(d.y) + ")";
             //return "translate(" + d.x + "," + d.y + ")";
-        }).append("circle").attr("r", Math.sqrt(yscale*(1)));//.enter().merge();
+        }).append("circle").attr("r", Math.sqrt(yscale*(1))).attr("class","nodecircle");//.enter().merge();
       //  console.timeEnd('someFunction2');
 
             //.attr("r", Math.sqrt(scaleY(1)));
