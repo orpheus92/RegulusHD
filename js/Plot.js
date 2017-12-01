@@ -4,7 +4,7 @@ class Plots {
     constructor(data, widht, height) {
         this._rawdata = data;
         this._data = data;
-        this._margin = {top: 20, right: 30, bottom: 20, left: 40};
+        this._margin = {top: 20, right: 30, bottom: 50, left: 50};
         this._width = widht;
         this._height = height;
 
@@ -43,6 +43,7 @@ class Plots {
         }
     }
 
+    //pairwisePlot
     PairwisePlot() {
         let data = this._data;
         let margin = this._margin;
@@ -103,12 +104,13 @@ class Plots {
 
                 let svg = newplot.append("svg")
                     .attr("height", this._height)
-                    .attr("width", this._width)
+                    .attr("width", this._width);
+                let g = svg
                     .append('g')
                     .attr('id', "pairwisePlot" + i)
                     .attr("transform", "translate(" + [margin.left, margin.top] + ")");
 
-                svg.selectAll("circle")
+                g.selectAll("circle")
                     .data(curData)
                     .enter()
                     .append("circle")
@@ -123,19 +125,31 @@ class Plots {
                         return colorScale(d.z);
                     });
 
-                svg
+                g
                     .append('g')
                     .attr('id', "xAxis" + i)
                     .call( d3.axisBottom(x).scale(x))
                     .attr("transform", "translate(" + [0, height] + ")");//.attr("class","label");;
-                svg
+                g
                     .append('g')
                     .attr('id', "yAxis" + i)
                     .call(d3.axisLeft(y).scale(y));
 
+                svg
+                    .append("text")
+                    .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                    .attr("transform", "translate("+ (this._width/2) +","+(this._height-margin.bottom/3)+")")  // centre below axis
+                    .text(attr[i]);
+                svg
+                    .append("text")
+                    .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                    .attr("transform", "translate("+ (margin.left/3) +","+(this._height/2)+")rotate(-90)")
+                    .text(attr[i_2]);
+
             }
         }
     }
+
     tooltip_render(d,ind) {
         let text = "";
         for (let i = 0;i<this._attr.length;i++){
@@ -194,14 +208,11 @@ class Plots {
             yScale.domain([d3.min(obj[attr[i]], value), d3.max(obj[attr[i]], value)]);
             newplot.append("svg")
                 .attr('id', "plot" + i);
-            //console.log(obj[attr[datacol - 1]]);
-            //console.log(obj[attr[i]]);
             curplot = d3.select("#plot" + i).data([{
                 x: obj[attr[datacol - 1]],//d3.range(n).map(function(i) { return i / n; }),
                 y: obj[attr[i]]//d3.range(n).map(function(i) { return Math.sin(4 * i * Math.PI / n) + (Math.random() - .5) / 5; })
             }]);
 
-            //console.log(curplot);
             curplot.attr("height", height)
                 .attr("width", width);
 
@@ -250,9 +261,27 @@ class Plots {
             xAxis.scale(xScale);
             yAxis.scale(yScale);
 
-            curplot.select("#xAxis" + i).call(xAxis).attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")");//.attr("class","label");
+            curplot.select("#xAxis" + i)
+                .call(xAxis)
+                .attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")");//.attr("class","label");
             //Translate for y_val will be modified later
-            curplot.select("#yAxis" + i).call(yAxis).attr("transform", "translate(" + [margin.left, margin.top] + ")");
+            curplot.select("#yAxis" + i)
+                .call(yAxis)
+                .attr("transform", "translate(" + [margin.left, margin.top] + ")");
+
+            curplot
+                .append("text")
+                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                .attr("transform", "translate("+ (width/2) +","+(height-margin.bottom/3)+")")  // centre below axis
+                .text(attr[datacol - 1]);
+            curplot
+                .append("text")
+                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                .attr("transform", "translate("+ (margin.left/2) +","+(height/2)+")rotate(-90)")
+                .text(attr[i]);
+
+
+
                 /*
                 .append("text")
                 .classed("label", true)
@@ -312,13 +341,13 @@ class Plots {
                 .domain([localMin, localMax])
                 .range([0, width]);
 
-            newplot.append("svg")
+            let svg = newplot.append("svg")
                 .attr("height", this._height)
-                .attr("width", this._width)
+                .attr("width", this._width);
+            let g = svg
                 .append('g')
                 .attr('id', "boxPlot" + i)
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")");
-            let g = newplot.select("#boxPlot" + i);
 
             g.append("line")
                 .attr("x1", xScale(record.whiskers[0]))
@@ -373,6 +402,13 @@ class Plots {
                 .attr("y", height / 2 + 15)
                 .text(record.whiskers[0].toFixed(2))
                 .attr("style", "text-anchor: middle;");
+
+            svg
+                .append("text")
+                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                .attr("transform", "translate("+ (this._width/2) +","+(this._height-margin.bottom/3)+")")  // centre below axis
+                .text(attr[i]);
+
 
 
         }
@@ -436,12 +472,13 @@ class Plots {
 
             let svg = newplot.append("svg")
                 .attr("height", this._height)
-                .attr("width", this._width)
-                .append('g')
+                .attr("width", this._width);
+
+            let g = svg.append('g')
                 .attr('id', "boxPlot" + i)
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")");
 
-            svg.selectAll("rect")
+            g.selectAll("rect")
                 .data(bins)
                 .enter()
                 .append("rect")
@@ -460,16 +497,29 @@ class Plots {
                 .style("stroke", "white")
                 .style("stroke-width", 1);
 
-            svg
+            g
                 .append('g')
                 .attr('id', "xAxis" + i)
                 .call(d3.axisBottom(x).tickValues(tickrange))
-                .attr("transform", "translate(" + [0, height] + ")");//.attr("class","label");;
-            svg
+                .attr("transform", "translate(" + [0, height] + ")");
+
+            g
                 .append('g')
                 .attr('id', "yAxis" + i)
                 .call(d3.axisLeft(y))
+
+            svg
+                .append("text")
+                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                .attr("transform", "translate("+ (this._width/2) +","+(this._height-margin.bottom/3)+")")  // centre below axis
+                .text(attr[i]);
+            // svg
+            //     .append("text")
+            //     .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            //     .attr("transform", "translate("+ (margin.left/2) +","+(this._height/2)+")rotate(-90)")
+            //     .text("Value");
             //.attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");;
+
 
         }
     }
