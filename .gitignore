@@ -1,7 +1,7 @@
 node_modules
 lib
 dist
-.idea/workspace.xm
+.idea/workspace.xml
 
 #logs
 logs
