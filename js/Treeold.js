@@ -1,6 +1,6 @@
 /** Class implementing the tree view. */
 //export {Tree} from './Tree.js';
-class Tree{
+class Treeold{
     /**
      * Creates a Tree Object
      */
@@ -43,9 +43,9 @@ class Tree{
             .id(d => d.id)
             .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
             (treeCSV);
-        //console.time('create1');
+        console.time('create1');
         this._treefunc(this._root);
-        //console.timeEnd('create1');
+        console.timeEnd('create1');
 
         //this._root = root;
 
@@ -54,7 +54,7 @@ class Tree{
 
         this._root.descendants().forEach(d=>{//console.log(d);
             accum = [];
-            accum = getbaselevelInd(d, accum);
+            accum = getbaselevelInd2(d, accum);
             d.data._baselevel = new Set(accum);
             d.data._total = new Set();
             d.data._baselevel.forEach(dd=> {
@@ -74,18 +74,15 @@ class Tree{
             //d.data._baselevel
         });
         //console.timeEnd('create2');
-        this._initsize = this._root.descendants().length;
-        //console.log(this._root.descendants());
+
        // console.log(root);
-        //getbaselevelInd(root, accum);
+        //getbaselevelInd2(root, accum);
         //console.log(accum);
 
         //this.plot = d3.select("#hdPlot");
 
         let g = d3.select("#tree").attr("transform", "translate(15,40)");
         //console.time('create3');
-
-
         this._link = g.selectAll(".link")
             .data(this._root.descendants().slice(1))
             .enter().append("path")
@@ -105,30 +102,10 @@ class Tree{
             .attr("class", "node")
             .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
-                });
-
-        /*
-        let tip = d3.tip().attr('class', 'd3-tip')
-            .direction('se')
-            .offset(function() {
-                return [0,0];
-            })
-            .html((d)=>{//console.log(d);
-                let tooltip_data = d.data;
-
-                return this.tooltip_render(tooltip_data);
-
-                return ;
-            });
-        this._node.call(tip);
-        //console.log(this._node);
-        this._node.on('mouseover', tip.show)
-            .on('mouseout', tip.hide);
-
-        */
+                });//.append("circle").attr("r", Math.sqrt(2));
         //console.timeEnd('create4');
-        //this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
-        //this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
+        this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
+        this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
 
         //console.log(node);
         //this._node.append("circle")
@@ -141,7 +118,6 @@ class Tree{
             .text((d) => d.data.Team);
         */
         //console.time('create5');
-        /*
         let tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
             .offset(function() {
@@ -158,25 +134,7 @@ class Tree{
         //console.log(this._node);
         this._node.on('mouseover', tip.show)
             .on('mouseout', tip.hide);
-        */
         //Need some change later to fix this design
-        let tip = d3.tip().attr('class', 'd3-tip').attr('id','treetip')
-            .direction('se')
-            .offset(function() {
-                return [0,0];
-            })
-            .html((d)=>{//console.log(d);
-                let tooltip_data = d.data;
-
-                return this.tooltip_render(tooltip_data);
-
-                return ;
-            });
-        //console.log(this._node);
-        this._node.call(tip);
-        //console.log(this._node);
-        this._node.on('mouseover', tip.show)
-            .on('mouseout', tip.hide);
         this._alldata = treeCSV;
         return(this._node);
         //this._node.on('click', (nodeinfo)=>this._plot.update(nodeinfo));
@@ -206,124 +164,15 @@ class Tree{
      * @param row a string specifying which team was selected in the table.
      */
     updateTree(pInter,sizeInter) {
-
         // return tree back to original
-        d3.select("#tree").selectAll("circle").remove();
+        //d3.selectAll("circle").remove();
         //console.log(this._alldata);
-        //console.log(this._root);
-        //Filter on the tree to change children
-        this._root.descendants().forEach(d=>{//console.log(d);
-            if(pfilter(d,pInter)||sizefilter(d,sizeInter))
-            {
-                if(d["children"]!=undefined){
-                    //console.log(d);
-                    d._children = d.children;
-                    delete d.children;
-                    //d.removeAttribute("children");
-                }
-            }
-            else{
-                if(d["_children"]!=undefined){
-                    //console.log(d);
-                d.children = d._children;
-                delete d._children;
-                //d.removeAttribute("_children");
-                }
-            }
-
-        });
-        // assign x ang y for each node
-        this._treefunc(this._root);
-       //console.log(this._node);
-        let cursize = this._root.descendants().length;
-        //console.log(cursize);
-        //console.log(this._root.descendants());
         this.pInter = pInter;
         this.sizeInter = sizeInter;
-        //d3.select('#treetip').remove();
-        //console.log(this._node);
-
         this._node.classed("node", true);
-        //console.log(d3.selectAll(".node"));
         this._link.classed("link", true);
-        //console.log(d3.selectAll(".link"));
-        //d3.select("#tree").selectAll(".link").remove();
-        //d3.select("#tree").selectAll(".node").remove();
-        //d3.select("#tree").selectAll(".nodecircle").classed("nodecircle".false);//.remove();
-        //console.log(d3.selectAll(".link"));
-        d3.selectAll(".link")
-            .classed("link",d=>{
-                return checknode(d);});
-        //.filter(function (d) {//console.log(d);
-        //    return d.data.persistence<pInter && d.data.persistence != -1;
-        //});
-        //console.log(d3.selectAll(".link"));
-
-        d3.selectAll(".node")
-            .classed("node",d=>{
-                //console.log(d);
-                //console.log(sizefilter(d,20));
-                return checknode(d);});
-
-        let g = d3.select("#tree").attr("transform", "translate(15,40)");
-        //console.log(this._root.descendants());
-        //console.log(g);
-        //console.time('create3');
-       g.selectAll(".link")
-            //.data(this._root.descendants().slice(1))
-            //.enter().append("path")
-            //.attr("class", "link")
-            .attr("d", function (d) {
-                return "M" + d.x + "," + d.y
-                    //+ "C" + d.x  + "," + d.y+10
-                    //+ " " + d.parent.x  + "," + d.parent.y+10
-                    +"L" + d.parent.x + "," + d.parent.y;
-            });
-        //console.timeEnd('create3');
-
-        //console.time('create4');
-        //console.log(d3.selectAll(".link"));
-        //console.log(this._node);
-
-        //console.log(d3.selectAll(".node"));
-        g.selectAll(".node")
-            //.data(this._root.descendants())
-            //.enter().append("g")
-            //.attr("class", "node")
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            }).append("circle").attr("r", Math.log(this._initsize/cursize));
-
-
-
-        //console.log(this._node);
-        //.append("circle").attr("r", Math.sqrt(2));
-        //console.timeEnd('create4');
-        //this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
-        //this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
-
-        //console.log(node);
-        //this._node.append("circle")
-        //    .attr("r", 1);
-        /*
-        node.append("text")
-            .attr("dy", 5)
-            .attr("x", (d) => d.children ? -8 : 8)
-            .style("text-anchor", d => d.children ? "end" : "start")
-            .text((d) => d.data.Team);
-        */
-        //console.time('create5');
-
-        //Need some change later to fix this design
-        //this._alldata = treeCSV;
-        //return(this._node);
-
-
-
-        //this._node.classed("node", true);
-        //this._link.classed("link", true);
         //console.log(d3.selectAll("circle"));
-        //let linkSelection, nodeSelection;
+        let linkSelection, nodeSelection;
         /*
         this._root.descendants().forEach(function(d){
             if(d.data.persistence<pInter && d.data.persistence != -1)
@@ -334,21 +183,20 @@ class Tree{
         */
       //  console.time('someFunction');
         //let ymin = 0;
-        //let ymax = 0;
+        let ymax = 0;
         //let xmin = 0;
-        //let xmax = 0;
-        /*
+        let xmax = 0;
         d3.selectAll(".link")
             .classed("link",d=>{
-                return pfilter(d,pInter)&&sizefilter(d,sizeInter);});
+                return pfilter2(d,pInter)&&sizefilter2(d,sizeInter);});
             //.filter(function (d) {//console.log(d);
             //    return d.data.persistence<pInter && d.data.persistence != -1;
             //});
         d3.selectAll(".node")
             .classed("node",d=>{
                 //console.log(d);
-                //console.log(sizefilter(d,20));
-                return pfilter(d,pInter)&&sizefilter(d,sizeInter);});
+                //console.log(sizefilter2(d,20));
+                return pfilter2(d,pInter)&&sizefilter2(d,sizeInter);});
         d3.selectAll(".node").each(d=>{
             ymax = (ymax>d.y)? ymax : d.y;
             xmax = (xmax>d.x)? xmax : d.x;
@@ -358,7 +206,7 @@ class Tree{
         //console.log(ymin,ymax,xmin,xmax);
         let xscale = (xmax!=0)?this.xmax/xmax:100;
         let yscale = (ymax!=0)?this.ymax/ymax:100;
-        */
+
         //console.timeEnd('someFunction');
 
 
@@ -380,27 +228,24 @@ class Tree{
         */
         //reposition/scale current tree
        // console.time('someFunction2');
-        /*
+
         d3.selectAll(".nodecircle")
             //.transition()
             //.duration(500)
             .remove();
-        */
-        /*
+
         d3.selectAll(".node").attr("transform", d=> { //console.log(d.x);
             return "translate(" + xscale*(d.x) + "," + yscale*(d.y) + ")";
             //return "translate(" + d.x + "," + d.y + ")";
         }).append("circle").attr("r", Math.sqrt(yscale*(1))).attr("class","nodecircle");//.enter().merge();
-        */
       //  console.timeEnd('someFunction2');
 
             //.attr("r", Math.sqrt(scaleY(1)));
       //  console.time('someFunction3');
         //console.log(d3.selectAll(".link"));
         //d3.selectAll(".link")
-        //console.time("treeupdate");
+        console.time("treeupdate");
             //this._link
-        /*
         d3.selectAll(".link")
             .transition()
             .duration(500)
@@ -413,8 +258,7 @@ class Tree{
             //+"L" + d.parent.x + "," + d.parent.y;
 
         });
-        */
-        //console.timeEnd("treeupdate");
+        console.timeEnd("treeupdate");
 
         //  console.timeEnd('someFunction3');
 
@@ -445,7 +289,6 @@ class Tree{
         }
         //console.log(this.pInter);
         this.updateTree(this.pInter,this.sizeInter);
-        //return [this.pInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.pInter;
 
     }
@@ -463,7 +306,6 @@ class Tree{
         }
         //console.log(this.pInter);
         this.updateTree(this.pInter,this.sizeInter);
-        //return [this.pInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.pInter;
 
     }
@@ -471,66 +313,15 @@ class Tree{
     increaseSize(){
         this.sizeInter = this.sizeInter + 1;
         this.updateTree(this.pInter,this.sizeInter);
-        //return [this.sizeInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.sizeInter;
 
     }
     decreaseSize(){
         this.sizeInter = this.sizeInter - 1;
         this.updateTree(this.pInter,this.sizeInter);
-        //return [this.sizeInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.sizeInter;
-    }
-    reshape(curnode){
-        //console.log(curnode);
-        //collapse or open
-        d3.select("#tree").selectAll("circle").remove();
-
-        curnode.children.forEach(d=>{
-            if(d._children!=undefined)
-            {
-                d.children =d._children;
-                delete d._children;
-            }
-            else{
-                d._children =d.children;
-                delete d.children;
-            }
-        });
-        this._treefunc(this._root);
-
-        let cursize = this._root.descendants().length;
-
-        //this.pInter = pInter;
-        //this.sizeInter = sizeInter;
-
-        this._node.classed("node", true);
-        this._link.classed("link", true);
-
-        d3.selectAll(".link")
-            .classed("link",d=>{
-                return checknode(d);});
-
-        d3.selectAll(".node")
-            .classed("node",d=>{
-                return checknode(d);});
-
-        let g = d3.select("#tree").attr("transform", "translate(15,40)");
-        g.selectAll(".link")
-            .attr("d", function (d) {
-                return "M" + d.x + "," + d.y
-                    //+ "C" + d.x  + "," + d.y+10
-                    //+ " " + d.parent.x  + "," + d.parent.y+10
-                    +"L" + d.parent.x + "," + d.parent.y;
-            });
-        g.selectAll(".node")
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            }).append("circle").attr("r", Math.log(this._initsize/cursize));
 
     }
-
-
 /*
     reshape(nodeclick){
         let ymax = 0;
@@ -556,14 +347,14 @@ class Tree{
     }
 */
 }
-function getbaselevelInd(node, accum) {
+function getbaselevelInd2(node, accum) {
     let i;
     //console.log(node.children);
     if (node.children != null) {
         accum = accum || [];
         for (i = 0; i < node.children.length; i++) {
             accum.push(node.children[i].data.index)
-            getbaselevelInd(node.children[i], accum);
+            getbaselevelInd2(node.children[i], accum);
         }
     }
     else
@@ -722,24 +513,10 @@ function update(source) {
 }
 */
 
-function pfilter(mydata,pInter){
-    return (mydata.data.persistence<=pInter && mydata.data.persistence != -1)? true : false;
+function pfilter2(mydata,pInter){
+    return (mydata.data.persistence<=pInter && mydata.data.persistence != -1)? false : true;
 }
-function sizefilter(mydata,sizeInter){
-    return (mydata.data._total.size<sizeInter)? true : false;
+function sizefilter2(mydata,sizeInter){
+    return (mydata.data._total.size<sizeInter)? false : true;
 
-}
-function checknode(curnode){
-    //console.log(curnode);
-    //console.log(curnode["_children"]);
-    //console.log(curnode["children"]);
-    //return (mydata.data._total.size<sizeInter)? true : false;
-    if(curnode["_children"]!=undefined){
-        return false;
-    }
-    else if(curnode["children"]==undefined){
-        return false;
-    }
-    else
-        return true;
 }

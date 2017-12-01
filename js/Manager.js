@@ -73,7 +73,7 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
                 d3.select('#increase')
                     .on('click', () => {
-                        pInter= tree.increasePersistence();
+                        pInter = tree.increasePersistence();
                         slider.handle.attr("cx", x(pInter));
                         loaddata.update(pInter,sizeInter);
                     });
@@ -104,12 +104,12 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                     loaddata.select(nodeinfo);
                 });
 
-                /*
+
                 treenode.on('dblclick', (nodeinfo)=> {
                    //d3.select('#map').text(d3.select('#map').text() + 'dblclick, ');
                     tree.reshape(nodeinfo);
                 });
-                */
+
 
 
                 //this._node.on('click', (nodeinfo)=>plots.update(nodeinfo));
