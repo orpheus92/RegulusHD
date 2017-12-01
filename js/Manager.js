@@ -98,14 +98,15 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                 //console.log(d3.select('#tree'));
 
                 //console.log(d3.selectAll(".node"));
-                treenode.on('click', (nodeinfo)=>{
+
+                treenode.on('dblclick', (nodeinfo)=>{
 
                     window.plots.update(nodeinfo);
                     loaddata.select(nodeinfo);
                 });
 
 
-                treenode.on('dblclick', (nodeinfo)=> {
+                treenode.on('click', (nodeinfo)=> {
                    //d3.select('#map').text(d3.select('#map').text() + 'dblclick, ');
                     tree.reshape(nodeinfo);
                 });

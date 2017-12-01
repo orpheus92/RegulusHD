@@ -482,21 +482,28 @@ class Tree{
         return this.sizeInter;
     }
     reshape(curnode){
-        //console.log(curnode);
-        //collapse or open
-        d3.select("#tree").selectAll("circle").remove();
 
-        curnode.children.forEach(d=>{
-            if(d._children!=undefined)
-            {
-                d.children =d._children;
-                delete d._children;
+        d3.select("#tree").selectAll("circle").remove();
+        //open
+        if(curnode.children[0]._children!=undefined)
+        {curnode.descendants().forEach(d=>{
+            if(d.id!=curnode.id) {
+                if (d._children != undefined) {
+                    d.children = d._children;
+                    delete d._children;
+                }
             }
+        });}
+        //collapse
             else{
-                d._children =d.children;
-                delete d.children;
+        curnode.descendants().forEach(d=>{
+            if(d.id!=curnode.id) {
+                if(d.children != undefined) {
+                    d._children = d.children;
+                    delete d.children;
+                }
             }
-        });
+        });}
         this._treefunc(this._root);
 
         let cursize = this._root.descendants().length;
