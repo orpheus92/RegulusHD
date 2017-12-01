@@ -115,39 +115,7 @@ class Tree{
                     return "translate(" + d.x + "," + d.y + ")";
                 });
 
-        /*
-        let tip = d3.tip().attr('class', 'd3-tip')
-            .direction('se')
-            .offset(function() {
-                return [0,0];
-            })
-            .html((d)=>{//console.log(d);
-                let tooltip_data = d.data;
 
-                return this.tooltip_render(tooltip_data);
-
-                return ;
-            });
-        this._node.call(tip);
-        //console.log(this._node);
-        this._node.on('mouseover', tip.show)
-            .on('mouseout', tip.hide);
-
-        */
-        //console.timeEnd('create4');
-        //this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
-        //this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
-
-        //console.log(node);
-        //this._node.append("circle")
-        //    .attr("r", 1);
-        /*
-        node.append("text")
-            .attr("dy", 5)
-            .attr("x", (d) => d.children ? -8 : 8)
-            .style("text-anchor", d => d.children ? "end" : "start")
-            .text((d) => d.data.Team);
-        */
         //console.time('create5');
         /*
         let tip = d3.tip().attr('class', 'd3-tip')
@@ -317,7 +285,7 @@ class Tree{
             //.attr("class", "node")
             .attr("transform", function (d) {
                 return "translate(" + d.x + "," + d.y + ")";
-            }).append("circle").attr("r", Math.log(this._initsize/cursize));
+            }).append("circle").attr("r", Math.log(this._initsize/cursize)).attr("class","treedis");
 
 
 
@@ -445,6 +413,75 @@ class Tree{
 
     }
 
+    updateTree2(ppp,sss) {
+
+        //console.log(ppp);
+        this.pInter = ppp;
+        this.sizeInter = sss;
+        // return tree back to original
+        d3.select("#tree").selectAll("circle").remove();
+
+        //this._curroot = this._root;
+
+        this._curroot = d3.stratify()
+            .id(d => d.id)
+            .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
+            (this._alldata);
+
+        this._curroot.descendants().forEach(d=>{//console.log(this.pInter);
+            if(pfilter(d,this.pInter)||sizefilter(d,this.sizeInter))
+            {
+                if(d["children"]!=undefined){
+                    //console.log(d);
+                    d._children = d.children;
+                    delete d.children;
+                    //d.removeAttribute("children");
+                }
+            }
+            else{
+                if(d["_children"]!=undefined){
+                    //console.log(d);
+                    d.children = d._children;
+                    delete d._children;
+                    //d.removeAttribute("_children");
+                }
+            }
+
+        });
+
+        this._treefunc(this._curroot);
+        let cursize = this._curroot.descendants().length;
+        this._node.classed("node", true);
+        this._link.classed("link", true);
+
+        d3.selectAll(".link")
+            .classed("link",d=>{
+                return checknode(d);});
+
+        d3.selectAll(".node")
+            .classed("node",d=>{
+                return checknode(d);});
+
+        let g = d3.select("#tree").attr("transform", "translate(15,40)");
+
+        g.selectAll(".link")
+            .transition()
+            .duration(500)
+            .attr("d", function (d) {
+                return "M" + d.x + "," + d.y
+                    //+ "C" + d.x  + "," + d.y+10
+                    //+ " " + d.parent.x  + "," + d.parent.y+10
+                    +"L" + d.parent.x + "," + d.parent.y;
+            });
+
+        g.selectAll(".node")
+
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            }).append("circle").attr("r", Math.log(this._initsize/cursize));
+    }
+
+
     /**
      * Removes all highlighting from the tree.
      */
@@ -560,9 +597,10 @@ class Tree{
         g.selectAll(".node")
             .attr("transform", function (d) {
                 return "translate(" + d.x + "," + d.y + ")";
-            }).append("circle").attr("r", Math.log(this._initsize/cursize));
+            }).append("circle").attr("r", Math.log(this._initsize/cursize)).attr("class","treedis");
 
     }
+
 
 
 /*

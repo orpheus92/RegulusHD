@@ -56,12 +56,16 @@ class Plots {
         let datarow = data.length;
 
         for (let i = 0; i < datacol - 1; i++) {
+
             for (let i_2 = i + 1; i_2 < datacol - 1; i_2++) {
                 let curData = [];
                 for (let j = 0; j < datarow; j++) {
                     let curPoint = {};
                     curPoint.x = parseFloat(data[j][attr[i]]);
+                    //console.log(attr[i]);
                     curPoint.y = parseFloat(data[j][attr[i_2]]);
+                    //console.log(attr[i_2]);
+                    curPoint.z = parseFloat(data[j][attr[datacol-1]]);
                     curData.push(curPoint);
                 }
 
@@ -77,6 +81,12 @@ class Plots {
                 let y_maxVal = d3.max(curData, function (d) {
                     return d.y;
                 });
+                let z_minVal = d3.min(curData, function (d) {
+                    return d.z;
+                });
+                let z_maxVal = d3.max(curData, function (d) {
+                    return d.z;
+                });
 
                 let x = d3.scaleLinear()
                     .domain([x_minVal, x_maxVal])
@@ -89,7 +99,7 @@ class Plots {
 
                 let colorScale = d3.scaleLinear()
                     .range(['blue', 'red'])
-                    .domain([y_minVal, y_maxVal]);
+                    .domain([z_minVal, z_maxVal]);
 
                 let svg = newplot.append("svg")
                     .attr("height", this._height)
@@ -102,7 +112,7 @@ class Plots {
                     .data(curData)
                     .enter()
                     .append("circle")
-                    .attr("r",1)
+                    .attr("r",2)
                     .attr("cx", function (d) {
                         return x(d.x);
                     })
@@ -110,7 +120,7 @@ class Plots {
                         return y(d.y);
                     })
                     .attr('fill', function (d) {
-                        return colorScale(d.y);
+                        return colorScale(d.z);
                     });
 
                 svg
@@ -126,10 +136,17 @@ class Plots {
             }
         }
     }
-
+    tooltip_render(d,ind) {
+        let text = "";
+        for (let i = 0;i<this._attr.length;i++){
+            //console.log(d3.select("#plot" + i).selectAll("circle"));
+            text +=  "<li>"+ this._attr[i]+ ": "+ this._obj[this._attr[i]][ind];
+        }
+        return text;
+    }
     //rawDataPlot
     rawDataPlot() {
-
+        d3.selectAll('#plottip').remove();
         let data = this._data;
         let margin = this._margin;
         let height = this._height;
@@ -148,14 +165,14 @@ class Plots {
                 obj[attr[j]].push(parseFloat(data[i][attr[j]]));
             }
         }
-
+        this._obj = obj;
+        this._attr = attr;
         let value = function (d) {
             return d;
         }; // data -> value
 
         let minVal = d3.min(obj[attr[datacol - 1]], value);
         let maxVal = d3.max(obj[attr[datacol - 1]], value);
-
 
         let yScale = d3.scaleLinear()
                 .range([height - margin.top - margin.bottom, 0])
@@ -172,8 +189,8 @@ class Plots {
 
 
         let curplot;
-        for (let i = 0; i < datacol - 1; i++) {
 
+        for (let i = 0; i < datacol - 1; i++) {
             yScale.domain([d3.min(obj[attr[i]], value), d3.max(obj[attr[i]], value)]);
             newplot.append("svg")
                 .attr('id', "plot" + i);
@@ -185,82 +202,66 @@ class Plots {
             }]);
 
             //console.log(curplot);
-
             curplot.attr("height", height)
                 .attr("width", width);
-            //.attr()
+
             curplot.append('g').attr('id', "xAxis" + i);
             curplot.append('g').attr('id', "yAxis" + i);
-
-            //let loess = science.stats.loess().bandwidth(.2),
-            //    line = d3.line()
-            //        .x(function(d) { return xScale(d[0]); })
-            //        .y(function(d,ind) { return yScale(obj[attr[i]][ind]); });
-
-            curplot.selectAll("circle")
+            //d3.selectAll("#plottip").remove();
+            let curscatter = curplot.selectAll("circle")
                 //.data(obj[attr[i]])
                 .data(function(d) {
-                    //console.log(d.x);
-                    //console.log(d.y);
                     return d3.zip(d.x, d.y); })
                 .enter()
                 .append("circle")
-                .attr("r", 1)
+                .attr("r", 2)
                 .attr("cx", function(d) { return xScale(d[0]); })
                 .attr("cy", function(d) { return yScale(d[1]); })
-                //.attr("cx", function (d, i) {
-                //    return xScale(obj[attr[datacol - 1]][i]);
-                //})
                 .attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")")
-                //.attr("cy", function (d) {
-                //    return yScale(d);
-                //})
                 .attr("transform", "translate(" + [margin.left, margin.top] + ")")
                 .attr('fill', function (d) {
                     return colorScale(d[0]);
-                });//.call()
-            //console.log(curplot.selectAll("circle"));
-            //curplot.selectAll("circle").on('mouseover', console.log("mouseover"))
-            //    .on('mouseout', console.log("mouseout"));
-            /*
-                let faithful = obj[attr[datacol - 1]];
-                console.log(faithful);
-                let density = kernelDensityEstimator(kernelEpanechnikov(7), xScale.ticks(40))(faithful);
-            //console.log(loess(1,2));
-                console.log(density);
-                curplot.selectAll("path")
-                //.data(function(d) {
-                //    return d3.zip(d.x, d.y); })
-                    .datum(density)
-                    .enter()
-                    .append("path")
-                    .attr("fill", "none")
-                    .attr("stroke", "#000")
-                    .attr("stroke-width", 1.5)
-                    .attr("stroke-linejoin", "round")
-                    .attr("d",  d3.line()
-                        .curve(d3.curveBasis)
-                        .x(function(d) { return x(d[0]); })
-                        .y(function(d) { return y(d[1]); }));
-                        */
-            /*
-            curplot.selectAll("path")
-                .data(function(d) {
-                console.log(d.x);
-                console.log(d.y);
-                console.log(loess(d.x, d.y));
-                    return [d3.zip(d.x, loess(d.x, d.y))];//[d3.zip(obj[attr[datacol - 1]][i], loess(obj[attr[datacol - 1]][i], d))];
+                }).attr("class", "scattercolor");
+
+            let tip = d3.tip().attr('class', 'd3-tip').attr('id','plottip')
+                .direction('se')
+                .offset(function() {
+                    return [0,0];
                 })
-                .enter().append("path")
-                .attr("d", line);
-            */
+                .html((d,ind)=>{
+                    return this.tooltip_render(d,ind);
+
+                });
+            //console.log(curscatter);
+            //this._curscatter = curscatter;
+            curscatter.call(tip);
+            //console.log(this._node);
+            //console.log(curscatter.on('mouseover', tip.show));
+            curscatter.on('mouseover', tip.show)//.attr('class',d=>{
+                //console.log("Mouse Over");
+                //return "highlighted";})
+                .on('mouseout', tip.hide);//.attr('fill', function (d) {
+                //return colorScale(d[0]);
+            //});
+
+                //.on("mouseover", function(d,ind){tipMouseover(d,ind,attr,obj);})
+                //.on("mouseout", tipMouseout);
 
             xAxis.scale(xScale);
             yAxis.scale(yScale);
 
             curplot.select("#xAxis" + i).call(xAxis).attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")");//.attr("class","label");
             //Translate for y_val will be modified later
-            curplot.select("#yAxis" + i).call(yAxis).attr("transform", "translate(" + [margin.left, margin.top] + ")");//.attr("class","label");
+            curplot.select("#yAxis" + i).call(yAxis).attr("transform", "translate(" + [margin.left, margin.top] + ")");
+                /*
+                .append("text")
+                .classed("label", true)
+                .attr("transform", "rotate(-90)")
+                .attr("y", margin.left)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Ylabel");//.attr("class","label");
+                */
         }
     }
 
@@ -475,24 +476,14 @@ class Plots {
 
     update(nodeinfo){
         let selectdata = [];
-        //console.log(typeof(this._rawdata));
         nodeinfo.data._total.forEach(d=>{
-            //console.log(this._rawdata[d]);
             selectdata.push(this._rawdata[d]);
 
         });
-        //console.log(this._rawdata);
         this._data = selectdata;
         this._data.columns = this._rawdata.columns;
-        //console.log(this._data);
-        //console.log("Update Plot");
         this.printPlots();
-        //window.plots.printPlots();
-        //console.log(this._rawdata);
-        //console.log(selectdata);
-        //this._rawdata
-        //console.log(nodeinfo);
-        //console.log("Update");
+
     }
 
 }
@@ -514,3 +505,18 @@ function kernelEpanechnikov(k) {
         return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
     };
 }
+/*
+function tipMouseover(d,ind,attr,obj){
+    console.log("Mouseover scatter");
+    console.log("data: "+ d);
+
+    //console.log(d2)
+    console.log("Index: "+ ind);
+    console.log(obj);
+}
+
+function tipMouseout(){
+    //console.log("Mouseout scatter");
+
+}
+*/

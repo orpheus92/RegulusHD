@@ -249,7 +249,15 @@ header {
     font-size: 14px;
 
 }
+.scattercolor:hover {
+    fill: black;
+    stroke: black;
+}
 
+.treedis:hover {
+    fill: blue;
+    stroke: blue;
+}
 
 /* Style for sliders below */
 
