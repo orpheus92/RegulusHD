@@ -43,9 +43,9 @@ class Tree{
             .id(d => d.id)
             .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
             (treeCSV);
-        console.time('create1');
+        //console.time('create1');
         this._treefunc(this._root);
-        console.timeEnd('create1');
+        //console.timeEnd('create1');
 
         //this._root = root;
 
@@ -85,7 +85,7 @@ class Tree{
         let g = d3.select("#tree").attr("transform", "translate(15,40)");
         //console.time('create3');
 
-        /*
+
         this._link = g.selectAll(".link")
             .data(this._root.descendants().slice(1))
             .enter().append("path")
@@ -105,9 +105,8 @@ class Tree{
             .attr("class", "node")
             .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
-                }).append("circle").attr("r", Math.sqrt(1));
+                });
 
-                */
         /*
         let tip = d3.tip().attr('class', 'd3-tip')
             .direction('se')
@@ -161,6 +160,23 @@ class Tree{
             .on('mouseout', tip.hide);
         */
         //Need some change later to fix this design
+        let tip = d3.tip().attr('class', 'd3-tip').attr('id','treetip')
+            .direction('se')
+            .offset(function() {
+                return [0,0];
+            })
+            .html((d)=>{//console.log(d);
+                let tooltip_data = d.data;
+
+                return this.tooltip_render(tooltip_data);
+
+                return ;
+            });
+        //console.log(this._node);
+        this._node.call(tip);
+        //console.log(this._node);
+        this._node.on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
         this._alldata = treeCSV;
         return(this._node);
         //this._node.on('click', (nodeinfo)=>this._plot.update(nodeinfo));
@@ -196,7 +212,7 @@ class Tree{
         //console.log(this._alldata);
         //console.log(this._root);
         //Filter on the tree to change children
-        this._root.descendants().forEach(d=>{//console.log(typeof(d));
+        this._root.descendants().forEach(d=>{//console.log(d);
             if(pfilter(d,pInter)||sizefilter(d,sizeInter))
             {
                 if(d["children"]!=undefined){
@@ -216,26 +232,47 @@ class Tree{
             }
 
         });
-
+        // assign x ang y for each node
         this._treefunc(this._root);
-
+       //console.log(this._node);
         let cursize = this._root.descendants().length;
+        //console.log(cursize);
         //console.log(this._root.descendants());
         this.pInter = pInter;
         this.sizeInter = sizeInter;
-        d3.select('#treetip').remove();
-        d3.select("#tree").selectAll(".link").remove();
-        d3.select("#tree").selectAll(".node").remove();
+        //d3.select('#treetip').remove();
+        //console.log(this._node);
+
+        this._node.classed("node", true);
+        //console.log(d3.selectAll(".node"));
+        this._link.classed("link", true);
+        //console.log(d3.selectAll(".link"));
+        //d3.select("#tree").selectAll(".link").remove();
+        //d3.select("#tree").selectAll(".node").remove();
         //d3.select("#tree").selectAll(".nodecircle").classed("nodecircle".false);//.remove();
+        //console.log(d3.selectAll(".link"));
+        d3.selectAll(".link")
+            .classed("link",d=>{
+                return checknode(d);});
+        //.filter(function (d) {//console.log(d);
+        //    return d.data.persistence<pInter && d.data.persistence != -1;
+        //});
+        //console.log(d3.selectAll(".link"));
+
+        d3.selectAll(".node")
+            .classed("node",d=>{
+                //console.log(d);
+                //console.log(sizefilter(d,20));
+                return checknode(d);});
 
         let g = d3.select("#tree").attr("transform", "translate(15,40)");
         //console.log(this._root.descendants());
         //console.log(g);
         //console.time('create3');
-        this._link = g.selectAll(".link")
-            .data(this._root.descendants().slice(1))
-            .enter().append("path")
-            .attr("class", "link")
+       g.selectAll(".link")
+            //.data(this._root.descendants().slice(1))
+            //.enter().append("path")
+            //.attr("class", "link")
             .attr("d", function (d) {
                 return "M" + d.x + "," + d.y
                     //+ "C" + d.x  + "," + d.y+10
@@ -245,30 +282,19 @@ class Tree{
         //console.timeEnd('create3');
 
         //console.time('create4');
-        this._node = g.selectAll(".node")
-            .data(this._root.descendants())
-            .enter().append("g")
-            .attr("class", "node")
+        //console.log(d3.selectAll(".link"));
+        //console.log(this._node);
+
+        //console.log(d3.selectAll(".node"));
+        g.selectAll(".node")
+            //.data(this._root.descendants())
+            //.enter().append("g")
+            //.attr("class", "node")
             .attr("transform", function (d) {
                 return "translate(" + d.x + "," + d.y + ")";
-            }).append("circle").attr("r", Math.log(this._initsize/cursize)).attr("class","nodecircle");
+            }).append("circle").attr("r", Math.log(this._initsize/cursize));
 
-        let tip = d3.tip().attr('class', 'd3-tip').attr('id','treetip')
-            .direction('se')
-            .offset(function() {
-                return [0,0];
-            })
-            .html((d)=>{//console.log(d);
-                let tooltip_data = d.data;
 
-                return this.tooltip_render(tooltip_data);
-
-                return ;
-            });
-        this._node.call(tip);
-        //console.log(this._node);
-        this._node.on('mouseover', tip.show)
-            .on('mouseout', tip.hide);
 
         //console.log(this._node);
         //.append("circle").attr("r", Math.sqrt(2));
@@ -658,4 +684,18 @@ function pfilter(mydata,pInter){
 function sizefilter(mydata,sizeInter){
     return (mydata.data._total.size<sizeInter)? true : false;
 
+}
+function checknode(curnode){
+    //console.log(curnode);
+    //console.log(curnode["_children"]);
+    //console.log(curnode["children"]);
+    //return (mydata.data._total.size<sizeInter)? true : false;
+    if(curnode["_children"]!=undefined){
+        return false;
+    }
+    else if(curnode["children"]==undefined){
+        return false;
+    }
+    else
+        return true;
 }

@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b93c5fe-fc66-4fd8-bc6f-d7b8be5fd55a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Process book Updated.docx" afterPath="$PROJECT_DIR$/Process book Updated.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Manager.js" afterPath="$PROJECT_DIR$/js/Manager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Tree.js" afterPath="$PROJECT_DIR$/js/Tree.js" />
@@ -54,48 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/Tree.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-47">
-              <caret line="225" column="39" lean-forward="false" selection-start-line="225" selection-start-column="39" selection-end-line="225" selection-end-column="39" />
-              <folding>
-                <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
-                <element signature="e#621#843#0" expanded="false" />
-                <element signature="e#953#1180#0" expanded="false" />
-                <element signature="e#1609#2446#0" expanded="false" />
-                <element signature="e#1829#2402#0" expanded="false" />
-                <element signature="e#2601#2622#0" expanded="false" />
-                <element signature="n#!!block;n#tooltip_render#0;n#Tree#0" expanded="false" />
-                <element signature="e#5578#5606#0" expanded="false" />
-                <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
-                <element signature="e#6444#7071#0" expanded="false" />
-                <element signature="e#10426#11270#0" expanded="false" />
-                <element signature="e#11325#11372#0" expanded="false" />
-                <element signature="e#11428#11830#0" expanded="false" />
-                <element signature="e#11920#12049#0" expanded="false" />
-                <element signature="e#12445#12480#0" expanded="false" />
-                <element signature="e#12671#13195#0" expanded="false" />
-                <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
-                <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-                <element signature="e#13745#13797#0" expanded="false" />
-                <element signature="n#!!block;n#reshape#0;n#Tree#0" expanded="false" />
-                <element signature="e#15246#15823#0" expanded="false" />
-                <element signature="n#!!block;n#getbaselevelInd#0" expanded="false" />
-                <element signature="e#16215#20400#0" expanded="false" />
-                <marker date="1512046197260" expanded="false" signature="10574:10713" ph="//..." />
-                <marker date="1512046197260" expanded="false" signature="11456:11622" ph="{...}" />
-                <marker date="1512046197260" expanded="false" signature="11651:11817" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="36" column="18" lean-forward="false" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+            <state relative-caret-position="297">
+              <caret line="97" column="50" lean-forward="true" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -146,6 +108,58 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/Tree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="298" column="34" lean-forward="true" selection-start-line="298" selection-start-column="34" selection-end-line="298" selection-end-column="34" />
+              <folding>
+                <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
+                <element signature="e#621#843#0" expanded="false" />
+                <element signature="e#953#1180#0" expanded="false" />
+                <element signature="e#1613#2450#0" expanded="false" />
+                <element signature="e#1833#2406#0" expanded="false" />
+                <element signature="e#2605#2626#0" expanded="false" />
+                <element signature="e#3663#4170#0" expanded="false" />
+                <element signature="e#4179#4208#0" expanded="false" />
+                <element signature="e#4358#4378#0" expanded="false" />
+                <element signature="e#4454#4681#0" expanded="false" />
+                <element signature="e#4725#5231#0" expanded="false" />
+                <element signature="n#!!block;n#tooltip_render#0;n#Tree#0" expanded="false" />
+                <element signature="e#6061#6089#0" expanded="false" />
+                <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
+                <element signature="e#6927#7546#0" expanded="false" />
+                <element signature="e#11318#12162#0" expanded="false" />
+                <element signature="e#12217#12264#0" expanded="false" />
+                <element signature="e#12320#12722#0" expanded="false" />
+                <element signature="e#12812#12941#0" expanded="false" />
+                <element signature="e#13337#13372#0" expanded="false" />
+                <element signature="e#13563#14087#0" expanded="false" />
+                <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
+                <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
+                <element signature="e#14637#14689#0" expanded="false" />
+                <element signature="n#!!block;n#reshape#0;n#Tree#0" expanded="false" />
+                <element signature="e#16138#16715#0" expanded="false" />
+                <element signature="n#!!block;n#getbaselevelInd#0" expanded="false" />
+                <element signature="e#17107#21292#0" expanded="false" />
+                <marker date="1512087591162" expanded="false" signature="11466:11605" ph="//..." />
+                <marker date="1512087591162" expanded="false" signature="12348:12514" ph="{...}" />
+                <marker date="1512087591162" expanded="false" signature="12543:12709" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/treebackup/Tree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-276">
+              <caret line="99" column="43" lean-forward="true" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -163,7 +177,6 @@
       <find>updateTree</find>
       <find>pInter</find>
       <find>node</find>
-      <find>_node</find>
       <find>increase</find>
       <find>nodeinfo</find>
       <find>click</find>
@@ -180,6 +193,7 @@
       <find>slider</find>
       <find>d3-tip</find>
       <find>mouseover</find>
+      <find>_node</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,8 +218,8 @@
         <option value="$PROJECT_DIR$/styles.css" />
         <option value="$PROJECT_DIR$/js/Event.js" />
         <option value="$PROJECT_DIR$/js/Plot.js" />
-        <option value="$PROJECT_DIR$/js/Tree.js" />
         <option value="$PROJECT_DIR$/js/Manager.js" />
+        <option value="$PROJECT_DIR$/js/Tree.js" />
       </list>
     </option>
   </component>
@@ -400,12 +414,12 @@
       <workItem from="1511196124413" duration="53171000" />
       <workItem from="1511345030110" duration="18211000" />
       <workItem from="1511824981599" duration="24344000" />
-      <workItem from="1511918241956" duration="63135000" />
+      <workItem from="1511918241956" duration="66289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249505000" />
+    <option name="totallyTimeSpent" value="252659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -632,14 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/treebackup/Tree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="241" column="0" lean-forward="true" selection-start-line="241" selection-start-column="0" selection-end-line="241" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/Load.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -678,45 +684,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="36" column="18" lean-forward="false" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        <state relative-caret-position="297">
+          <caret line="97" column="50" lean-forward="true" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/treebackup/Tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-276">
+          <caret line="99" column="43" lean-forward="true" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Tree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-47">
-          <caret line="225" column="39" lean-forward="false" selection-start-line="225" selection-start-column="39" selection-end-line="225" selection-end-column="39" />
+        <state relative-caret-position="253">
+          <caret line="298" column="34" lean-forward="true" selection-start-line="298" selection-start-column="34" selection-end-line="298" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
             <element signature="e#621#843#0" expanded="false" />
             <element signature="e#953#1180#0" expanded="false" />
-            <element signature="e#1609#2446#0" expanded="false" />
-            <element signature="e#1829#2402#0" expanded="false" />
-            <element signature="e#2601#2622#0" expanded="false" />
+            <element signature="e#1613#2450#0" expanded="false" />
+            <element signature="e#1833#2406#0" expanded="false" />
+            <element signature="e#2605#2626#0" expanded="false" />
+            <element signature="e#3663#4170#0" expanded="false" />
+            <element signature="e#4179#4208#0" expanded="false" />
+            <element signature="e#4358#4378#0" expanded="false" />
+            <element signature="e#4454#4681#0" expanded="false" />
+            <element signature="e#4725#5231#0" expanded="false" />
             <element signature="n#!!block;n#tooltip_render#0;n#Tree#0" expanded="false" />
-            <element signature="e#5578#5606#0" expanded="false" />
+            <element signature="e#6061#6089#0" expanded="false" />
             <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
-            <element signature="e#6444#7071#0" expanded="false" />
-            <element signature="e#10426#11270#0" expanded="false" />
-            <element signature="e#11325#11372#0" expanded="false" />
-            <element signature="e#11428#11830#0" expanded="false" />
-            <element signature="e#11920#12049#0" expanded="false" />
-            <element signature="e#12445#12480#0" expanded="false" />
-            <element signature="e#12671#13195#0" expanded="false" />
+            <element signature="e#6927#7546#0" expanded="false" />
+            <element signature="e#11318#12162#0" expanded="false" />
+            <element signature="e#12217#12264#0" expanded="false" />
+            <element signature="e#12320#12722#0" expanded="false" />
+            <element signature="e#12812#12941#0" expanded="false" />
+            <element signature="e#13337#13372#0" expanded="false" />
+            <element signature="e#13563#14087#0" expanded="false" />
             <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
-            <element signature="e#13745#13797#0" expanded="false" />
+            <element signature="e#14637#14689#0" expanded="false" />
             <element signature="n#!!block;n#reshape#0;n#Tree#0" expanded="false" />
-            <element signature="e#15246#15823#0" expanded="false" />
+            <element signature="e#16138#16715#0" expanded="false" />
             <element signature="n#!!block;n#getbaselevelInd#0" expanded="false" />
-            <element signature="e#16215#20400#0" expanded="false" />
-            <marker date="1512046197260" expanded="false" signature="10574:10713" ph="//..." />
-            <marker date="1512046197260" expanded="false" signature="11456:11622" ph="{...}" />
-            <marker date="1512046197260" expanded="false" signature="11651:11817" ph="{...}" />
+            <element signature="e#17107#21292#0" expanded="false" />
+            <marker date="1512087591162" expanded="false" signature="11466:11605" ph="//..." />
+            <marker date="1512087591162" expanded="false" signature="12348:12514" ph="{...}" />
+            <marker date="1512087591162" expanded="false" signature="12543:12709" ph="{...}" />
           </folding>
         </state>
       </provider>

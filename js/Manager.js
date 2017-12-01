@@ -32,7 +32,7 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
         d3.csv('data/Tree_Merge.csv', function (error, treedata){
             d3.json('data/Base_Partition.json', function (error, basedata) {
                 //console.log(rawdata);
-                tree.create(treedata, partition.pers, basedata);
+                treenode = tree.create(treedata, partition.pers, basedata);
                 tree.updateTree(pInter,sizeInter);
                 //console.log(treenode);
                 //console.log(d3.select("#Maxp"));
@@ -80,8 +80,8 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                 d3.select('#decrease')
                     .on('click', () =>  {
                         pInter = tree.decreasePersistence();
-                        console.log(pInter);
-                        console.log(treenode);
+                        //console.log(pInter);
+                        //console.log(treenode);
                         slider.handle.attr("cx", x( pInter));
                         loaddata.update(pInter,sizeInter);
                     });
@@ -97,8 +97,8 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                     });
                 //console.log(d3.select('#tree'));
 
-                console.log(d3.selectAll(".node"));
-                d3.selectAll(".node").on('click', (nodeinfo)=>{
+                //console.log(d3.selectAll(".node"));
+                treenode.on('click', (nodeinfo)=>{
 
                     window.plots.update(nodeinfo);
                     loaddata.select(nodeinfo);
