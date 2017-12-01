@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b93c5fe-fc66-4fd8-bc6f-d7b8be5fd55a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Manager.js" afterPath="$PROJECT_DIR$/js/Manager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Tree.js" afterPath="$PROJECT_DIR$/js/Tree.js" />
     </list>
@@ -55,13 +54,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Manager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="102" column="48" lean-forward="false" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
+            <state relative-caret-position="98">
+              <caret line="102" column="50" lean-forward="true" selection-start-line="102" selection-start-column="50" selection-end-line="102" selection-end-column="50" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="e#5179#5492#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -110,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Tree.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Tree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="488" column="43" lean-forward="false" selection-start-line="488" selection-start-column="43" selection-end-line="488" selection-end-column="43" />
+            <state relative-caret-position="274">
+              <caret line="524" column="28" lean-forward="false" selection-start-line="524" selection-start-column="19" selection-end-line="524" selection-end-column="28" />
               <folding>
                 <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
                 <element signature="e#621#843#0" expanded="false" />
@@ -131,35 +131,35 @@
                 <element signature="e#6061#6089#0" expanded="false" />
                 <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
                 <element signature="e#6927#7546#0" expanded="false" />
-                <element signature="e#10006#10032#0" expanded="false" />
-                <element signature="e#10273#10293#0" expanded="false" />
-                <element signature="e#10369#10596#0" expanded="false" />
-                <element signature="e#10641#10684#0" expanded="false" />
-                <element signature="e#10761#10796#0" expanded="false" />
-                <element signature="e#10940#11173#0" expanded="false" />
-                <element signature="e#11180#11213#0" expanded="false" />
-                <element signature="e#11318#12162#0" expanded="false" />
-                <element signature="e#12217#12264#0" expanded="false" />
-                <element signature="e#12320#12722#0" expanded="false" />
-                <element signature="e#12731#12762#0" expanded="false" />
-                <element signature="e#12812#12941#0" expanded="false" />
-                <element signature="e#12950#13279#0" expanded="false" />
-                <element signature="e#13337#13372#0" expanded="false" />
-                <element signature="e#13563#14087#0" expanded="false" />
+                <element signature="e#10057#10083#0" expanded="false" />
+                <element signature="e#10324#10344#0" expanded="false" />
+                <element signature="e#10420#10647#0" expanded="false" />
+                <element signature="e#10692#10735#0" expanded="false" />
+                <element signature="e#10812#10847#0" expanded="false" />
+                <element signature="e#10991#11224#0" expanded="false" />
+                <element signature="e#11231#11264#0" expanded="false" />
+                <element signature="e#11369#12213#0" expanded="false" />
+                <element signature="e#12268#12315#0" expanded="false" />
+                <element signature="e#12371#12773#0" expanded="false" />
+                <element signature="e#12782#12813#0" expanded="false" />
+                <element signature="e#12863#12992#0" expanded="false" />
+                <element signature="e#13001#13330#0" expanded="false" />
+                <element signature="e#13388#13423#0" expanded="false" />
+                <element signature="e#13614#14138#0" expanded="false" />
                 <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
                 <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
                 <element signature="n#!!block;n#increasePersistence#0;n#Tree#0" expanded="false" />
-                <element signature="e#14637#14689#0" expanded="false" />
-                <element signature="e#14737#14861#0" expanded="false" />
+                <element signature="e#14688#14740#0" expanded="false" />
+                <element signature="e#14788#14912#0" expanded="false" />
                 <element signature="n#!!block;n#decreasePersistence#0;n#Tree#0" expanded="false" />
                 <element signature="n#!!block;n#increaseSize#0;n#Tree#0" expanded="false" />
                 <element signature="n#!!block;n#decreaseSize#0;n#Tree#0" expanded="false" />
-                <element signature="e#17825#18402#0" expanded="false" />
+                <element signature="e#17858#18435#0" expanded="false" />
                 <element signature="n#!!block;n#getbaselevelInd#0" expanded="false" />
-                <element signature="e#18794#22979#0" expanded="false" />
-                <marker date="1512090716895" expanded="false" signature="11466:11605" ph="//..." />
-                <marker date="1512090716895" expanded="false" signature="12348:12514" ph="{...}" />
-                <marker date="1512090716895" expanded="false" signature="12543:12709" ph="{...}" />
+                <element signature="e#18827#23012#0" expanded="false" />
+                <marker date="1512091881748" expanded="false" signature="11517:11656" ph="//..." />
+                <marker date="1512091881748" expanded="false" signature="12399:12565" ph="{...}" />
+                <marker date="1512091881748" expanded="false" signature="12594:12760" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -168,8 +168,8 @@
       <file leaf-file-name="Treeold.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Treeold.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="65" column="43" lean-forward="true" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
+            <state relative-caret-position="200">
+              <caret line="249" column="17" lean-forward="false" selection-start-line="249" selection-start-column="12" selection-end-line="250" selection-end-column="26" />
               <folding>
                 <element signature="n#!!block;n#constructor#0;n#Treeold#0" expanded="false" />
                 <element signature="n#!!doc;n#create#0;n#Treeold#0" expanded="false" />
@@ -183,9 +183,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>increasePersistence</find>
-      <find>update</find>
-      <find>scaleX</find>
       <find>_root</find>
       <find>this.plot</find>
       <find>scale.l</find>
@@ -213,6 +210,9 @@
       <find>_node</find>
       <find>delete</find>
       <find>d3-tip</find>
+      <find>.link</find>
+      <find>transition</find>
+      <find>(&quot;.link&quot;)</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -238,8 +238,8 @@
         <option value="$PROJECT_DIR$/js/Plot.js" />
         <option value="$PROJECT_DIR$/Regulus.html" />
         <option value="$PROJECT_DIR$/js/Treeold.js" />
-        <option value="$PROJECT_DIR$/js/Tree.js" />
         <option value="$PROJECT_DIR$/js/Manager.js" />
+        <option value="$PROJECT_DIR$/js/Tree.js" />
       </list>
     </option>
   </component>
@@ -434,24 +434,24 @@
       <workItem from="1511196124413" duration="53171000" />
       <workItem from="1511345030110" duration="18211000" />
       <workItem from="1511824981599" duration="24344000" />
-      <workItem from="1511918241956" duration="69627000" />
+      <workItem from="1511918241956" duration="70560000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255997000" />
+    <option name="totallyTimeSpent" value="256930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1859375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1859375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25404158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2407809" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2407809" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23672055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -466,6 +466,28 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25404158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2407809" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1859375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23672055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -682,6 +704,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/Manager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="102" column="50" lean-forward="true" selection-start-line="102" selection-start-column="50" selection-end-line="102" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#5179#5492#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Plot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -701,10 +734,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="264" column="7" lean-forward="false" selection-start-line="264" selection-start-column="7" selection-end-line="264" selection-end-column="7" />
+          <folding>
+            <element signature="e#3575#3639#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Treeold.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="249" column="17" lean-forward="false" selection-start-line="249" selection-start-column="12" selection-end-line="250" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#Treeold#0" expanded="false" />
+            <element signature="n#!!doc;n#create#0;n#Treeold#0" expanded="false" />
+            <element signature="n#!!block;n#sizefilter2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Tree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="488" column="43" lean-forward="false" selection-start-line="488" selection-start-column="43" selection-end-line="488" selection-end-column="43" />
+        <state relative-caret-position="274">
+          <caret line="524" column="28" lean-forward="false" selection-start-line="524" selection-start-column="19" selection-end-line="524" selection-end-column="28" />
           <folding>
             <element signature="n#!!doc;n#constructor#0;n#Tree#0" expanded="false" />
             <element signature="e#621#843#0" expanded="false" />
@@ -721,67 +776,35 @@
             <element signature="e#6061#6089#0" expanded="false" />
             <element signature="n#!!doc;n#updateTree#0;n#Tree#0" expanded="false" />
             <element signature="e#6927#7546#0" expanded="false" />
-            <element signature="e#10006#10032#0" expanded="false" />
-            <element signature="e#10273#10293#0" expanded="false" />
-            <element signature="e#10369#10596#0" expanded="false" />
-            <element signature="e#10641#10684#0" expanded="false" />
-            <element signature="e#10761#10796#0" expanded="false" />
-            <element signature="e#10940#11173#0" expanded="false" />
-            <element signature="e#11180#11213#0" expanded="false" />
-            <element signature="e#11318#12162#0" expanded="false" />
-            <element signature="e#12217#12264#0" expanded="false" />
-            <element signature="e#12320#12722#0" expanded="false" />
-            <element signature="e#12731#12762#0" expanded="false" />
-            <element signature="e#12812#12941#0" expanded="false" />
-            <element signature="e#12950#13279#0" expanded="false" />
-            <element signature="e#13337#13372#0" expanded="false" />
-            <element signature="e#13563#14087#0" expanded="false" />
+            <element signature="e#10057#10083#0" expanded="false" />
+            <element signature="e#10324#10344#0" expanded="false" />
+            <element signature="e#10420#10647#0" expanded="false" />
+            <element signature="e#10692#10735#0" expanded="false" />
+            <element signature="e#10812#10847#0" expanded="false" />
+            <element signature="e#10991#11224#0" expanded="false" />
+            <element signature="e#11231#11264#0" expanded="false" />
+            <element signature="e#11369#12213#0" expanded="false" />
+            <element signature="e#12268#12315#0" expanded="false" />
+            <element signature="e#12371#12773#0" expanded="false" />
+            <element signature="e#12782#12813#0" expanded="false" />
+            <element signature="e#12863#12992#0" expanded="false" />
+            <element signature="e#13001#13330#0" expanded="false" />
+            <element signature="e#13388#13423#0" expanded="false" />
+            <element signature="e#13614#14138#0" expanded="false" />
             <element signature="n#!!doc;n#clearTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#clearTree#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#increasePersistence#0;n#Tree#0" expanded="false" />
-            <element signature="e#14637#14689#0" expanded="false" />
-            <element signature="e#14737#14861#0" expanded="false" />
+            <element signature="e#14688#14740#0" expanded="false" />
+            <element signature="e#14788#14912#0" expanded="false" />
             <element signature="n#!!block;n#decreasePersistence#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#increaseSize#0;n#Tree#0" expanded="false" />
             <element signature="n#!!block;n#decreaseSize#0;n#Tree#0" expanded="false" />
-            <element signature="e#17825#18402#0" expanded="false" />
+            <element signature="e#17858#18435#0" expanded="false" />
             <element signature="n#!!block;n#getbaselevelInd#0" expanded="false" />
-            <element signature="e#18794#22979#0" expanded="false" />
-            <marker date="1512090716895" expanded="false" signature="11466:11605" ph="//..." />
-            <marker date="1512090716895" expanded="false" signature="12348:12514" ph="{...}" />
-            <marker date="1512090716895" expanded="false" signature="12543:12709" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Treeold.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="65" column="43" lean-forward="true" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
-          <folding>
-            <element signature="n#!!block;n#constructor#0;n#Treeold#0" expanded="false" />
-            <element signature="n#!!doc;n#create#0;n#Treeold#0" expanded="false" />
-            <element signature="n#!!block;n#sizefilter2#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="264" column="7" lean-forward="false" selection-start-line="264" selection-start-column="7" selection-end-line="264" selection-end-column="7" />
-          <folding>
-            <element signature="e#3575#3639#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Manager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="102" column="48" lean-forward="false" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#18827#23012#0" expanded="false" />
+            <marker date="1512091881748" expanded="false" signature="11517:11656" ph="//..." />
+            <marker date="1512091881748" expanded="false" signature="12399:12565" ph="{...}" />
+            <marker date="1512091881748" expanded="false" signature="12594:12760" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -273,6 +273,8 @@ class Tree{
             //.data(this._root.descendants().slice(1))
             //.enter().append("path")
             //.attr("class", "link")
+           .transition()
+           .duration(500)
             .attr("d", function (d) {
                 return "M" + d.x + "," + d.y
                     //+ "C" + d.x  + "," + d.y+10
@@ -508,9 +510,6 @@ class Tree{
 
         let cursize = this._root.descendants().length;
 
-        //this.pInter = pInter;
-        //this.sizeInter = sizeInter;
-
         this._node.classed("node", true);
         this._link.classed("link", true);
 
@@ -524,6 +523,8 @@ class Tree{
 
         let g = d3.select("#tree").attr("transform", "translate(15,40)");
         g.selectAll(".link")
+            .transition()
+            .duration(500)
             .attr("d", function (d) {
                 return "M" + d.x + "," + d.y
                     //+ "C" + d.x  + "," + d.y+10

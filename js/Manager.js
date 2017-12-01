@@ -98,7 +98,31 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                 //console.log(d3.select('#tree'));
 
                 //console.log(d3.selectAll(".node"));
+                let clicks = 0;
+                let DELAY = 500;
+                treenode.on("click", (nodeinfo)=>{
+                    clicks++;  //count clicks
 
+                    if(clicks === 1) {
+
+                        timer = setTimeout(function() {
+
+                            window.plots.update(nodeinfo);
+                            loaddata.select(nodeinfo);
+                            clicks = 0;             //after action performed, reset counter
+
+                        }, DELAY);
+
+                    } else {
+
+                        clearTimeout(timer);    //prevent single-click action
+                        tree.reshape(nodeinfo);
+                        clicks = 0;             //after action performed, reset counter
+                    }
+
+                });
+
+                /*
                 treenode.on('dblclick', (nodeinfo)=>{
 
                     window.plots.update(nodeinfo);
@@ -107,14 +131,10 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
 
                 treenode.on('click', (nodeinfo)=> {
-                   //d3.select('#map').text(d3.select('#map').text() + 'dblclick, ');
                     tree.reshape(nodeinfo);
                 });
 
-
-
-                //this._node.on('click', (nodeinfo)=>plots.update(nodeinfo));
-
+                */
 
             });
         });
