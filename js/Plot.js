@@ -8,7 +8,10 @@ class Plots {
         this._width = widht;
         this._height = height;
 
+
         this._plot = d3.select("#hdPlot");
+
+
     }
 
     //printPlots
@@ -45,6 +48,7 @@ class Plots {
 
     //pairwisePlot
     PairwisePlot() {
+        d3.selectAll('#plottip').remove();
         let data = this._data;
         let margin = this._margin;
         let height = this._height - margin.top - margin.bottom;
@@ -125,6 +129,21 @@ class Plots {
                         return colorScale(d.z);
                     });
 
+                let tip = d3.tip().attr('class', 'd3-tip').attr('id','plottip')
+                    .direction('se')
+                    .offset(function() {
+                        return [0,0];
+                    })
+                    .html((d,ind)=>{
+                        return this.tooltip_render(d,ind);
+
+                    });
+                //console.log(curscatter);
+                //this._curscatter = curscatter;
+                g.selectAll("circle").call(tip)
+                    .on('mouseover', tip.show)
+                    .on('mouseout', tip.hide);
+
                 g
                     .append('g')
                     .attr('id', "xAxis" + i)
@@ -179,8 +198,8 @@ class Plots {
                 obj[attr[j]].push(parseFloat(data[i][attr[j]]));
             }
         }
-        this._obj = obj;
-        this._attr = attr;
+        //this._obj = obj;
+        //this._attr = attr;
         let value = function (d) {
             return d;
         }; // data -> value
@@ -532,6 +551,22 @@ class Plots {
         });
         this._data = selectdata;
         this._data.columns = this._rawdata.columns;
+
+
+
+        let attr = this._data.columns;
+        let datacol = attr.length;
+        let datarow = this._data.length;
+        let obj = {};
+        for (let j = 0; j < datacol; j++)
+            obj[attr[j]] = [];
+        for (let i = 0; i < datarow; i++) {
+            for (let j = 0; j < datacol; j++) {
+                obj[attr[j]].push(parseFloat(this._data[i][attr[j]]));
+            }
+        }
+        this._obj = obj;
+        this._attr = attr;
         this.printPlots();
 
     }
