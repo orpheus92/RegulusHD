@@ -34,14 +34,12 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                 //console.log(rawdata);
                 treenode = tree.create(treedata, partition.pers, basedata);
                 tree.updateTree(pInter,sizeInter);
-                //console.log(treenode);
-                //console.log(d3.select("#Maxp"));
+
                 //Slider Event
                 let x = d3.scaleLinear()
                     .domain([minp, maxp])
                     .range([0, 150])//size of slider and range of output, put persistence here
                     .clamp(true);
-                //console.log(maxp);
                 let event = new Event(d3.select("#treesvg"));
                 let slider = event.createslider([minp, maxp]);
 
@@ -49,13 +47,16 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                     .on("start.interrupt", function() { slider.interrupt(); })
                     .on("start drag", function() {
                         slider.handle.attr("cx", x(x.invert(d3.event.x))); //initial position for the slider
-                        //console.log(x(x.invert(d3.event.x)));//convert value to values in range
-                        //console.log(d3.event.x);
-                        //hue(x.invert(d3.event.x));
-                        //console.log(x.invert(d3.event.x));
+
                         pInter = x.invert(d3.event.x);
+
+                        //setTimeout(function (){
+                        //console.log(pInter);
+                        //}, 100);
+
                         loaddata.update(pInter,sizeInter);
                         tree.updateTree(pInter,sizeInter);
+
                     }));
                 //document.getElementById("#myhandle").onclick = function(){
                 //    console.log("Handle clicked");
@@ -73,15 +74,13 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
                 d3.select('#increase')
                     .on('click', () => {
-                        pInter = tree.increasePersistence();
+                        pInter = tree.increasePersistence(pInter);
                         slider.handle.attr("cx", x(pInter));
                         loaddata.update(pInter,sizeInter);
                     });
                 d3.select('#decrease')
                     .on('click', () =>  {
-                        pInter = tree.decreasePersistence();
-                        //console.log(pInter);
-                        //console.log(treenode);
+                        pInter = tree.decreasePersistence(pInter);
                         slider.handle.attr("cx", x( pInter));
                         loaddata.update(pInter,sizeInter);
                     });
@@ -95,9 +94,7 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                         sizeInter = tree.decreaseSize();
                         loaddata.update(pInter,sizeInter);
                     });
-                //console.log(d3.select('#tree'));
 
-                //console.log(d3.selectAll(".node"));
                 let clicks = 0;
                 let DELAY = 500;
                 treenode.on("click", (nodeinfo)=>{

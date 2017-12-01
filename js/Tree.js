@@ -39,10 +39,18 @@ class Tree{
                 (treeCSV);
             */
 
+        //console.time("Time2");
         this._root = d3.stratify()
             .id(d => d.id)
             .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
             (treeCSV);
+        //console.timeEnd("Time2");
+        /*
+        this._curroot = d3.stratify()
+            .id(d => d.id)
+            .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
+            (treeCSV);
+        */
         //console.time('create1');
         this._treefunc(this._root);
         //console.timeEnd('create1');
@@ -205,15 +213,28 @@ class Tree{
      *
      * @param row a string specifying which team was selected in the table.
      */
-    updateTree(pInter,sizeInter) {
+    updateTree(ppp,sss) {
 
+        //console.log(ppp);
+        this.pInter = ppp;
+        this.sizeInter = sss;
         // return tree back to original
         d3.select("#tree").selectAll("circle").remove();
         //console.log(this._alldata);
-        //console.log(this._root);
+        //console.log(this);
         //Filter on the tree to change children
-        this._root.descendants().forEach(d=>{//console.log(d);
-            if(pfilter(d,pInter)||sizefilter(d,sizeInter))
+        //Problem here since it depends on the current tree structure.
+        //obj2 = Object.create(obj1)
+        //var copy = JSON.parse(JSON.stringify( original ));
+        //this._curroot = d3.stratify()
+        //    .id(d => d.id)
+        //    .parentId(d => d.par === ", , 0" ? '' : d.par)//d.ParentGame ? treeData[d.ParentGame].id : '')
+        //    (this._alldata);
+
+        this._curroot = this._root;
+
+        this._curroot.descendants().forEach(d=>{//console.log(this.pInter);
+            if(pfilter(d,this.pInter)||sizefilter(d,this.sizeInter))
             {
                 if(d["children"]!=undefined){
                     //console.log(d);
@@ -232,14 +253,16 @@ class Tree{
             }
 
         });
+        //console.log(this._root);
+        //console.log(this._curroot);
+
         // assign x ang y for each node
-        this._treefunc(this._root);
+        this._treefunc(this._curroot);
        //console.log(this._node);
-        let cursize = this._root.descendants().length;
+        let cursize = this._curroot.descendants().length;
         //console.log(cursize);
         //console.log(this._root.descendants());
-        this.pInter = pInter;
-        this.sizeInter = sizeInter;
+
         //d3.select('#treetip').remove();
         //console.log(this._node);
 
@@ -434,7 +457,9 @@ class Tree{
         //d3.selectAll(".node").selectAll("text").classed("selectedLabel",false);
 
     }
-    increasePersistence(){
+    increasePersistence(ppp){
+        this.pInter = ppp;
+        //console.log(this.pInter);
         let pers =[];
         partition.pers.map(function(item) {
             pers.push(parseFloat(item));
@@ -451,7 +476,8 @@ class Tree{
         return this.pInter;
 
     }
-    decreasePersistence(){
+    decreasePersistence(ppp){
+        this.pInter = ppp;
         let pers =[];
         partition.pers.map(function(item) {
             pers.push(parseFloat(item));
@@ -506,9 +532,9 @@ class Tree{
                 }
             }
         });}
-        this._treefunc(this._root);
+        this._treefunc(this._curroot);
 
-        let cursize = this._root.descendants().length;
+        let cursize = this._curroot.descendants().length;
 
         this._node.classed("node", true);
         this._link.classed("link", true);
@@ -730,11 +756,12 @@ function update(source) {
 }
 */
 
-function pfilter(mydata,pInter){
-    return (mydata.data.persistence<=pInter && mydata.data.persistence != -1)? true : false;
+function pfilter(mydata,ppp){
+    //console.log(ppp);
+    return (mydata.data.persistence<=ppp && mydata.data.persistence != -1)? true : false;
 }
-function sizefilter(mydata,sizeInter){
-    return (mydata.data._total.size<sizeInter)? true : false;
+function sizefilter(mydata,sss){
+    return (mydata.data._total.size<sss)? true : false;
 
 }
 function checknode(curnode){
