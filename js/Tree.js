@@ -182,8 +182,6 @@ class Tree{
      * @param row a string specifying which team was selected in the table.
      */
     updateTree(ppp,sss) {
-
-        //console.log(ppp);
         this.pInter = ppp;
         this.sizeInter = sss;
         // return tree back to original
@@ -252,18 +250,10 @@ class Tree{
 
         d3.selectAll(".node")
             .classed("node",d=>{
-                //console.log(d);
-                //console.log(sizefilter(d,20));
                 return checknode(d);});
 
         let g = d3.select("#tree").attr("transform", "translate(15,40)");
-        //console.log(this._root.descendants());
-        //console.log(g);
-        //console.time('create3');
        g.selectAll(".link")
-            //.data(this._root.descendants().slice(1))
-            //.enter().append("path")
-            //.attr("class", "link")
            .transition()
            .duration(500)
             .attr("d", function (d) {
@@ -272,144 +262,12 @@ class Tree{
                     //+ " " + d.parent.x  + "," + d.parent.y+10
                     +"L" + d.parent.x + "," + d.parent.y;
             });
-        //console.timeEnd('create3');
 
-        //console.time('create4');
-        //console.log(d3.selectAll(".link"));
-        //console.log(this._node);
-
-        //console.log(d3.selectAll(".node"));
         g.selectAll(".node")
-            //.data(this._root.descendants())
-            //.enter().append("g")
-            //.attr("class", "node")
             .attr("transform", function (d) {
                 return "translate(" + d.x + "," + d.y + ")";
             }).append("circle").attr("r", Math.log(this._initsize/cursize)).attr("class","treedis");
 
-
-
-        //console.log(this._node);
-        //.append("circle").attr("r", Math.sqrt(2));
-        //console.timeEnd('create4');
-        //this.xmax = d3.max(d3.selectAll(".node").data(), d => d.x);
-        //this.ymax = d3.max(d3.selectAll(".node").data(), d => d.y);
-
-        //console.log(node);
-        //this._node.append("circle")
-        //    .attr("r", 1);
-        /*
-        node.append("text")
-            .attr("dy", 5)
-            .attr("x", (d) => d.children ? -8 : 8)
-            .style("text-anchor", d => d.children ? "end" : "start")
-            .text((d) => d.data.Team);
-        */
-        //console.time('create5');
-
-        //Need some change later to fix this design
-        //this._alldata = treeCSV;
-        //return(this._node);
-
-
-
-        //this._node.classed("node", true);
-        //this._link.classed("link", true);
-        //console.log(d3.selectAll("circle"));
-        //let linkSelection, nodeSelection;
-        /*
-        this._root.descendants().forEach(function(d){
-            if(d.data.persistence<pInter && d.data.persistence != -1)
-            {d._children = d.children;
-            d.children = null;
-            }
-        });
-        */
-      //  console.time('someFunction');
-        //let ymin = 0;
-        //let ymax = 0;
-        //let xmin = 0;
-        //let xmax = 0;
-        /*
-        d3.selectAll(".link")
-            .classed("link",d=>{
-                return pfilter(d,pInter)&&sizefilter(d,sizeInter);});
-            //.filter(function (d) {//console.log(d);
-            //    return d.data.persistence<pInter && d.data.persistence != -1;
-            //});
-        d3.selectAll(".node")
-            .classed("node",d=>{
-                //console.log(d);
-                //console.log(sizefilter(d,20));
-                return pfilter(d,pInter)&&sizefilter(d,sizeInter);});
-        d3.selectAll(".node").each(d=>{
-            ymax = (ymax>d.y)? ymax : d.y;
-            xmax = (xmax>d.x)? xmax : d.x;
-        })
-
-        //console.log(d3.selectAll(".link"));
-        //console.log(ymin,ymax,xmin,xmax);
-        let xscale = (xmax!=0)?this.xmax/xmax:100;
-        let yscale = (ymax!=0)?this.ymax/ymax:100;
-        */
-        //console.timeEnd('someFunction');
-
-
-
-        //Now only the selected nodes/links are classed
-        //Need to place them in right position
-        /*
-        let scaleX = (x=>{
-            let x2 = d3.max(d3.selectAll(".node").data(), d => d.x);
-            let x1 = d3.max(this._node.data(), d => d.x);
-            return x*x1/x2;
-        });
-
-        let scaleY = (y=>{
-            let y2 = d3.max(d3.selectAll(".node").data(), d => d.y);
-            let y1 = d3.max(this._node.data(), d => d.y);
-            return y*y1/y2;
-        });
-        */
-        //reposition/scale current tree
-       // console.time('someFunction2');
-        /*
-        d3.selectAll(".nodecircle")
-            //.transition()
-            //.duration(500)
-            .remove();
-        */
-        /*
-        d3.selectAll(".node").attr("transform", d=> { //console.log(d.x);
-            return "translate(" + xscale*(d.x) + "," + yscale*(d.y) + ")";
-            //return "translate(" + d.x + "," + d.y + ")";
-        }).append("circle").attr("r", Math.sqrt(yscale*(1))).attr("class","nodecircle");//.enter().merge();
-        */
-      //  console.timeEnd('someFunction2');
-
-            //.attr("r", Math.sqrt(scaleY(1)));
-      //  console.time('someFunction3');
-        //console.log(d3.selectAll(".link"));
-        //d3.selectAll(".link")
-        //console.time("treeupdate");
-            //this._link
-        /*
-        d3.selectAll(".link")
-            .transition()
-            .duration(500)
-            .attr("d", d=> {
-            //return "M" + d.x + "," + d.y
-            return "M" + xscale*(d.x) + "," + yscale*(d.y)
-            //    + "C" +  xscale*(d.x)  + "," + yscale*((d.y+d.parent.y))/2
-            //    + "" + xscale*(d.parent.x)  + "," + yscale*((d.y+d.parent.y))/2
-                + "L" + xscale*(d.parent.x) + "," + yscale*(d.parent.y);
-            //+"L" + d.parent.x + "," + d.parent.y;
-
-        });
-        */
-        //console.timeEnd("treeupdate");
-
-        //  console.timeEnd('someFunction3');
 
     }
 
@@ -536,15 +394,17 @@ class Tree{
     increaseSize(){
         this.sizeInter = this.sizeInter + 1;
         this.updateTree(this.pInter,this.sizeInter);
-        //return [this.sizeInter,this.updateTree(this.pInter,this.sizeInter)];
         return this.sizeInter;
 
     }
-    decreaseSize(){
+    decreaseSize() {
+        if (this.sizeInter >= 0){
         this.sizeInter = this.sizeInter - 1;
-        this.updateTree(this.pInter,this.sizeInter);
-        //return [this.sizeInter,this.updateTree(this.pInter,this.sizeInter)];
+        this.updateTree(this.pInter, this.sizeInter);
         return this.sizeInter;
+        }
+        else
+            return this.sizeInter;
     }
     reshape(curnode){
 
@@ -803,10 +663,7 @@ function sizefilter(mydata,sss){
 
 }
 function checknode(curnode){
-    //console.log(curnode);
-    //console.log(curnode["_children"]);
-    //console.log(curnode["children"]);
-    //return (mydata.data._total.size<sizeInter)? true : false;
+
     if(curnode["_children"]!=undefined){
         return false;
     }
