@@ -8,14 +8,11 @@ let tree;
 let partition;
 let loaddata;
 let treenode;
-//let dispatch = d3.dispatch("click");
 d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
-    //console.log(dispatch);
     if (error) throw error;
     let plots = new Plots(rawdata, 600, 150);
     window.plots = plots;
-    //window.plots.rawDataPlot();
     //Load data in JS
     pInter = 2;
     sizeInter = 20;
@@ -26,7 +23,6 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
         loaddata = new Load();
         let[maxp,minp] = loaddata.create(data,rawdata,pInter,sizeInter);
         partition = new Partition();
-        //console.log(minp);
         partition.initialPartition(data);
 
         d3.csv('data/Tree_Merge.csv', function (error, treedata){
@@ -50,27 +46,10 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
                         pInter = x.invert(d3.event.x);
 
-                        //setTimeout(function (){
-                        //console.log(pInter);
-                        //}, 100);
-
                         loaddata.update(pInter,sizeInter);
                         tree.updateTree(pInter,sizeInter);
 
                     }));
-                //document.getElementById("#myhandle").onclick = function(){
-                //    console.log("Handle clicked");
-
-                //};
-                //let slider = d3.slider().axis(true);
-                //d3.select("#treesvg").append(slider);
-                //let pos = 0;
-                //d3.select('#slider-button').on('click', function() { slider.slide_to(++pos); });
-                //d3.select("#treesvg").call(d3.drag()).on("change",function(){console.log("changed")});
-
-                //slider.call(d3.drag()
-                //    .on("start.interrupt", function() { slider.interrupt(); })
-                //    .on("start drag", fd3.select("#treesvg")unction() {slider.handle.attr("cx", d3.event.x);  console.log(d3.event.x); }));
 
                 d3.select('#increase')
                     .on('click', () => {
@@ -97,6 +76,7 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
                 let clicks = 0;
                 let DELAY = 500;
+                //Separate clicking from double clicking
                 treenode.on("click", (nodeinfo)=>{
                     clicks++;  //count clicks
 
@@ -119,19 +99,7 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
                 });
 
-                /*
-                treenode.on('dblclick', (nodeinfo)=>{
 
-                    window.plots.update(nodeinfo);
-                    loaddata.select(nodeinfo);
-                });
-
-
-                treenode.on('click', (nodeinfo)=> {
-                    tree.reshape(nodeinfo);
-                });
-
-                */
 
             });
         });
