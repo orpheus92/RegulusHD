@@ -345,7 +345,7 @@ class Plots {
             }
         }
 
-        for (let i = 0; i < datacol - 1; i++) {
+        for (let i = 0; i < datacol ; i++) {
             let groupCount = obj[attr[i]];
             groupCount.sort(function (a, b) {
                 return a - b
@@ -458,7 +458,7 @@ class Plots {
 
         let numOfBins = 10;
 
-        for (let i = 0; i < datacol - 1; i++) {
+        for (let i = 0; i < datacol; i++) {
             let curData = [];
             for (let j = 0; j < datarow; j++) {
                 curData.push(parseFloat(data[j][attr[i]]));

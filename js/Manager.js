@@ -90,7 +90,6 @@ d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
                     if(clicks === 1) {
 
                         timer = setTimeout(function() {
-
                             window.plots.update(nodeinfo);
                             loaddata.select(nodeinfo);
                             clicks = 0;             //after action performed, reset counter
