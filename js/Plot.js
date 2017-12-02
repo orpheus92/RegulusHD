@@ -127,7 +127,7 @@ class Plots {
                     })
                     .attr('fill', function (d) {
                         return colorScale(d.z);
-                    });
+                    }).attr("class", "scattercolor");
 
                 let tip = d3.tip().attr('class', 'd3-tip').attr('id','plottip')
                     .direction('se')
