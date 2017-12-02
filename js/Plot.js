@@ -4,14 +4,11 @@ class Plots {
     constructor(data, widht, height) {
         this._rawdata = data;
         this._data = data;
-        this._margin = {top: 20, right: 30, bottom: 50, left: 50};
+        this._margin = {top: 20, right: 30, bottom: 50, left: 60};
         this._width = widht;
         this._height = height;
-
-
         this._plot = d3.select("#hdPlot");
-
-
+        this._y_attr = document.getElementById('y_attr').value;
     }
 
     //printPlots
@@ -60,110 +57,113 @@ class Plots {
         let datacol = attr.length;
         let datarow = data.length;
 
-        for (let i = 0; i < datacol - 1; i++) {
 
-            for (let i_2 = i + 1; i_2 < datacol - 1; i_2++) {
-                let curData = [];
-                for (let j = 0; j < datarow; j++) {
-                    let curPoint = {};
-                    curPoint.x = parseFloat(data[j][attr[i]]);
-                    //console.log(attr[i]);
-                    curPoint.y = parseFloat(data[j][attr[i_2]]);
-                    //console.log(attr[i_2]);
-                    curPoint.z = parseFloat(data[j][attr[datacol-1]]);
-                    curData.push(curPoint);
+        for (let i = 0; i < datacol; i++) {
+            for (let i_2 = i + 1; i_2 < datacol; i_2++) {
+                if(attr[i] != this._y_attr && attr[i_2] != this._y_attr){
+                    let curData = [];
+                    for (let j = 0; j < datarow; j++) {
+                        let curPoint = {};
+                        curPoint.x = parseFloat(data[j][attr[i]]);
+                        curPoint.y = parseFloat(data[j][attr[i_2]]);
+                        curPoint.z = parseFloat(data[j][this._y_attr]);
+                        curData.push(curPoint);
+                    }
+
+                    let x_minVal = d3.min(curData, function (d) {
+                        return d.x;
+                    });
+                    let x_maxVal = d3.max(curData, function (d) {
+                        return d.x;
+                    });
+                    let y_minVal = d3.min(curData, function (d) {
+                        return d.y;
+                    });
+                    let y_maxVal = d3.max(curData, function (d) {
+                        return d.y;
+                    });
+                    let z_minVal = d3.min(curData, function (d) {
+                        return d.z;
+                    });
+                    let z_maxVal = d3.max(curData, function (d) {
+                        return d.z;
+                    });
+
+
+                    let x = d3.scaleLinear()
+                        .domain([x_minVal, x_maxVal])
+                        .range([0, width])
+                        .nice();
+                    let y = d3.scaleLinear()
+                        .domain([y_minVal, y_maxVal])
+                        .range([0, height])
+                        .nice();
+
+                    let colorScale = d3.scaleLinear()
+                        .range(['blue', 'red'])
+                        .domain([z_minVal, z_maxVal]);
+
+                    let svg = newplot.append("svg")
+                        .attr("height", this._height)
+                        .attr("width", this._width);
+                    let g = svg
+                        .append('g')
+                        .attr('id', "pairwisePlot" + i)
+                        .attr("transform", "translate(" + [margin.left, margin.top] + ")");
+
+                    g.selectAll("circle")
+                        .data(curData)
+                        .enter()
+                        .append("circle")
+                        .attr("r",2)
+                        .attr("cx", function (d) {
+                            return x(d.x);
+                        })
+                        .attr("cy", function (d) {
+                            return y(d.y);
+                        })
+                        .attr('fill', function (d) {
+                            return colorScale(d.z);
+                        });
+
+                    let tip = d3.tip().attr('class', 'd3-tip').attr('id','plottip')
+                        .direction('se')
+                        .offset(function() {
+                            return [0,0];
+                        })
+                        .html((d,ind)=>{
+                            return this.tooltip_render(d,ind);
+
+                        });
+                    //console.log(curscatter);
+                    //this._curscatter = curscatter;
+                    g.selectAll("circle").call(tip)
+                        .on('mouseover', tip.show)
+                        .on('mouseout', tip.hide);
+
+                    g
+                        .append('g')
+                        .attr('id', "xAxis" + i)
+                        .call( d3.axisBottom(x).scale(x))
+                        .attr("transform", "translate(" + [0, height] + ")");//.attr("class","label");;
+                    g
+                        .append('g')
+                        .attr('id', "yAxis" + i)
+                        .call(d3.axisLeft(y).scale(y));
+
+                    svg
+                        .append("text")
+                        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                        .attr("transform", "translate("+ (this._width/2) +","+(this._height-margin.bottom/3)+")")  // centre below axis
+                        .text(attr[i]);
+                    svg
+                        .append("text")
+                        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                        .attr("transform", "translate("+ (margin.left/3) +","+(this._height/2)+")rotate(-90)")
+                        .text(attr[i_2]);
                 }
 
-                let x_minVal = d3.min(curData, function (d) {
-                    return d.x;
-                });
-                let x_maxVal = d3.max(curData, function (d) {
-                    return d.x;
-                });
-                let y_minVal = d3.min(curData, function (d) {
-                    return d.y;
-                });
-                let y_maxVal = d3.max(curData, function (d) {
-                    return d.y;
-                });
-                let z_minVal = d3.min(curData, function (d) {
-                    return d.z;
-                });
-                let z_maxVal = d3.max(curData, function (d) {
-                    return d.z;
-                });
 
-                let x = d3.scaleLinear()
-                    .domain([x_minVal, x_maxVal])
-                    .range([0, width])
-                    .nice();
-                let y = d3.scaleLinear()
-                    .domain([y_minVal, y_maxVal])
-                    .range([0, height])
-                    .nice();
-
-                let colorScale = d3.scaleLinear()
-                    .range(['blue', 'red'])
-                    .domain([z_minVal, z_maxVal]);
-
-                let svg = newplot.append("svg")
-                    .attr("height", this._height)
-                    .attr("width", this._width);
-                let g = svg
-                    .append('g')
-                    .attr('id', "pairwisePlot" + i)
-                    .attr("transform", "translate(" + [margin.left, margin.top] + ")");
-
-                g.selectAll("circle")
-                    .data(curData)
-                    .enter()
-                    .append("circle")
-                    .attr("r",2)
-                    .attr("cx", function (d) {
-                        return x(d.x);
-                    })
-                    .attr("cy", function (d) {
-                        return y(d.y);
-                    })
-                    .attr('fill', function (d) {
-                        return colorScale(d.z);
-                    }).attr("class", "scattercolor");
-
-                let tip = d3.tip().attr('class', 'd3-tip').attr('id','plottip')
-                    .direction('se')
-                    .offset(function() {
-                        return [0,0];
-                    })
-                    .html((d,ind)=>{
-                        return this.tooltip_render(d,ind);
-
-                    });
-                //console.log(curscatter);
-                //this._curscatter = curscatter;
-                g.selectAll("circle").call(tip)
-                    .on('mouseover', tip.show)
-                    .on('mouseout', tip.hide);
-
-                g
-                    .append('g')
-                    .attr('id', "xAxis" + i)
-                    .call( d3.axisBottom(x).scale(x))
-                    .attr("transform", "translate(" + [0, height] + ")");//.attr("class","label");;
-                g
-                    .append('g')
-                    .attr('id', "yAxis" + i)
-                    .call(d3.axisLeft(y).scale(y));
-
-                svg
-                    .append("text")
-                    .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-                    .attr("transform", "translate("+ (this._width/2) +","+(this._height-margin.bottom/3)+")")  // centre below axis
-                    .text(attr[i]);
-                svg
-                    .append("text")
-                    .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-                    .attr("transform", "translate("+ (margin.left/3) +","+(this._height/2)+")rotate(-90)")
-                    .text(attr[i_2]);
 
             }
         }
@@ -204,8 +204,8 @@ class Plots {
             return d;
         }; // data -> value
 
-        let minVal = d3.min(obj[attr[datacol - 1]], value);
-        let maxVal = d3.max(obj[attr[datacol - 1]], value);
+        let minVal = d3.min(obj[this._y_attr], value);
+        let maxVal = d3.max(obj[this._y_attr], value);
 
         let yScale = d3.scaleLinear()
                 .range([height - margin.top - margin.bottom, 0])
@@ -223,81 +223,82 @@ class Plots {
 
         let curplot;
 
-        for (let i = 0; i < datacol - 1; i++) {
-            yScale.domain([d3.min(obj[attr[i]], value), d3.max(obj[attr[i]], value)]);
-            newplot.append("svg")
-                .attr('id', "plot" + i);
-            curplot = d3.select("#plot" + i).data([{
-                x: obj[attr[datacol - 1]],//d3.range(n).map(function(i) { return i / n; }),
-                y: obj[attr[i]]//d3.range(n).map(function(i) { return Math.sin(4 * i * Math.PI / n) + (Math.random() - .5) / 5; })
-            }]);
+        for (let i = 0; i < datacol; i++) {
+            if(attr[i] != this._y_attr){
+                yScale.domain([d3.min(obj[attr[i]], value), d3.max(obj[attr[i]], value)]);
+                newplot.append("svg")
+                    .attr('id', "plot" + i);
+                curplot = d3.select("#plot" + i).data([{
+                    x: obj[this._y_attr],//d3.range(n).map(function(i) { return i / n; }),
+                    y: obj[attr[i]]//d3.range(n).map(function(i) { return Math.sin(4 * i * Math.PI / n) + (Math.random() - .5) / 5; })
+                }]);
 
-            curplot.attr("height", height)
-                .attr("width", width);
+                curplot.attr("height", height)
+                    .attr("width", width);
 
-            curplot.append('g').attr('id', "xAxis" + i);
-            curplot.append('g').attr('id', "yAxis" + i);
-            //d3.selectAll("#plottip").remove();
-            let curscatter = curplot.selectAll("circle")
+                curplot.append('g').attr('id', "xAxis" + i);
+                curplot.append('g').attr('id', "yAxis" + i);
+                //d3.selectAll("#plottip").remove();
+                let curscatter = curplot.selectAll("circle")
                 //.data(obj[attr[i]])
-                .data(function(d) {
-                    return d3.zip(d.x, d.y); })
-                .enter()
-                .append("circle")
-                .attr("r", 2)
-                .attr("cx", function(d) { return xScale(d[0]); })
-                .attr("cy", function(d) { return yScale(d[1]); })
-                .attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")")
-                .attr("transform", "translate(" + [margin.left, margin.top] + ")")
-                .attr('fill', function (d) {
-                    return colorScale(d[0]);
-                }).attr("class", "scattercolor");
+                    .data(function(d) {
+                        return d3.zip(d.x, d.y); })
+                    .enter()
+                    .append("circle")
+                    .attr("r", 2)
+                    .attr("cx", function(d) { return xScale(d[0]); })
+                    .attr("cy", function(d) { return yScale(d[1]); })
+                    .attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")")
+                    .attr("transform", "translate(" + [margin.left, margin.top] + ")")
+                    .attr('fill', function (d) {
+                        return colorScale(d[0]);
+                    }).attr("class", "scattercolor");
 
-            let tip = d3.tip().attr('class', 'd3-tip').attr('id','plottip')
-                .direction('se')
-                .offset(function() {
-                    return [0,0];
-                })
-                .html((d,ind)=>{
-                    return this.tooltip_render(d,ind);
+                let tip = d3.tip().attr('class', 'd3-tip').attr('id','plottip')
+                    .direction('se')
+                    .offset(function() {
+                        return [0,0];
+                    })
+                    .html((d,ind)=>{
+                        return this.tooltip_render(d,ind);
 
-                });
-            //console.log(curscatter);
-            //this._curscatter = curscatter;
-            curscatter.call(tip);
-            //console.log(this._node);
-            //console.log(curscatter.on('mouseover', tip.show));
-            curscatter.on('mouseover', tip.show)//.attr('class',d=>{
+                    });
+                //console.log(curscatter);
+                //this._curscatter = curscatter;
+                curscatter.call(tip);
+                //console.log(this._node);
+                //console.log(curscatter.on('mouseover', tip.show));
+                curscatter.on('mouseover', tip.show)//.attr('class',d=>{
                 //console.log("Mouse Over");
                 //return "highlighted";})
-                .on('mouseout', tip.hide);//.attr('fill', function (d) {
+                    .on('mouseout', tip.hide);//.attr('fill', function (d) {
                 //return colorScale(d[0]);
-            //});
+                //});
 
                 //.on("mouseover", function(d,ind){tipMouseover(d,ind,attr,obj);})
                 //.on("mouseout", tipMouseout);
 
-            xAxis.scale(xScale);
-            yAxis.scale(yScale);
+                xAxis.scale(xScale);
+                yAxis.scale(yScale);
 
-            curplot.select("#xAxis" + i)
-                .call(xAxis)
-                .attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")");//.attr("class","label");
-            //Translate for y_val will be modified later
-            curplot.select("#yAxis" + i)
-                .call(yAxis)
-                .attr("transform", "translate(" + [margin.left, margin.top] + ")");
+                curplot.select("#xAxis" + i)
+                    .call(xAxis)
+                    .attr("transform", "translate(" + [margin.left, height - margin.bottom] + ")");//.attr("class","label");
+                //Translate for y_val will be modified later
+                curplot.select("#yAxis" + i)
+                    .call(yAxis)
+                    .attr("transform", "translate(" + [margin.left, margin.top] + ")");
 
-            curplot
-                .append("text")
-                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-                .attr("transform", "translate("+ (width/2) +","+(height-margin.bottom/3)+")")  // centre below axis
-                .text(attr[datacol - 1]);
-            curplot
-                .append("text")
-                .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-                .attr("transform", "translate("+ (margin.left/2) +","+(height/2)+")rotate(-90)")
-                .text(attr[i]);
+                curplot
+                    .append("text")
+                    .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                    .attr("transform", "translate("+ (width/2) +","+(height-margin.bottom/3)+")")  // centre below axis
+                    .text(this._y_attr);
+                curplot
+                    .append("text")
+                    .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+                    .attr("transform", "translate("+ (margin.left/2) +","+(height/2)+")rotate(-90)")
+                    .text(attr[i]);
 
 
 
@@ -310,6 +311,9 @@ class Plots {
                 .style("text-anchor", "end")
                 .text("Ylabel");//.attr("class","label");
                 */
+            }
+
+
         }
     }
 
@@ -547,12 +551,9 @@ class Plots {
         let selectdata = [];
         nodeinfo.data._total.forEach(d=>{
             selectdata.push(this._rawdata[d]);
-
         });
         this._data = selectdata;
         this._data.columns = this._rawdata.columns;
-
-
 
         let attr = this._data.columns;
         let datacol = attr.length;
@@ -571,10 +572,19 @@ class Plots {
 
     }
 
+    updateAttribute(){
+        this._y_attr = document.getElementById('y_attr').value;
+        this.printPlots();
+    }
 }
 
 function printPlots() {
     window.plots.printPlots()
+}
+
+function updateAttribute(){
+    window.plots.updateAttribute()
+
 }
 
 function kernelDensityEstimator(kernel, X) {

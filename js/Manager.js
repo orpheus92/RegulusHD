@@ -11,7 +11,14 @@ let treenode;
 d3.csv('data/Pu_TOT.csv', function (error, rawdata) {
 
     if (error) throw error;
-    let plots = new Plots(rawdata, 600, 150);
+    for (let i = 0; i< rawdata.columns.length; i++)
+    {
+        d3.selectAll("#y_attr")
+            .append("option")
+            .attr("value", rawdata.columns[i])
+            .text(rawdata.columns[i]);
+    }
+    let plots = new Plots(rawdata, 600, 200);
     window.plots = plots;
     //Load data in JS
     pInter = 2;
