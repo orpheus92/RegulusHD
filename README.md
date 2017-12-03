@@ -2,7 +2,7 @@
 
 ## Multivariate data visualization
 
-###Author: Di Wang, Shenruoyang Na 
+### Author: Di Wang, Shenruoyang Na 
 
 [Project Website](https://orpheus92.github.io/RegulusHD/)
 
